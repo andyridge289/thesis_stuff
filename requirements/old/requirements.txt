@@ -1,0 +1,319 @@
+1.	The system should allow users to delete services.
+Source: [deleting entities]
+COTS: Atooma, Tasker, AutomateIt, IFTTT, Zapier, Yahoo! Pipes, Automator, On{X}
+2.	The system must be able to execute services.
+COTS: Atooma, Tasker, AutomateIt, IFTTT, Zapier, Yahoo! Pipes, Quartz Composer, Automator, On{X}
+3.	The system should allow users to share entities that are created using the system.
+Source: [Sharing/publishing of composites]
+COTS: Atooma, IFTTT, Yahoo! Pipes, AutomateIt, On{X}
+4.	Services should be customisable by editing their parameters Users should be able to customise services by editing their parameters. Parameters can be provided by components, but edited when the component is part of a composite.
+Source: [Parameters, Component customisation]
+COTS: Yahoo! Pipes, Quartz Composer, Tasker, IFTTT, Atooma, Automator, AutomateIt, Zapier, On{X}
+5.	Parameters should be editable during and after composition time, and up to and including at runtime User should be able to edit the parameters of a composite after the initial composition process.
+Source: [Set parameters after composition time, Set parameters at composition time]
+COTS: Yahoo! Pipes, Quartz Composer, Tasker, IFTTT, Atooma, Automator, AutomateIt, On{X}
+6.	Parameters should be set to default values at composition time and be editable later Users should be able to set default values for parameters at composition time, which can then be edited later.
+Source: [Set default parameters at composition time, Don't ask again for parameters]
+COTS: Tasker, IFTTT, Atooma, AutomateIt, Zapier, Quartz Composer, Automator, On{X}
+7.	Parameter setting should use the composite description The process of setting parameters should be included within the description of the composite, as it is with On{X}
+Source: [Parameter setting in On{X}]
+COTS: On{X}
+8.	Components should only need to be activated once, if at all. If the user needs to activate the component, i.e. entering usernames and passwords, this should only need to be done once.
+Source: [Component activation] 
+COTS: Atooma, Tasker, AutomateIt, IFTTT, Zapier, Yahoo! Pipes, Quartz Composer, Automator
+9.	Users should be able to discover and acquire services Users should be able to discover new services that can be added to the system – both components and composites.
+COTS: AutomateIt, Atooma, IFTTT, Zapier, Yahoo! Pipes, On{X}
+10.	Users should be able to search for composites shared by others Users should be able to search through composites that have been created and shared by other users.
+Source: [Search]
+COTS: IFTTT, AutomateIt, Yahoo! Pipes, On{X}
+11.	Users should be able to discover and acquire components Users should be able to acquire to acquire new components (either directly or indirectly) through the system.
+Source: [Acquiring components]
+Prior identification: Albreshne2011, Silva2008
+12.	More information should be provided for components the user doesn't already have access to Users require more information about components that they need to acquire compared with ones that they have already acquired and used.
+Source: [More information if not owned]
+COTS: IFTTT, On{X}
+13.	Users should be able to search for components Users need to be able to search through components – both those that they have and those that they are yet to acquire.
+Source: [Search]
+COTS: Quartz Composer, Automator
+14.	Search by function performed Users should be able to search for components based on the function that they perform.
+Source: [Search by function]
+15.	Search by name Users should be able to search for components by their name.
+Source: [Search by name]
+COTS: Quartz Composer, Automator
+16.	Search by the app the component comes in Users should be able to search for components by the application in which the component is provided.
+Source: [Search for app in which component is provided]
+Specific
+17.	Services should be sorted into groups Lists of services should be grouped together.
+Source: [Grouping]
+Prior identification: Bottaro2007 
+COTS: Tasker, Atooma, IFTTT, Zapier, Yahoo! Pipes, Automator, On{X}
+18.	Services should be grouped by their function Services should be grouped based on the function that they perform. For example, all of the components involving interactions with social media could be in a social category.
+Source: [Grouping by function]
+COTS: Tasker, Automator, Yahoo! Pipes, On{X}
+19.	Components should be grouped by their location Components should be put into groups based on where they can be found. For example, components on the device might be in one group, and components from the web in another.
+Source: [Grouping by component location]
+20.	Components should be grouped by the app that provides them Within their location, components should be grouped by the application that provides them.
+Source: [Grouping by the containing application]
+Dependency: Composer component distribution paradigm
+COTS: Automator
+21.	Components should be grouped by their cost Components should be grouped by their cost, or the cost of the application that provides the component.
+Source: [Grouping by cost]
+22.	Components grouped by their rating Components should be grouped by their rating – top rated services should be shown in a separate section.
+Source: [Top Rated]
+23.	Components should be grouped by the service provider Components should be grouped by the provider of the service, or the developer of the service.
+Source: [Grouping by service provider]
+COTS: Atooma, IFTTT, Zapier
+24.	Components should be grouped by previously used Components should be grouped to show those that have been used previously by the user.
+Source: [Previously used components, Recently used]
+25.	Grouping should be customisable The method that the system uses to group services should be customisable by the user
+Source: [Customisation of grouping]
+26.	Services should be manually grouped Users should be able to sort services into their own groups rather than grouping by a property of the service.
+Source: [Manual grouping]
+27.	Services should be grouped into groups and sub-groups Grouping should allow for services to be put into groups and then sub-groups.
+Source: [Categories and sub-categories]	
+28.	The system shouldn’t allow users to group services Services shouldn’t be grouped
+Source: [No grouping]
+Conflict: 17
+COTS: Quartz Composer
+29.	Users should be able to edit the order of the components in composition The components in the composition should be able to be moved into a different order
+Source: [Editing composition, Customisation]
+COTS: Tasker, Yahoo! Pipes, Quartz Composer, Automator
+30.	Potential compositions should be identified automatically The system should be able to monitor the activities of the user and identify tasks that they perform regularly that could be adapted to form a composition.
+Source: [Automatic composition identification]
+31.	Composition should work with components whose data types do not match Composition of components that have data types that do not match should be allowed since in some cases the execution of a subsequent service does not rely on the data being passed to it by a preceding service.
+Source: [Using components that don't match]
+Prior identification: Mehandjiev2010
+COTS: Automator, On{X}
+32.	Composition must not involve coding The composition process should not involve the user having to write any code
+Source: [Composition as coding]
+Prior identification: Albreshne2011, Cappiello2011, Namoun2010, Nestler2011, Picozzi2010
+COTS: Atooma, Tasker, IFTTT, AutomateIt, Zapier, Yahoo! Pipes, Quartz Composer, Automator
+33.	Compositions should be created from a text description If a description can be generated from the components in a composite service, then it should be possible to reverse this process and create a composite from a description.
+Subsequent
+Source: [description for composition means a composition from description]
+34.	The system should allow users to test compositions The system should allow users to test their composites-in-progress whilst they are creating them.
+Source: [Testing, No testing]
+COTS: Yahoo! Pipes, Quartz Composer, Automator, Tasker, Yahoo! Pipes, On{X}
+35.	Testing of triggers should be simulated Compositions that are created with triggers to initialise them would only normally be executed when that trigger is fired. Even though this can be done manually in some cases, for testing purposes, users should be able to simulate that this trigger has occurred.
+Source: [Simulate testing of triggers]
+36.	Components should have a test mode A “test mode” should be provided with components that interact with external entities. Some components might have an action that operates on an external entity, but while being tested, the user might not want the component to have any interaction with that external entity. For instance, sending a SMS.
+Source: [Test mode for components]
+37.	Dummy data should be provided for testing For services that acquire data from an external data source; if applicable, dummy data should be provided
+Source: [Dummy data for testing]
+38.	Composition should be debuggable The system should allow the user to debug the composition while they are creating it.
+Source: [Debugging]
+COTS: Yahoo! Pipes
+39.	Components should indicate their execution process when being tested Whilst a component is being tested, it should report the task that is being performed to the composing application so that the user can have a better breakdown of the tasks it performs.
+Source: [Indication of execution progress within component]
+COTS: Automator
+Subsequent
+40.	Testing should be provided for complicated compositions. If the composition is simple enough, testing should not be necessary.
+Source: [Testing complexity]
+Subsequent
+41.	The system should allow users to compose pervasive services Composition of services in the user’s environment.
+Source: [Composing pervasive services]
+Prior identification: Bottaro2011 
+COTS: IFTTT
+42.	The system should support triggers Triggers – services that are activated on the occurrence of an event – should be supported by the system.
+Source: [Triggers, Triggers vs. other components]
+Prior identification: Albreshne2011
+COTS: Atooma, IFTTT, On{X}
+43.	Components should be simple Components should be presented as black-box-like entities, where the user doesn’t have to worry about how they operate or how complex they are
+Source: [Components as black boxes, Composition complexity]
+COTS: Atooma, Automator, AutomateIt, IFTTT, Zapier, Yahoo! Pipes, Quartz Composer
+44.	Composites should be integrated with the device Composites should be accessible directly from the device without having to go through the application from which they were composed.
+Source: [OS integration]
+COTS: Tasker
+45.	Users should be able to access composites via home-screen shortcuts/widgets Users should be able to create shortcuts or place widgets on the home-screen of their device which allow them to invoke composites.
+Source: [Shortcuts to composites, Control composites via widgets]
+Specific
+46.	The system should present services with which the user is familiar The services that are displayed to the user should be from Internet services or similar with which the user is familiar
+Source: [Familiar Services]
+Subsequent
+47.	Descriptions of composites should be generated automatically The system should be able to generate descriptions for composites based on the descriptions of the components that make them up and the logical operations that combine them.
+Source: [Automatically generate description for composites]
+48.	Users should be able to find out more information about composites Users should be able to find out more information about a composite by selecting it and viewing a page of attributes.
+Source: [Composites need their own page]
+Subsequent
+Specific
+49.	The system should provide more information for composites that the user did not create If a user did not create a composite, then they need to know more about it than if they did
+Source: [More information if not owned]
+50.	Composition should be infinite The system should allow users to use composites that they have created as components in other compositions.
+Source: [Infinite composition]
+51.	The system should provide some mechanism for restricting composition Completely free-form composition can be daunting, especially to users without a technical background.
+Source: [Restrictiveness of composition, Freedom of composition]
+Conflict: 56
+COTS: Atooma, Tasker, IFTTT, Zapier, Automator, AutomateIt
+52.	Templates should be provided The system should provide templates to users that they can follow to assist with the composition process.
+Source: [Templates]
+Prior identification: Mehandjiev2010a
+COTS: Atooma, IFTTT, Automator, Tasker, Zapier, AutomateIt
+53.	Linear templates for simplicity One of the templates provided should restrict the composition to being linear.
+Source: [Linearity of composition]
+COTS: Atooma, IFTTT, Automator, Tasker, Zapier, AutomateIt
+54.	There should be an option for composition to be completely free – no templateThe system should give the user complete control over the composition without any restrictions.
+Source: [Freedom of composition]
+COTS: Yahoo! Pipes, Quartz Composer
+Conflict: 53
+55.	Two tool views/versions: high-tech and low-tech Users with varying levels of technical ability are unlikely to be supported in the right way by the same tool or view of tool. Then different users could be provided with different properties and levels of technical information.
+Source: [Two versions: high tech and low tech, Tasker variables, variable comparison in Tasker]
+Prior identification: Aghaee201, Albinola2009
+56.	Two tool views/versions: mobile and desktop Different (physically) sized composition platforms allow for different potential compositions, as well as allowing for compositions in different contexts.
+Source: [Two versions: mobile and desktop, Context of composition]
+Prior identification: Namoun2010
+COTS: On{X}
+Subsequent
+57.	The system should integrate with users’ social networks. Users should be able to log in to the system through one or more social networks and connect to their friends
+Source: [View friends' composites, Sharing/publishing of composites on Social Networks] 
+58.	Users should be able to share composites on social networks Users should be able to share what they create on social networks so their friends can interact with them)
+Source: [Sharing/publishing of composites on Social Networks]
+COTS: IFTTT
+Dependent: 59
+Subsequent
+59.	Users should be able to interact with composites created by their friends Users should be able to view the composites that their friends have created, and interact with them in the same way they can interact with others.
+Source: [View friends' composites]
+Dependent: 59
+60.	The system should allow users to rate services Users should be able to rate services to convey their opinion on the quality of the service to other users of the system.
+Source: [User ratings]
+COTS: AutomateIt, IFTTT, Yahoo! Pipes, On{X}
+61.	Services should be “tagged” with keywords to represent their function Instead of being grouped, services should be assigned tags describing their functionality.
+Source: [Tagging]
+COTS: Atooma
+62.	Recommendations/Examples of potential compositions should be presented to users Users should be presented with examples of potential components and/or compositions to give them inspiration, for clarity/instruction, and to ensure that they don’t re-perform compositions when they aren’t necessary.
+Source: [Examples, Examples don't re-invent the wheel, Examples for inspiration, Examples for clarity/instruction, Recommendations from the Internet]
+COTS: Atooma, IFTTT, Zapier, Quartz Composer, Automator, On{X}
+63.	Users should be able to get recommendations from friends Users should be able to see composites and components that their friends have recommended.
+Source: [Recommendations from friends]
+Dependent: 61
+COTS: On{X}
+Subsequent
+64.	Examples should be presented first Users should be presented with examples as the first thing they see in the composition application since they can perform many functions to aid the user.
+Source: [Examples first]
+COTS: IFTTT, Quartz Composer
+65.	The system should have a tutorial/instruction page The system should provide a tutorial section or instruction page so that users who have never used the system before can learn how to use it.
+Source: [Tutorial/instruction page]
+66.	Terminology should be simple, user-friendly and consistent The terminology used in the simple needs to be simple in order to minimise confusion the user might have between similar terms.
+Source: [Terminology, Terminology confusion, Input/output vs. parameter, Parameters are like settings]
+Prior identification: Namoun2010 
+COTS: IFTTT
+67.	Assistance should be provided with inputs and outputs The system should assist the user with inputs and outputs, with mechanisms such as data-type matching.
+Source: [Assistance with input/output]
+Prior identification: Albreshne2011
+COTS: Yahoo! Pipes, Quartz Composer
+68.	Matching data types should be indicated The system should indicate when there is a match of the data-types of two or more inputs or outputs.
+Source: [Assistance with input/output]
+Prior identification: Mehandjiev2010a
+COTS: Yahoo! Pipes, Quartz Composer
+69.	Assistance should be provided in composition The system should provide the user with assistance while they are performing composition.
+Source: [Assistance provided]
+COTS: IFTTT, Atooma, AutomateIt, Zapier, Yahoo! Pipes
+Subsequent
+70.	Composition must be simple and easy to learn The process of composition should be simple and easily learned by its users.
+Source: [Simplicity, learnability, Boredom]
+Prior identification: Albinola2009
+COTS: Atooma, IFTTT, Zapier
+71.	The system could use scenarios to convey composition to users
+Source: [Scenarios]
+72.	Warnings should be used to illustrate potential problems in composition The system should display warnings to the user when potential problems are identified in the composition. For example, when services are connected together and the data types do not match.
+Source: [Warnings]
+Prior identification: Mehandjiev2010 
+Subsequent
+COTS: Atooma, AutomateIt
+73.	The process of composition should be drag-n-drop editable The user should be able to re-order and re-position components in the composition by dragging-and-dropping the components
+COTS: Yahoo! Pipes, Quartz Composer
+Source: [Drag and drop editing of composition]
+Subsequent
+74.	The system should be linked to an associated forum The system should provide a forum to allow users to discuss problems that they are having with the system with other users and experts.
+Source: [Forum or blog]
+COTS: On{X}, Zapier, Yahoo! Pipes
+Subsequent
+75.	The system should be linked to an associated blog The system should provide a blog to keep users up-to-date with the system and any new features to be implemented.	
+Source: [Forum or blog]
+Subsequent
+COTS: IFTTT, Atooma, Tasker, AutomateIt, Yahoo! Pipes, Quartz Composer, Automator, On{X}
+76.	Colour should be used The use of colour should be promoted to assist with the composition process.
+Source: [Use of colour]
+COTS: Atooma, AutomateIt
+77.	The composition process should be very visual The representation of the composition process should be visual to encourage users.
+Source: [Visual]
+Prior identification: Nestler2011 
+COTS: Atooma, IFTTT, Yahoo! Pipes, Quartz Composer
+78.	SC tools should take inspiration from non-SC tools Since SC is a concept that is currently unfamiliar to our participants – even those with technical experience – relating concepts to similar ones in non-SC areas.
+Source: [Take inspiration from non-SC tools]
+Subsequent
+79.	The views of the tool should be customisable Users should be able to customise views to change the display of, for example, component lists. It could be used to show/hide compatible components, or change how components are grouped
+Source: [Customisation of tool views]
+80.	The representation of components and composites should be different The system should assist users in distinguishing between components and composites by ensuring that their representation is different.
+Source: [Different view for composites and components] 
+COTS: Atooma, Tasker, AutomateIt, IFTTT, Zapier, Yahoo! Pipes
+81.	Connections between components should be represented explicitly to the user The connections that are created between services in the composition process should be explicitly represented to the user.
+Source: [Explicit connections between components]
+COTS: AutomateIt, Atooma, IFTTT, Zapier, Yahoo! Pipes, Quartz Composer, Automator
+82.	Successful connections should be represented The system should indicate to the user if a successful connection is made between two components in the composition.
+Source: [Indicator of successful connection between components]
+COTS: Quartz Composer, Yahoo! Pipes
+83.	Connections should be implicit The connections that are created between services in the composition process should not be represented explicitly to the user.
+Source: [Implicit connections between components]
+Conflict: 86
+COTS: Atooma, On{X}, Tasker
+84.	Flow should be represented in composition The system should represent some aspect of flow to the user.
+Source: [Flow diagram]
+COTS: IFTTT, Tasker, Atooma, AutomateIt, Automator, Zapier, Yahoo! Pipes, Quartz Composer
+85.	Control flow should be represented in composition The system should present the composition to the users with the aid of control flow.
+Source: [Control flow]
+Prior identification: Mehandjiev2010a
+COTS: Atooma, Tasker, AutomateIt, IFTTT, Zapier, Automator
+86.	Data flow should be represented in composition The system should present the composition to the users with the aid of data flow.
+Source: [Data flow]
+Prior identification: Mehandjiev2010a
+COTS: Yahoo! Pipes, Quartz Composer
+87.	Flow should be unambiguous Regardless of the representation of flow that is selected, it should be unambiguous.
+Source: [Ambiguity of flow]
+COTS: Atooma, Tasker, AutomateIt, IFTTT, Zapier
+88.	Inputs and outputs of components should be presented to users The system should present the inputs and outputs of components to users, to aid with composition and help the user determine the function of the component.
+Source: [Input/output, Input/output as function]
+COTS: IFTTT, Yahoo! Pipes, Quartz Composer, Automator, On{X}
+89.	Inputs and outputs should convey the type of data required Inputs and outputs of components should present their data-type to assist the user with performing data-type matching and to reduce ambiguity in composition.
+Source: [Data types, matching data types]
+COTS: Quartz Composer, IFTTT, Yahoo! Pipes, Automator, On{X}
+90.	The system should distinguish between mandatory and optional inputs Components may have inputs that are required for the service to operate successfully, whereas some inputs could be optional. The system should present this difference to the user.
+Source: [Mandatory vs. optional inputs]
+COTS: IFTTT, Quartz Composer, Automator
+91.	Inputs and outputs only need to be presented if there is a problem in the composition Inputs and outputs should only be presented to users if there is an issue with ambiguity or data matching.
+Source: [Input/output - doesn't care as long as it works, Ambiguity in input/outputs]
+92.	The system should distinguish between input-only components and output-only components The system should present services that output data to the user differently from services that do not.
+Source: [Input only components vs. output to user components]
+Subsequent
+93.	Components that don’t match should be shown The system should present components to the user where the data type of the input doesn’t match with the output of the component in the previous position.
+Source: [Show/hide components that don't match, Using components that don't match]
+COTS: Yahoo! Pipes, Quartz Composer
+94.	Components that match with ones in the current composition should be presented to users Users should be presented with services whose inputs and outputs match with services currently in the composition to give them inspiration.
+Source: [Matching services for inspiration]
+Prior identification: Mehandjiev2010a
+COTS: Atooma, IFTTT, Zapier, Quartz Composer
+95.	Components that won’t work at all should be hidden The system should hide components that don’t work in the selected position. For example, triggers only work in the first position of the composition.
+Source: [Show/hide components that won't work]
+COTS: Atooma, IFTTT, Zapier
+96.	Component list should be split into pages The list of components that can be used in the composition should be split into pages.
+Source: [Component pages]
+97.	Composites should be represented by the icons/representations of the components that make them up Composites should utilise the icons of the components they are made up of in order to describe their function to the user (as with On{X} and IFTTT)
+Source: [Multiple icons to show components/function]
+COTS: Atooma, AutomateIt, IFTTT, On{X}
+98.	The system should distinguish between composites the user has created and ones that they have acquired Users should be able to instantly tell which of the composites available to them are ones they created vs. ones that have been shared by other users and acquired
+Source: [My composites vs. others]
+COTS: On{X}
+99.	The system should indicate whether composites are running/enabled The system should indicate to users whether a composite is currently running (or if it is enabled when it is a trigger).
+Source: [Running or enabled]
+COTS: Atooma, Tasker, AutomateIt, Zapier, On{X}
+100.	Users should be able to manually choose icons for the composites that they have created Users should be able to manually select the icon to represent composites that they have created.
+Source: [Manually choose icons]
+Subsequent
+101.	The system should use metaphor to abstract the composition process The system should present the composition with the aid of a metaphor to abstract the composition process to something with which the user is more familiar. Potential metaphors include: Cooking – recipes in On{X} and IFTTT – jigsaw – chain – logic - physics.
+Source: [Metaphor]
+Prior identification: Nestler2011
+COTS: Atooma, On{X}, IFTTT, Yahoo! Pipes
+102.	The metaphor should be one that users agree with The metaphor employed by the tool should be one that users agree with and can relate to.
+Source: [Disagrees with metaphor, Would prefer different metaphor] 
+103.	The metaphor should not be ambiguous The metaphor employed by the tool should be unambiguous
+Source: [Ambiguity of metaphor]
+COTS: IFTTT, Atooma

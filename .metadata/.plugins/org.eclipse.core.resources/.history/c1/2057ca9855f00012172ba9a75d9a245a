@@ -1,0 +1,4 @@
+function DesignOption(id, name)
+{
+	this.id = 
+}

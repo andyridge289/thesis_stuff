@@ -1,0 +1,16 @@
+Tool Name,No specification,Text-based search,Composites,Components,Data composition,Process composition,Automatic UI generation,Textual UI composition,Visual UI composition,Widget composition,Webpage composition,Dummy test data,Debugging,Testing,Code generation,Compilation,Interpretation,Create new app,In-app execution,Other recommendations,Context-specific suggestions,Browsing + Categorisation,Browse + filter/search,Browse list,Text editor,Page flow,Form,Spreadsheet representation,Flow diagram,Drag & drop,PbD,WYSIWYG,Dialog/form,Spreadsheet,Full language,Textual DSL,Visual DSL,Blackboard,PbEM,Wiki,Forum,Blog,Private,Public,Icon,Textual,WYSIWYG representation,Explicit,Implicit,Implicit data flow,Explicit data flow,Textual DSL representation,Full language representation,Visual DSL representation,Non-wire graphics,Wires,No link,Average,High,No abstraction,Low,Advanced user,Technical expert,Domain expert,Layman,Enterprise/Organisation,Consumer/Individual,Non-technical,Average expertise,Technical,Expert,Specialised,Domain-specific,Context-specific,Generic,Web context,Desktop context,Mobile context,Suggestions,Incompatibility prompts,User goal/requirement mapping,Help,VCS,Discussion forums,External help/FAQ,Tutorials,API documentation,Screencasts,Examples,Rating,Reviews,Social networks,Num downloads,Tagging,Categories,Single icon,Icons of components,Text description,Data,Control,Level 4,Level 3,Level 2,Level 1,REST,SOAP,Widget,Scraping/DOM,ATOM,RSS,XML message format,JSON message format,XML,JSON,WADL,WSDL,Filters,Actions,Triggers,Branches,Loops,Composition level,Tool-level,No automation,Semi-automation,Full automation,Presentation layer,Application layer,Service layer,Platform,Plug-in,Application,Webpage/webapp,Web,Desktop,Mobile,Composite repository,Component repository,Ad hoc,Fixed,Decentralised,Centralised,Sharing composites,Sharing components,Single composite I&Os,Multiple atomic I&Os,
+IFTTT
+Atooma
+AutomateIt
+IFTTT
+JOpera
+Petals BPM
+Quartz Composer
+Tasker
+Zapier
+Apatar
+FeedRinse
+iGoogle
+LivelyWiki
+MS Visio
+Yahoo! Pipes

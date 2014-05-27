@@ -1,0 +1,27 @@
+"Non-functional DS"
+	"Interaction technique"
+		"Non-language"
+			Spreadsheet
+			"Dialog/form"
+			WYSIWYG
+			PbD
+			"Drag & drop"
+			
+		Language
+			"Full language"
+			DSL
+				"Visual DSL"
+				"Textual DSL"
+		
+		
+	Collaboration
+		PbEM
+		Blackboard
+		Community
+			"Community support"
+				Forum
+				Wiki
+			
+			"Online access"
+				Public
+				Private

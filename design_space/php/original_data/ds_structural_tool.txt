@@ -1,0 +1,28 @@
+"Structural DS"
+	"Tool structure"
+		"Application type"
+			"Application"
+			"Plug-in"
+			Platform
+			"Webpage/webapp"
+	
+		"Application location"
+			Mobile
+			Desktop
+			Web
+		
+		Repositories
+			"Component repository"
+			"Composite repository"
+
+		Infrastructure
+			"Ad hoc"
+			Fixed
+
+		Topology
+			Centralised
+			"Decentralised"
+
+		Sharing
+			Components
+			Composites

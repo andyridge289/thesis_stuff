@@ -1,0 +1,39 @@
+"Functional DS"
+	"SC Lifecycle Activities"
+		Specification
+		
+		Request
+			"Text-based search"
+			
+		Discovery
+			"Discovery mechanism"
+				"Browsing"
+				"Categorisation"
+				"Context-specific suggestions"
+				
+			"Discoverable entities"
+				Components
+				Composites
+				
+				
+		Composition
+			"Process composition"
+			"Data composition"
+			"UI composition"
+				"Automatic UI generation"
+				"Webpage composition"
+				"Widget composition"
+				"Visual UI composition"
+				"Textual UI composition"
+			
+				
+		"Verification/validation"
+			Testing
+			Debugging
+			
+		"Annotation/deployment"
+			"Code generation"
+			Interpretation
+			Compilation
+			
+		"Execution"

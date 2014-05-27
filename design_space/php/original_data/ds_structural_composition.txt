@@ -1,0 +1,57 @@
+"Structural DS"
+	"Composition structure"
+		"Liveness"
+			"Level 1"
+			"Level 2"
+			"Level 3"
+			"Level 4"
+			
+		"Programming structures"
+			Branches
+			Loops
+	
+		"Component types"
+			Triggers
+			Actions
+			Filters
+		
+		Technologies
+			"Communication protocol"
+				SOAP
+				REST
+			
+			"Data retrieval"
+				Widget
+				"Scraping/DOM"
+				"Syndication format"
+					RSS
+					ATOM
+				
+			
+			"Message data format"
+				JSON
+				XML
+		
+			"Service description format"
+				JSON
+				XML
+				WSDL
+				WADL
+			
+		
+		Templates
+			"Tool-level"
+			"Composition level"
+		
+		Automation
+			"Full automation"
+			"Semi-automation"
+			"No automation"
+	
+		"Composition layer"
+			"Service layer"
+			"Application layer"
+			"Presentation layer"
+	
+		Flow
+			Data

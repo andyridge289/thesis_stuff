@@ -1,0 +1,11 @@
+function DesignOption(id, name)
+{
+	this.id = id;
+	this.name = name;
+	this.rationale = "";
+	
+	this.toJSON = function()
+	{
+		return "{id:" + this.id + ", name: \"" + this.name + "\", rationale: \"" + this.rationale + "}";
+	}
+}

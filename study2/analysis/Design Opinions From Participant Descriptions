@@ -1,0 +1,183 @@
+Design Opinions From Participant Customs
+
+1
+Abstract design focussing on WHAT components do rather than how the tool combines them.
+Some thought about how data might flow or how components could be connected.
+Not usable alone
+
+2
+Very brief, also abstract.
+Some consideration of platform, and composition structure
+Not usable alone
+
+3
+Relatively abstract, paying particular attention to the initial stage of identifing the problem that the user is trying to solve.
+Other abstract concepts
+Not really usable alone, could be used as a base
+
+4
+Emphasis on sharing/collaboration
+Discussion of data passing, interaction and component creation
+Potentially usablee
+
+5
+Metaphor for repreesntation/interaction
+Not with just this
+
+6 
+[Might be the best one to scrap because it doesn't appear to be the right task]
+I really don't know what this is
+No chance it could be used as a design
+
+7
+N/A
+
+8 - Very good
+Concrete
+Focus on discovery - browsing, suggestions, examples, etc.
+Also composition - representation, data complexity, etc.
+Support - forums
+Could easily be used as a design
+
+9
+N/A
+
+10 Tiny
+Single option about discovery of components
+Not usable alone
+
+11
+N/A
+
+12
+N/A
+
+13 Abstract
+Discovery, suggestions 
+and composition
+Some discussion of composite management
+Could be used as a base
+
+14
+Discussion of composition representation and interaction
+Some abstract concepts
+Could be used as a base
+
+15
+Abstract
+Could be used as a base
+Quite broad in terms of coverage - discovery, composition represenation, etc.
+
+16
+Abstract
+Could be used as a base
+Covers discovery, help, and interactions with composites
+
+17
+Concrete, comprehensive
+Discussion of
+	Components - discovery, types
+	Compositiont - connections logic
+	Device & user management
+	Failsafes
+Could be used as most of a design
+
+18
+Concrete, also comprehensive
+Covers a broad range of concepts within SC
+Could easily be used as a strong base
+
+19
+Elements not contained in prior DS
+Not a base
+
+20
+Concrete but focused, focuses on composition and discovery
+Various other non-functional attributes
+Broad base
+
+21
+Specific to a domain
+Missing the general composition properties
+General base
+
+22
+Abstract, broad ranging decisions.
+Vague base
+
+23
+Specific to aspects of interacting with composites, and how they can use this.
+Needs massive extension to be used as a base.
+
+24
+Interactions with composites are very common
+Representations of composition
+Also discovery
+Vague base
+
+25
+N/A
+
+26
+General, covering composition
+Also presents some discussion about general interaction with the tool itself
+Could be used as a base
+
+27
+N/A
+
+28
+General, widely ranged but not much
+Covers aspects such as discovery, composition.
+General base
+
+29
+N/A
+
+30
+General, fairly abstract.
+Interactions with components, composites
+Types of components
+Interaction with tool, and assistance provided
+
+31
+
+32
+N/A
+
+33
+N/A
+
+34
+Domain specific, mainly focused on features
+Also assistance provided by the tool
+Could be used as a specific design in that domain, but its relation to service-oriented computing is dubious
+
+35
+Specific
+Representation of composition
+Accessibility
+
+36
+N/A
+
+37
+Specific, broad ranging
+Discovery
+Visualisation, representation
+User discussion
+Strong base
+
+38
+Specific
+Composition process
+User profiles
+Reasonable base
+
+39
+Specific
+
+40
+N/A
+
+41

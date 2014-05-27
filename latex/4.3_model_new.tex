@@ -1,0 +1,1053 @@
+%!TEX root = 0_thesis.tex
+
+\section{The Model}
+\label{sec:ds:model}
+
+This section presents the concepts within the model, which provides an effective overview of the design of SC tools. We present each of our 4 sub-models separately, listing both the decisions and related requirements.
+
+For each concept in the DS sub-model, we will discuss its origins, at what point it was added to the DS model, and if applicable where it was added from. Sub-concepts will indicate their parent in the DS sub-model where applicable. 
+
+Some decisions in the model are used to provide added structure to a sub-model, as well as being a decision that needs to be made. If a decision has only decisions as it's children, the sub-decision may be considered as \emph{both} a decision and an option.
+
+\subsection{Functional Sub-model}
+
+Figure \ref{ds:fig:functional} shows a graphical representation of the relationships between the design decisions and options in the functional DS sub-model.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\textwidth,height=0.9\textheight,keepaspectratio]{images/ds/functional_submodel}
+	\caption{The functional DS sub-model}
+	\label{ds:fig:functional}
+\end{figure}
+
+\clearpage
+
+The functional sub-model is grouped by an adaptation activities of the SC lifecycle that are identified by Mehandjiev et al. \cite{Mehandjiev2012}. They identify a set of stages that make up the SC process, similar to the dynamic SC lifecycle presented by Silva et al. \cite{Silva2008}. Silva's lifecycle is presented in Section \ref{bg:sec:lifecycle}. In the rest of this discussion, we will refer to Silva et al.'s lifecycle as \emph{L1} and Mehandjiev et at.'s lifecycle as \emph{L2}.
+
+
+\emph{L1} is broader in scope than \emph{L2}, since it also includes the creation and publication of the service into the SC tool, which is necessary before composition can occur. However, \emph{L2} is broken down into much more fine-grained activities within each main stage of the lifecycle. A mapping between the two is shown in Figure \ref{ds:fig:lifecyle_mapping}.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.6\textwidth]{images/ds/lifecycle_comparison}
+	\caption{The mapping between the stages presented in the the two different views of SC lifecycles: \emph{L1} \cite{Silva2008} and \emph{L2} \cite{Mehandjiev2012}.}
+	\label{ds:fig:lifecyle_mapping}
+\end{figure}
+
+There are two levels of granularity across the two lifecycles: a high level in \emph{L1} and the stages in \emph{L2}, and a lower level of granularity in the activities of \emph{L2}. We feel that neither of these two levels are particularly useful in the DS model, since the lower level is too specific and the higher level is not specific enough. Thus, we decided to use a set of decisions that was in the middle ground between these two levels of granularity:
+\begin{itemize*}
+	\item Creation \& Publication
+	\item Specification
+	\item Request
+	\item Discovery
+	\item Composition
+	\item Verification \& Validation
+	\item Annotation \& Deployment
+	\item Execution
+\end{itemize*}
+
+\subsubsection{Creation \& Publication}
+
+\textbf{Creation \& Publication} \hfill Lit review \cite{Silva2008} \\ \emph{Decision} \hfill 
+
+Creation and publication is a pre-requisite for the composition process in that in order for there to be component services to be available to be composed they must first be created and then published \cite{Silva2008}.
+
+This area is a prime example of where the tool review is deficient -- the creation and publication process was not visible in any of the tools that we reviewed, hence no options are currently present in the model to solve the creation and publication decision.
+
+\subsubsection{Specification} 
+
+\textbf{Specification} \hfill Prior model collation \cite{Mehandjiev2012} \\ \emph{Decision} \hfill 
+
+The specification phase is the stage at which the user of the SC tool determines what they need from the composite that they seek to create. This stage is present in \emph{L2}, but isn't discussed in \emph{L1}, presumably because it is a stage at which the tool can have little impact on the user who is carrying out the specification.
+
+\textbf{No specification} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Specification}
+
+None of the prior models considered any options for assisting with the specification process, nor was it discussed in the literature, nor supported in any of the tool reviews. This leads us to believe that this process is one that is part of the SC process, but one that is not explicitly supported by the tool, instead it is left to the user.
+
+\subsubsection{Request}
+
+\textbf{Request} \hfill Prior model collation \cite{Mehandjiev2012} \\ \emph{Decision} \hfill 
+
+The request stage of the process is presented in \emph{L1}, and focuses on the mechanism that the user uses to translate their requirements (i.e. the output of the specification phase) into being able to perform discovery, which is the next phase in the composition process. The request phase is meant to exist in an SC tool that provides fully automated SC, which has been cited as being unrealistic with current service-oriented technologies \cite{Vulcu2008}.
+
+\textbf{Search} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Decision} \hfill solves \textbf{Request}
+
+Searching covers both searching for components that could be used in a composition and searching for composites that have already been created to meet the user's needs. This decision was identified in the requirements gathering process, where participants indicated that this would be their preferred mechanism for finding what they need in a SC tool.
+
+Searching wasn't identified as a concept from the tool review, which was due to the limited number of components that are available in the tool -- if there are only a limited number of components, a search isn't required.
+
+\textbf{Search metrics} \hfill Requirements gathering study \\ \emph{Decision} \hfill solves \textbf{Search}
+
+This decision represents the different ways that the user of the tool can perform the search. It was added to group together options related to search that were elicited in the requirements gathering process.
+
+\textbf{Search by name} \hfill Requirements gathering study \\ \emph{Option} \hfill solves \textbf{Search metrics}
+
+Searching by name was identified in the requirements gathering process as a property of the services available in the tool that the user could use to search for services that they want to use. The name of the service is a prominent attribute that we would expect to be one that users would want to use for search.
+
+\textbf{Search by function} \hfill Requirements gathering study \\ \emph{Option} \hfill solves \textbf{Search metrics}
+
+Searching by function was identified in the requirements gathering process as a property of services available in the tool that the user could use to search for services that they want to use. The function of the service is a more unusual aspect of the services that could be used to search, as it is difficult to determine how this function would be represented.
+
+\subsubsection{Discovery}
+
+\textbf{Discovery} \hfill Prior model collation \cite{Mehandjiev2012} \\ \emph{Decision} \hfill 
+
+The discovery phase of the SC lifecycle is the point at which the tool presents the user with the components that they want to use in composition, or the results of the search that they performed in the last phase. In this sub-model, discovery is broken down into two further decisions: the discovery mechanism and the entities that are discoverable using the tool.
+
+\paragraph{Discovery Mechanism}
+
+\textbf{Discovery mechanism} \hfill Tool review \\ \emph{Decision} \hfill 
+
+Discovery mechanisms are the ways that the user can discover services using the tool -- either components to use in composition or composites that have already been created that they might be able to use or modify.
+
+This decision was created to group together the suggestions that were found in prior DS models, and the discovery mechanisms identified in the tool review.
+
+\textbf{Browsing} \hfill Tool review \\ \emph{Decision} \hfill solves \textbf{Discovery mechanism}
+
+Browsing was identified in the tool review as a common mechanism used by SC tools to present services to the user. This decision was created as a separate parent decision to group together the different types of browsing that can occur, as well as the options that browsing can have.
+
+\textbf{Browsing \& filtering} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Browsing}
+
+Browsing and filtering represents the option to filter the list of services that are being viewed as part of browsing, regardless of the representation being used during the browsing process. This option was also added as part of the tool review, with a few of the SC tools offering this feature.
+
+\textbf{Browse a list} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Browsing}
+
+Browsing a list is the standard mechanism for browsing services that was found in the tool review, although the representations of the lists differed somewhat. The discussion of the attributes that services presented is discussed further in the service sub-model.
+
+\textbf{Grouping} \hfill Requirements gathering study \\ \emph{Decision} \hfill solves \textbf{Browsing}
+
+Grouping of the services was identified by the participants in our requirements gathering study as an important mechanism for browsing through the available services in the tool.
+
+\textbf{Grouping metrics} \hfill Requirements gathering study \\ \emph{Decision} \hfill solves \textbf{Grouping}
+
+Various different metrics were identified by the participants in our requirements gathering study, and this decision was added to group these together under one decision.
+
+\textbf{Group by function} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Option} \hfill solves \textbf{Grouping metrics}
+
+A popular approach to grouping services is grouping by the function that the service performs, which could also be described as splitting them into categories. This was identified in the DS model by Grammel et al. \cite{Grammel2010}, as well as being suggested by participants in the requirements gathering study.
+
+\textbf{Group by location} \hfill Requirements gathering study \\ \emph{Option} \hfill solves \textbf{Grouping metrics}
+
+Grouping the services by their location was a concept suggested by participants in the requirements gathering study. This relies on the architecture of the tool providing services from more than one location. In the case of the prototype used in the requirements study, the users of the prototype were able to browse through and acquire services, so this ``location'' was based on whether they had already acquired that service or not.
+
+It could also represent services that are based on the Web (e.g. search, lookups, social media, etc.), vs. those that are available on the device (e.g. accelerometer, SMS, etc.)
+
+\textbf{Group by cost} \hfill Requirements gathering study \\ \emph{Option} \hfill solves \textbf{Grouping metrics}
+
+Grouping by cost relies on there being some monetary value attached to the service. This was also identified in the requirements gathering study, although its identification is unexpected because the study did not present them with any SC tools that presented a monetary value with the services it provided.
+
+\textbf{Group by service provider} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Grouping metrics}
+
+Grouping by service provider relies on a set of services all being provided by the same provider. For example, \emph{Atooma} provides groups of services to be used with Twitter, Facebook, and Google Drive.
+
+\textbf{Group by rating} \hfill Requirements gathering study \\ \emph{Option} \hfill solves \textbf{Grouping metrics}
+
+Grouping by rating relies on users of the tool being able to assign a star rating to services that can be used with the tool. Whilst rating was available in some of the tools in the tool review, grouping by rating was not. This option was identified by participants in our requirements gathering study, and we suggest there are two possible reasons for it being identified by our participants:
+\begin{itemize*}
+	\item They combined other elements from the DS model -- ratings and grouping.
+	\item They took influence from other design spaces (for example apps and app stores).
+\end{itemize*}
+
+\textbf{Group by recently used} \hfill Requirements gathering study \\ \emph{Option} \hfill solves \textbf{Grouping metrics}
+
+Grouping services by how recently they were used wasn't present in any of the tools presented to the participants in the requirements gathering study. This option also presents overlap between different design spaces.
+
+\textbf{Customisation of grouping} \hfill Requirements gathering study \\ \emph{Option} \hfill solves \textbf{Grouping}
+
+Participants in our requirements gathering study suggested that if the tool allowed services to be grouped, then the grouping should be customisable.
+
+\textbf{Manual grouping} \hfill Requirements gathering study \\ \emph{Option} \hfill solves \textbf{Grouping}
+
+Services should be grouped manually by the user, allowing them to put them in any groups that they want.
+
+\textbf{Tagging} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Option} \hfill solves \textbf{Browsing}
+
+Instead of gathering services into groups, tags can be applied to them that categorise them by various properties. Traditionally services would only be able to be in a single group, but they would be able to have multiple tags.
+
+\textbf{Suggestions} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Decision} \hfill solves \textbf{Discovery mechanism}
+
+The system provides the user with some form of suggestion to aid the discovery process.
+
+\textbf{Context-specific suggestions} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Option} \hfill solves \textbf{Suggestions}
+
+Context-specific suggestions are suggestions that are made to the user based upon some particular context change that occurs.
+
+\textbf{Recommendations from friends} \hfill Requirements gathering study \\ \emph{Option} \hfill solves \textbf{Suggestions}
+
+Recommendations from friends relies on some notion of social interaction between users of the tool. This could either piggyback some social network or building a social feature into the tool. This option was identified in the requirements gathering study.
+
+\textbf{``Matching'' components} \hfill Requirements gathering study \\ \emph{Option} \hfill solves \textbf{Suggestions}
+
+Suggesting ``matching components'' relies on the passing of data between components in the composition, and the idea of matching data types in the inputs and outputs of these components. Thus, if the user selects a component with a particular output, the tool can suggest other components whose inputs match with the output of the original selection. This option was identified in the tool review, where participants identified potential frustration when they were allowed to select components whose inputs did not match, but then they could not connect them together.
+
+\textbf{Other recommendations} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Suggestions}
+
+Other recommendations are recommendations that don't fit within any of the other categories, which were present in various tools that were covered in the tool review.
+
+\paragraph{Discoverable Entities}
+
+\textbf{Discoverable entities} \hfill Tool review \\ \emph{Decision} \hfill 
+
+Discoverable entities are the entities (i.e. services) that the user can discover using the tool.
+
+\textbf{Components} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Discoverable entities}
+
+Discoving components is mandatory in any SC tool that is not fully automatic, since to be able to compose components together to create a new composite, the user must first be able to discover the components with which they are performing composition.
+
+\textbf{Composites} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Discoverable entities}
+
+Composite discovery means that the tool allows the user to discover composites -- either created by other users of the tool, or provided as samples by the creator of the tool.
+
+\subsubsection{Composition}
+
+\textbf{Composition} \hfill Prior model collation \cite{Mehandjiev2012} \\ \emph{Decision} \hfill 
+
+The composition stage is the point at which the user of the tool has discovered the components that they wish to use and they are then performing the composition. In practice, this stage overlaps somewhat with the discovery stage, in that the user may discover and compose components one at a time.
+
+There are three different ``types'' of service composition based on the type of object being composed, or how the composition is arranged:
+\begin{itemize*}
+	\item Process composition
+	\item Data composition
+	\item Interface composition
+\end{itemize*}
+
+\textbf{Process composition} \hfill Prior model collation \cite{Minhas2012,Daniel2007} \\ \emph{Option} \hfill solves \textbf{Composition}
+
+Process composition requires the components in the composition to form a series of processes, which can then be combined together to create one composite process. The components may optionally pass data between one another, which can be manipulated by the other processes. Process composition was identified in the prior model collation stage -- the model created by Minhas et al. \cite{Minhas2012}, which was originally focussed on Mashups. The literature review stage confirmed that process composition is also present in SC as a whole \cite{Daniel2007}.
+
+\textbf{Data composition} \hfill Prior model collation \cite{Minhas2012,Daniel2007} \\ \emph{Option} \hfill solves \textbf{Composition}
+
+Data composition is often thought of as being different to process composition, although they are both structured in the same way. Data composition is based on manipulating data by combining processes to manipulate this data. In mashups, they often rely on data feeds, or APIs \cite{Minhas2012}. As with process composition, data composition was first identified in mashups in Minhas et al.'s model \cite{Minhas2012}, before also being identified in SC in the literature review stage \cite{Daniel2007}.
+
+\textbf{UI composition} \hfill Prior model collation \cite{Minhas2012,Daniel2007} \\ \emph{Option} \hfill solves \textbf{Composition}
+
+User interface (UI) composition allows users to create new interfaces by combining previously created interfaces components, as well as various other interface-related aspects of composition. As with the other two types of composition, this was identified in mashups in the DS model by Minhas et al. \cite{Minhas2012}, before being backed up in the literature review \cite{Daniel2007}
+
+\textbf{UI creation method} \hfill Prior model collation \\ \emph{Decision} \hfill solves \textbf{Composition}
+
+This decision is meant to group together the various different methods for performing UI composition that have been identified in prior DS models. Each of these different methods of UI composition/generation were identified in the prior DS model created by Grammel et al. \cite{Grammel2010}
+
+\textbf{Automatic UI generation} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Option} \hfill solves \textbf{UI composition method}
+
+In automatic UI generation, the interface is generated automatically from some other information. For instance, in Web Services, it is possible to generate a form-like interface from a WSDL description of the service, since the WSDL provides information such as the names of properties and the type of data that they are expecting \cite{Grammel2010}.
+
+\textbf{Webpage composition} \hfill Prior model collation \cite{Minhas2012} \\ \emph{Option} \hfill solves \textbf{UI composition method}
+
+Webpage composition is a specific form for UI composition that allows the user of the tool to browse, compose and edit Web pages or their content in order to create a new, composite Web-based interface \cite{Grammel2010}. Webpage composition normally takes place at the presentation layer (see Section \ref{bg:sec:layers}).
+
+\textbf{Visual UI composition} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Option} \hfill solves \textbf{UI composition method}
+
+Visual UI composition is based on the mechanism that it used to create the UI -- the components are combined visually, by dragging components, etc.
+
+\textbf{Textual UI composition} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Option} \hfill solves \textbf{UI composition method}
+
+Textual UI composition relies on some text-based language to specify the elements and layout of the UI.
+
+\subsubsection{Verification and Validation}
+
+\textbf{Verification \& validation} \hfill Prior model collation \cite{Mehandjiev2012} \\ \emph{Decision} \hfill 
+
+Verification \& validation is the stage in the SC lifecycle at which the user has already composed their service, and they are now seeking to validate that the composite that they have created to ensure that it performs the task that they sought it to complete when they envisioned its creation.
+
+\textbf{Testing} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Decision} \hfill solves \textbf{Verification \& validation}
+
+One mechanism for the user to ensure that their created composite does what it should is to test that composite by executing it before it gets deployed. Testing was identified as a Software Engineering technique in the prior DS model created by Grammel et al. \cite{Grammel2010}.
+
+\textbf{Simulate testing of triggers} \hfill Requirements gathering study \\ \emph{Option} \hfill solves \textbf{Testing}
+
+Of the SC tools in the tool review that supported triggers (components that are activated upon some event-based trigger), none of them support testing. In the requirements gathering study, participants identified that testing of the composites that contain these triggers would be useful and hence is something that should be included in a tool.
+
+\textbf{Test mode for components} \hfill Requirements gathering study \\ \emph{Option} \hfill solves \textbf{Testing}
+
+Another instance of a problem with testing that was identified by participants in our requirements gathering study was components whose execution would have some impact on the ``outside world''. For these components, they indicated that there would need to be some test mode where they could run the composite containing the component without the component affecting the outside world.
+
+\textbf{Dummy test data} \hfill Requirements gathering study \\ \emph{Option} \hfill solves \textbf{Testing}
+
+Similar to having a test mode due to components affecting the outside world, there are components that perform a lookup, for example on the Web. Participants in our requirements gathering study identified that it might be useful to get the component to return some sample data when performing testing, especially if the later components in the composite rely on the initial component returning a particular answer.
+
+\textbf{Debugging} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Option} \hfill solves \textbf{Testing}
+
+Debugging is suggested as a software engineeering technique in Grammel et al.'s prior DS model \cite{Grammel2010}. It is a much more technically oriented option that would normally be in traditional software engineering approaches.
+
+\subsubsection{Annotation and Deployment}
+
+\textbf{Annotation \& deployment} \hfill Prior model collation \cite{Mehandjiev2012} \\ \emph{Decision} \hfill 
+
+Annotation and deployment is the part of the process where the user is able to save the composite that have created so that it can be executed (or edited, shared, etc.) later.
+
+\textbf{Code generation} \hfill Prior model collation \cite{Pietschmann2010} \\ \emph{Option} \hfill solves \textbf{Annotation \& deployment}
+
+Code generation is a deployment method that generates some code (e.g. XML) to represent the composite that can be interpreted and executed by another system. This method is often used in web-based composition tools \cite{Pietschmann2010}.
+
+\textbf{Interpretation} \hfill Prior model collation \cite{Mehandjiev2012} \\ \emph{Option} \hfill solves \textbf{Annotation \& deployment}
+
+Interpretation deploys the composite service within the application in which it is created, and that tool then interprets some internal representation of the composite and hence executes it.
+
+\textbf{Compilation} \hfill Prior model collation \cite{Pietschmann2010} \\ \emph{Option} \hfill solves \textbf{Annotation \& deployment}
+
+Compilation deploys composites by creating a standalone executable application for the composite. This would normally be executable on the platform on which the tool runs.
+
+\subsubsection{Execution}
+
+\textbf{Execution} \hfill Prior model collation \cite{Mehandjiev2012} \\ \emph{Decision} \hfill 
+
+Execution is the final main phase of the composition process, although it can optionally follow repetitions of earlier phases, for example editing and verifying the composite at a later date.
+
+\textbf{In-tool execution} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Execution}
+
+This is analogous to interpretation, where the execution of the composite takes place inside the tool in which it was created.
+
+\textbf{Create new app} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Execution}
+
+This is analagous to compilation, where the tool creates an executable application out of a composite, which the user is then able to execute independently of the SC tool.
+
+\subsection{Non-Functional Sub-model}
+
+Figures \ref{ds:fig:nonfunctional1} and \ref{ds:fig:nonfunctional2} show a graphical representation of the non-functional sub-model of the whole DS model. Most of the structure of the non-functional sub-model is based on the prior model created by Aghaee et al. \cite{Aghaee2012}, and provided the general structure for this sub-model of the DS model.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\textwidth,height=0.9\textheight,keepaspectratio]{images/ds/nonfunctional_submodel_1}
+	\caption{The first part of the non-functional DS sub-model}
+	\label{ds:fig:nonfunctional1}
+\end{figure}
+
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\textwidth,height=0.9\textheight,keepaspectratio]{images/ds/nonfunctional_submodel_2}
+	\caption{The second part of the non-functional DS sub-model}
+	\label{ds:fig:nonfunctional2}
+\end{figure}
+
+\clearpage
+
+\subsubsection{Interaction Technique}
+
+\textbf{Interaction technique} \hfill Prior model collation \cite{Aghaee2012} \\ \emph{Decision} \hfill 
+
+Interaction techniques are the mechanisms that the tool provides to allow the user to interact with the composition process, or components and links within the composition. Note that in the majority of cases, the interaction mecahnism also reflects the representation of the composition process, although it can be independent of the representation of the components or links between components.
+
+\textbf{Non-language-based interaction} \hfill Prior model collation \\ \emph{Decision} \hfill solves \textbf{Interaction technique}
+
+This decision focuses in those interaction techniques that do not involve some form of (either visual or textual) language. It was created in the initial collation stage to group together the options providing non-language based interactions.
+
+\textbf{Spreadsheet interaction} \hfill Prior model collation \cite{Aghaee2012,Minhas2012,Fischer2009} \\ \emph{Option} \hfill solves \textbf{Non-language-based interaction}
+
+Interacting with a spreadsheet is an interaction mechanism that has been used in creating mashups \cite{Skrobo2011}, and hence could be extended to work with SC tools in general. Having a spreadsheet interaction mechanism means that the representation of the composition process must also be a spreadsheet.
+
+\textbf{Dialog/form-based interaction} \hfill Prior model collation \cite{Aghaee2012} \\ \emph{Option} \hfill solves \textbf{Non-language-based interaction}
+
+In a dialog/form-based interaction technique, users enter data into a form to control the composition process. Typically the form controls are based on the intputs to the component, and the user is able to connect together the forms represent the different components in the composition \cite{Aghaee2012}.
+
+\textbf{WYSIWYG interaction} \hfill Prior model collation \cite{Aghaee2012} \\ \emph{Option} \hfill solves \textbf{Non-language-based interaction}
+
+WYSIWYG -- ``What you see is what you get'' is based on the premise of presenting the user with the view of the component that they will interact with when the composite service is being executed \cite{Aghaee2012}.
+
+\textbf{Programming by Demonstration (PbD)} \hfill Prior model collation \cite{Grammel2010,Aghaee2012,Minhas2012,Fischer2009} \\ \emph{Option} \hfill solves \textbf{Non-language-based interaction}
+
+Programming by demonstration (PbD) relies on the user of the tool demonstrating the task they want to be performed. The tool then records the steps in this demonstration, and is able to automate them. The macro recorder in the MS Office suite is a popular example of PbD in action.
+
+\textbf{Drag \& drop interaction} \hfill Prior model collation \cite{Pietschmann2010} \\ \emph{Option} \hfill solves \textbf{Non-language-based interaction}
+
+Drag \& drop interaction means that the user interacts with the components in the composition by dragging them around some canvas, and then dropping them in the right position.
+
+\textbf{Programming by Example Modification (PbEM)} \hfill Prior model collation \cite{Aghaee2012} \\ \emph{Option} \hfill solves \textbf{Non-language-based interaction}
+
+Programming by example modification (PbEM) (also referred to as ``fork and edit'') is where the user acquires composites that have been created already as a base example, and is then able to edit this example to reduce the burden in the composition process. 
+
+\textbf{Language-based interaction} \hfill Prior model collation \cite{Minhas2012} \\ \emph{Decision} \hfill solves \textbf{Interaction technique}
+
+Language-based interactions rely on the user of the tool manipulating the composition by editing some language.
+
+\textbf{Domain-specific Language (DSL)} \hfill Prior model collation \\ \emph{Decision} \hfill solves \textbf{Language-based interaction}
+
+A DSL is a language that is specialsed so that it can be used more effectively in a particular domain. This decision was first identified in Prior model collation to group together specific instances of domain-specific languages, and was then reinforced in Lit review from the literature \cite{Skrobo2011}.
+
+\textbf{Visual DSL} \hfill Prior model collation \cite{Grammel2010,Aghaee2012} \\ \emph{Option} \hfill solves \textbf{DSL}
+
+A visual DSL is a DSL that doesn't rely solely on text to convey its meaning, it might instead use some form of graphical representation as the syntax to convey the semantics of the language.
+
+\textbf{Textual DSL} \hfill Prior model collation \cite{Aghaee2012} \\ \emph{Option} \hfill solves \textbf{DSL}
+
+A textual DSL is a DSL defined with a textual syntax. This tends to mean that they are expressive, but have similar barriers to learning to full programming languages \cite{Aghaee2012}.
+
+\textbf{Full language} \hfill Prior model collation \cite{Fischer2009,Pietschmann2010} \\ \emph{Option} \hfill solves \textbf{Language-based interaction}
+
+Full programming languages can also be used to perform composition, and are normally text-based. They tend to be more expressive than DSLs because they aren't specialised, but have a much higher learning barrier than DSLs.
+
+\textbf{Blackboard} \hfill Prior model collation \cite{Aghaee2012} \\ \emph{Option} \hfill solves \textbf{Interaction technique}
+
+Blackboard interaction allows multiple users to edit mashups (and hence composition), where all users can see the edits that are being made in real time. This option is orthogonal to the other properties of interaction, it could either language- or non-language-based.
+
+\subsubsection{Representation}
+
+\textbf{Representation} \hfill Tool review \\ \emph{Decision} \hfill 
+
+This decision was created in the tool review to group together the representation of the various different entities in the composition process.
+
+\textbf{Composition representation} \hfill Tool review \\ \emph{Decision} \hfill solves \textbf{Representation}
+
+This decision was also identified in the tool review, to group together the representation of the various aspects of the entities within and process of composition.
+
+\textbf{Component representation} \hfill Tool review \\ \emph{Decision} \hfill solves \textbf{Composition representation}
+
+The representation of components in the composition process can differ from the representation of components outside of this process, but still in the tool. This decision was identified in the tool review to group together the various differnet possible component representations.
+
+\textbf{WYSIWYG component representation} \hfill Prior model collation \cite{Aghaee2012} \\ \emph{Option} \hfill solves \textbf{Component representation}
+
+A WYSIWYG component representation is linked to a WYSIWYG interaction technique, in that in order for the user to interact with the composition process in a WYSIWYG manner, the components must be represented as how they would appear when the composite is executed.
+
+\textbf{Textual component representation} \hfill Prior model collation \cite{Aghaee2012,Fischer2009,Pietschmann2010} \\ \emph{Option} \hfill solves \textbf{Component representation}
+
+A textual component representation means that the component is represented solely with a piece of text. This would normally be the case in a textual DSL/full language reprensentation, although components are often represented with some text to convey, for example, the name of the service could be presented along with some graphical representation of the component. This option was identified in numerous prior DS models \cite{Aghaee2012,Fischer2009,Pietschmann2010}.
+
+\textbf{Iconic component representation} \hfill Prior model collation \cite{Aghaee2012} \\ \emph{Option} \hfill solves \textbf{Component representation}
+
+An iconic representation means that the component is represented using its icon. Note that using an iconic representation does not preclude the inclusion of some other form of representation. This option was identified in the prior DS model created by Aghaee et al. \cite{Aghaee2012}.
+
+\textbf{Form-element representation} \hfill Tool review  -- later iteration \\ \emph{Option} \hfill solves \textbf{Component representation}
+
+Form-element representation is linked to form-based interaction with the composition process, and represent each component as an element within the form. Each component would typically represent its inputs (if any are present) as input elements on the form. For example each input could be representated as a text field. This option was identified in a later iteration of the tool review.
+
+\textbf{Flow diagram component representation} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Component representation}
+
+Flow diagram components tend to be simple box and line representations, which makes it a very simple representation of a component. This could be viewed as the most simple case of a form-based representation, where the component being represented doesn't have any inputs.
+
+\textbf{``Flow'' representation} \hfill Prior model collation \\ \emph{Decision} \hfill solves \textbf{Composition representation}
+
+Flow representation is the repesentation of what flows between the components, be that data, control, etc. This decision was created to group together the different options for representing what flow is present in the composition process.
+
+\textbf{Control flow representation} \hfill Prior model collation \\ \emph{Decision} \hfill solves \textbf{Flow representation}
+
+Control flow (also known as process flow) is the idea that control moves between the components when the results of the composition is executed. This decision was created to group together the different options for how control flow can be represented in composition. Control flow could also be thought of as the order of the execution, and requires that one component must be executed before another. Control flow allows the representation of branching, looping, etc.
+
+Note that for the composition to make sense, control flow must always be present somewhere in the composition process, although it may not be presented to the user.
+
+\textbf{Explicit control flow representation} \hfill Prior model collation \cite{Grammel2010,Aghaee2012} \\ \emph{Option} \hfill solves \textbf{Control flow representation}
+
+An explicit control flow representation shows the flow of control explicitly to the user.
+
+\textbf{Implicit control flow representation} \hfill Prior model collation \cite{Aghaee2012} \\ \emph{Option} \hfill solves \textbf{Control flow representation}
+
+In the model in which it is suggested, an implicit control flow representation is stated as being the same as a data flow \cite{Aghaee2012}. However, we disagree with this premise since it is entirely possible that a composition representation could present neither control nor data flow.
+
+\textbf{Data flow representation} \hfill Tool review \\ \emph{Decision} \hfill solves \textbf{Flow representation}
+
+Data flow is the passing of data between components, although there is no implication as to the order in which the components are executed \cite{Wajid2010}. Data flow may not always be present, but if it is, there are two options for how it can be represented.
+
+\textbf{Explicit data flow representation} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Option} \hfill solves \textbf{Data flow representation}
+
+An explicit data flow representation explicitly presents the detail of the data that is being passed between the services.
+
+\textbf{Implicit data flow representation} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Data flow representation}
+
+Implicit data flow representation means that data flow is present in the composition process, but it is not represented explicitly to the user.
+
+\textbf{Component-link representation} \hfill Tool review \\ \emph{Decision} \hfill sovles \textbf{Composition representation}
+
+
+
+\textbf{Graphical component links} \hfill Tool review \\ \emph{Decision} \hfill solves \textbf{Component-link representation}
+
+\textbf{Wired component links} \hfill Prior model collation \cite{Grammel2010,Aghaee2012,Minhas2012,Fischer2009,Pietschmann2010} \\ \emph{Option} \hfill solves \textbf{Graphical component links}
+
+%		\item \textit{Wiring} -- Whether the components in the mashup are connected together with line-based connectors (which could represent operations such as filtering, sorting, etc.)
+%		\item \textit{Wiring} facilitates the mashup development by supporting connectors between modules, blocks, components (popularly known as widgets, gadgets or badgets)
+
+\textbf{Non-wire graphical component links} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Graphical component links}
+
+\textbf{Visual DSL links} \hfill Prior model collation \cite{Grammel2010,Aghaee2012} \\ \emph{Option} \hfill solves \textbf{Graphical component links}
+
+\textbf{Textual component links} \hfill Tool review \\ \emph{Decision} \hfill solves \textbf{Component-link representation}
+
+\textbf{Textual DSL component links} \hfill Prior model collation \cite{Aghaee2012} \\ \emph{Option} \hfill solves \textbf{Textual component links}
+
+\textbf{Full language component links} \hfill Prior model collation \cite{Fischer2009} \\ \emph{Option} \hfill solves \textbf{Textual component links}
+
+\textbf{No visual links} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Component-link representation}
+		
+\textbf{Composition process representation} \hfill Prior model collation \\ \emph{Decision} \hfill solves \textbf{Composition representation}
+
+This decision was created to group together the various options for representing the composition process as a whole.
+
+\textbf{Flow diagram representation} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Composition process representation}
+
+\textbf{Spreadsheet representation} \hfill Prior model collation \cite{Aghaee2012,Minhas2012,Fischer2009} \\ \emph{Option} \hfill solves \textbf{Composition process representation}
+
+%		\item \textit{Spreadsheet} enables the data to be loaded into tables and then process into the desired format. It helps the end-users by eliminating much of the programming effort and allows users to see the initial and desired state of the data.
+
+\textbf{Form representation} \hfill Prior model collation \cite{Aghaee2012} \\ \emph{Option} \hfill solves \textbf{Composition process representation}
+
+\textbf{Page flow representation} \hfill Prior model collation \cite{Pietschmann2010} \\ \emph{Option} \hfill solves \textbf{Composition process representation}
+
+\textbf{Plain list representation} \hfill Tool review  -- later iteration \\ \emph{Option} \hfill solves \textbf{Composition process representation}
+
+\textbf{Text pane/editor representation} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Composition process representation}
+
+\textbf{Abstraction} \hfill Tool review  -- later iteration \\ \emph{Decision} \hfill solves \textbf{Representation}
+
+\textbf{Abstraction level} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Decision} \hfill solves \textbf{Abstraction}
+
+%\item \textbf{High} -- no knowledge is required, but flexibility is restricted to reusing and confusing mashups that are developed by others. Working with a high level of abstraction is supported by mashup development environments in several ways:
+%	\begin{itemize*}
+%		\item Reuse of complete mashups created by others
+%		\item High-level mashup and widget parameterisation
+%		\item Automatic reuse of data extractors for websites
+%		\item Programming by Example
+%	\end{itemize*}
+%	\item \textbf{Intermediate} -- knowledge about concepts such as data flow, data types or UI widgets is required, but the technological details of these concepts are hidden. Intermediate abstraction is normally supported via visual Domain Specific Languages (DSLs):
+%	\begin{itemize*}
+%		\item Visual dataflow languages
+%		\item Visual workflow/process orchestration languages
+%		\item Dialog-based wiring of widgets
+%	\end{itemize*}
+%	\item \textbf{Low} -- programming knowledge required, but maximum flexibility
+%	\begin{itemize*}
+%		\item Textual DSL editors
+%		\item Textual DSLs in dialog fields
+%		\item Providing extension APIs
+%	\end{itemize*} 
+
+\textbf{High abstraction level} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Option} \hfill solves \textbf{Abstraction level}
+
+\textbf{Average abstraction level} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Option} \hfill solves \textbf{Abstraction level}
+
+\textbf{Low abstraction level} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Option} \hfill solves \textbf{Abstraction level}
+
+\textbf{No abstraction} \hfill Lit review \cite{Nestler2010} \\ \emph{Option} \hfill solves \textbf{Abstraction level}
+
+\textbf{Metaphor} \hfill Requirements gathering study \\ \emph{Option} \hfill solves \textbf{Abstraction}
+ 
+\textbf{Aesthetics} \hfill Requirements gathering study \\ \emph{Decision} \hfill solves \textbf{Representation}
+
+\textbf{Colour} \hfill Requirements gathering study \\ \emph{Decision} \hfill solves \textbf{Aesthetics}
+
+This is a decision because colour was mentioned in our requirements gathering study, but none of the participants suggested any good ways of sorting it out
+
+\textbf{Visual} \hfill Requirements gathering study \\ \emph{Decision} \hfill solves \textbf{Aesthetics}
+
+PArticpants in our study indicated that composition should be a very visual process, but we don't have any options to suggest how this should proceeed.
+
+\subsubsection{Collaboration}
+
+\textbf{Collaboration} \hfill Prior model collation \cite{Aghaee2012} \\ \emph{Decision} \hfill 
+
+\textbf{Community} \hfill Prior model collation \\ \emph{Decision} \hfill solves \textbf{Collaboration}
+
+This decision was created to group together various aspects of the community provided by and associated with the tool.
+
+\textbf{Community support} \hfill Prior model collation \cite{Aghaee2012} \\ \emph{Decision} \hfill solves \textbf{Community}
+
+\textbf{Discussion forum} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Option} \hfill solves \textbf{Community support}
+
+\textbf{Wiki} \hfill Prior model collation \cite{Aghaee2012} \\ \emph{Option} \hfill solves \textbf{Community support}
+
+%		\item \textit{Wiki} -- This utilises the Wiki method to create mashups, where users are able to work on a mashup simultaneously, with associated tools to keep track of edits and versioning history.
+
+\textbf{Social Networking Service (SNS) Support} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Option} \hfill solves \textbf{Community support}
+
+\textbf{Blog} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Community support}
+
+\textbf{Online community access} \hfill Stage \cite{Aghaee2012} \\ \emph{Decision} \hfill solves \textbf{Community}
+
+%	\item \textbf{Online Community.} These would typically be used by end users in order to get assistance while they are creating mashups, and are classified by the level of security that they provide.
+
+\textbf{Public acccess} \hfill Prior model collation \cite{Aghaee2012} \\ \emph{Option} \hfill solves \textbf{Online community access}
+
+%		\item \textit{Public} -- These can be accessed by any user who wishes to join (note that registration may still be required)
+
+\textbf{Private access} \hfill Prior model collation \cite{Aghaee2012} \\ \emph{Option} \hfill solves \textbf{Online community access}
+
+%		\item \textit{Private} -- These would require some barrier for entry to the community, e.g. if it were invite only, or solely for enterprise users.
+
+\subsubsection{Target User}
+
+%	\item \textbf{Target end-user.} This is the range of users' technical skills. It ranges from non-programmer to programmer, with a space in the middle for technical-non-programmers, which have been defined as ``local users''.
+%	\begin{itemize*}
+%		\item \textit{Non-programmers} -- Tools are needed which require minimal technical skills. They need tools which limit what they can perform, and ones which provide assistance to them. {\color{red} this is a bad name for a user group}
+%		\item \textit{Local Developers}  -- Non-programmers who have advanced knowledge of technical tools, they are willing to explore and harvest all of the functionality of a mashup tool tailored for their abilities. Technical complexity may still need to be hidden from them.
+%		\item \textit{Programmers} -- can program. Tools targeting programmers can provide very high levels of customisation and freedom.
+%	\end{itemize*}
+
+\textbf{Target user} \hfill Prior model collation \\ \emph{Decision} \hfill 
+
+Group
+
+\textbf{User expertise} \hfill Prior model collation \\ \emph{Decision} \hfill solves \textbf{Target user}
+
+Group
+
+\textbf{Technical expertise} \hfill Lit review \cite{Silva2008} \\ \emph{Decision} \hfill solves \textbf{User expertise}
+
+\textbf{Technical expert} \hfill Lit review \cite{Silva2008,Pietschmann2010} \\ \emph{Option} \hfill solves \textbf{Technical expertise}
+
+\textbf{Non-technical user} \hfill Lit review \cite{Silva2008,Pietschmann2010} \\ \emph{Option} \hfill solves \textbf{Technical expertise}
+
+\textbf{Programming expertise} \hfill Prior model collation \cite{Aghaee2012,Patel2010} \\ \emph{Decision} \hfill solves \textbf{Technical expertise}
+
+\textbf{Non-programmer} \hfill Prior model collation \cite{Aghaee2012,Patel2010,Pietschmann2010} \\ \emph{Option} \hfill solves \textbf{Programming expertise}
+
+\textbf{Programmer} \hfill Prior model collation \cite{Aghaee2012,Patel2010,Pietschmann2010} \\ \emph{Option} \hfill solves \textbf{Programming expertise}
+
+\textbf{Domain expertise} \hfill Lit review \cite{Silva2008} \\ \emph{Decision} \hfill solves \textbf{User expertise}
+
+\textbf{Domain newbie} \hfill Lit review \cite{Silva2008} \\ \emph{Option} \hfill solves \textbf{Domain expertise}
+
+\textbf{Domain expert} \hfill Lit review \cite{Silva2008} \\ \emph{Option} \hfill solves \textbf{Domain expertise}
+
+\textbf{User (business) context} \hfill Prior model collation \cite{Minhas2012} \\ \emph{Decision} \hfill solves \textbf{Target user}
+
+\textbf{Consumer/individual} \hfill Prior model collation \cite{Minhas2012,Patel2010} \\ \emph{Option} \hfill solves \textbf{User context}
+
+\textbf{Enterprise/organisation} \hfill Prior model collation \cite{Minhas2012,Patel2010} \\ \emph{Option} \hfill solves \textbf{User context}
+
+\textbf{Learning curve} \hfill Prior model collation \cite{Minhas2012} \\ \emph{Decision} \hfill solves \textbf{Target user}
+
+%	\item \textit{Learning curve} Also known as learnability, this feature indicates how easy it is to learn a particular tool. The evaluation for this feature is done on a 3-point scale: high, medium, low. The easier it is to learn a particular tool, the higher the learnability and vice versa.
+
+\textbf{Low learning curve} \hfill Prior model collation \cite{Minhas2012} \\ \emph{Option} \hfill sovles \textbf{Learning curve}
+
+\textbf{Medium learning curve} \hfill Prior model collation \cite{Minhas2012} \\ \emph{Option} \hfill sovles \textbf{Learning curve}
+
+\textbf{High learning curve} \hfill Prior model collation \cite{Minhas2012} \\ \emph{Option} \hfill sovles \textbf{Learning curve}
+
+\subsubsection{Target Domain}
+
+\textbf{Domain/context specificity} \hfill Prior model collation \cite{Aghaee2012} \\ \emph{Decision} \hfill 
+
+%\textbf{Specificity.} Some design tools work across multiple domains, others are constrained to specific domains
+
+\textbf{Generic} \hfill Prior model collation \cite{Aghaee2012} \\ \emph{Option} \hfill solves \textbf{Domain/context specificity}
+
+%\item \textit{Generic} -- They do not target any specific group of users or any particular domain, but instead focus on the day-to-day needs of end-users. These tend to reach a wide range of users, although it is not trivial to cater for all needs and abilities. 
+
+\textbf{Context-specific} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Domain/context specificity}
+
+\textbf{Domain-specific} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Domain/context specificity}
+
+\textbf{Specialised} \hfill Prior model collation \cite{Aghaee2012} \\ \emph{Option} \hfill solves \textbf{Domain/context specificity}
+
+%		\item \textit{Specialised} -- Mashups target specific domains, e.g. e-learning or telecommunications. Users of such tools tend to have similar needs and technical abilities, meaning tools can be better tailored to their needs. However, the mashup tool designer also needs in-depth knowledge of the area.
+
+\subsubsection{Execution Context}
+
+\textbf{Execution context} \hfill Tool review \\ \emph{Decision} \hfill 
+
+\textbf{Mobile context} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Execution context}
+
+\textbf{Desktop context} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Execution context}
+
+\textbf{Web context} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Execution context}
+
+\subsubsection{Usability}
+
+\textbf{Usability} \hfill Prior model collation \cite{Aghaee2012} \\ \emph{Decision} \hfill 
+
+\textbf{Prompts/suggesetions} \hfill Prior model collation \cite{Minhas2012} \\ \emph{Decision} \hfill solves \textbf{Usability}
+
+\textbf{Incompatibility promtpts} \hfill Prior model collation \cite{Minhas2012} \\ \emph{Option} \hfill solves \textbf{Prompts/suggestions}
+
+%	\item \textit{Signal/prompt incompatible situations/provide argumentation} A component that monitors the user's work and offers suggestions for changes.
+
+\textbf{Suggestions} \hfill Prior model collation \cite{Minhas2012} \\ \emph{Option} \hfill solves \textbf{Prompts/suggestions}
+
+\textbf{Internal help systems} \hfill Prior model collation \\ \emph{Decision} \hfill solves \textbf{Usability}
+
+Group
+
+\textbf{Help} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Option} \hfill solves \textbf{Internal help systems}
+
+\textbf{User goal/requirement mapping} \hfill Prior model collation \cite{Minhas2012} \\ \emph{Option} \hfill solves \textbf{Internal help systems}
+
+%		\item \textit{User Goals} The feature evaluates the explicit or even implicit support of user goals or tasks by the system/tool under review where the goal defines any objective in user terms such as arranging a hang out with friends that might consist of several low-level requirements.
+%		\item \textit{User Requirements} Technical jargon intimidates users from developing mashups or composing services through tools this criterion will determine whether tools specify the user requirements beyond listing the APIs operations and other technical descriptions.
+
+\textbf{Version control} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Option} \hfill solves \textbf{Internal help systems}
+
+\textbf{Scenarios} \hfill Requirements gathering study \\ \emph{Option} \hfill solves \textbf{Internal help systems}
+
+\textbf{External help systems} \hfill Tool review  -- later iteration \\ \emph{Decision} \hfill solves \textbf{Usability}
+
+\textbf{Documentation} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Decision} \hfill solves \textbf{External help systems}
+
+\textbf{Tool documentation} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Option} \hfill solves \textbf{Documentation}
+
+\textbf{API/component documentation} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Option} \hfill solves \textbf{Documentation}
+
+\textbf{Screencasts} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Documentation}
+
+\textbf{Discussion forums} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Option} \hfill solves \textbf{External help systems}
+
+\textbf{External help/FAQ} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{External help systems}
+
+\textbf{Tutorials} \hfill Prior model collation \cite{Grammel2010,Minhas2012} \\ \emph{Option} \hfill solves \textbf{Usability}
+
+%	\item \textit{Tutorial element} An embedded tutorial element that assists the user in learning about the application and the domain
+
+\textbf{Re-use} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Decision} \hfill solves \textbf{Usability}
+
+\textbf{Examples} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Option} \hfill solves \textbf{Re-use}
+
+\subsection{Structural Sub-model}
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{images/ds/structural_submodel_1}
+	\caption{The first part of the structural DS sub-model}
+	\label{ds:fig:structural1}
+\end{figure}
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{images/ds/structural_submodel_2}
+	\caption{The second part of the structural DS sub-model}
+	\label{ds:fig:structural2}
+\end{figure}
+
+\clearpage
+
+\subsubsection{Composition Structure}
+
+\textbf{Composition structure} \hfill Prior model collation \\ \emph{Decision} \hfill 
+
+Group
+
+\textbf{Liveness} \hfill Prior model collation \cite{Aghaee2012} \\ \emph{Decision} \hfill solves \textbf{Composition structure}
+
+%	\item \textbf{Liveness.} Liveness is a concept from visual language which provides four levels which link the visual language to the output of the creation process. Aghaee et al. suggest it is applicable to mashups too \cite{Aghaee2012}
+
+\textbf{Liveness level 1} \hfill Prior model collation \cite{Aghaee2012} \\ \emph{Option} \hfill solves \textbf{Liveness}
+
+%\textit{Level 1: Flowchart as ancillary description} -- Tools are just used to create a prototypical description, which is not directly connected to any sort of execution engine. These tend to be simpler, but limit the mechanisms by which the user can validate the mashup (i.e. no testing).
+
+\textbf{Liveness level 2} \hfill Prior model collation \cite{Aghaee2012} \\ \emph{Option} \hfill solves \textbf{Liveness}
+
+%\textit{Level 2: Executable flowchart} -- This level of liveness indicates that the flowchart description contains executable semantics. These can be converted into a form which could be executed, but require additional technical details.
+
+\textbf{Liveness level 3} \hfill Prior model collation \cite{Aghaee2012} \\ \emph{Option} \hfill solves \textbf{Liveness}
+
+%\textit{Level 3: Edit triggered updates} -- This is the level where design and run-time are both available to the user of the mashup tool. The problem with this view is that it can be difficult for users to be able to distinguish between design-time and runtime
+
+\textbf{Liveness level 4} \hfill Prior model collation \cite{Aghaee2012} \\ \emph{Option} \hfill solves \textbf{Liveness}
+
+%\textit{Level 4: Stream-driven updates} -- This level allows for the live editing of mashup code whilst it is being executed. Changes are instantly observable, but executing changes in this way increases the chances of failure.
+
+\textbf{Programming structures} \hfill Tool review \\ \emph{Decision} \hfill solves \textbf{Composition structure}
+
+\textbf{Branches} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Programming structures}
+
+\textbf{Loops} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Programming structures}
+
+\textbf{Component types} \hfill Tool review \\ \emph{Decision} \hfill solves \textbf{Composition structure}
+
+\textbf{Triggers} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Component types}
+
+\textbf{Actions} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Component types}
+
+\textbf{Filters} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Component types}
+
+\textbf{Pervasive services} \hfill Requirements gathering study \\ \emph{Option} \hfill solves \textbf{Component types}
+
+\textbf{Technologies} \hfill Prior model collation \\ \emph{Decision} \hfill solves \textbf{Composition structure}
+
+Group
+
+\textbf{Communication protocol} \hfill Prior model collation \cite{Minhas2012} \\ \emph{Decision} \hfill solves \textbf{Technologies}
+
+%	\item \textit{Protocols supported for communication with Web Services} For communication with web services, different protocols and standards have been defined that deal with the message passing.
+
+\textbf{SOAP} \hfill Prior model collation \cite{Minhas2012} \\ \emph{Option} \hfill solves \textbf{Communication protocol}
+
+\textbf{REST} \hfill Prior model collation \cite{Minhas2012} \\ \emph{Option} \hfill solves \textbf{Communication protocol}
+
+\textbf{Data retrieval} \hfill Prior model collation \cite{Minhas2012} \\ \emph{Decision} \hfill solves \textbf{Technologies}
+
+%	\item \textit{Data retrieval strategy} One important step in mashup development is the access to the data that is intended to be mashed up. While the composition tools normally rely on widgets for this purpose, there are other scraping tools that directly access the web pages through their DOM.
+
+\textbf{Syndication format} \hfill Prior model collation \cite{Minhas2012} \\ \emph{Decision} \hfill solves \textbf{Data retrieval}
+
+%	\item \textit{Syndication formats supported} Different websites publish their regular content using different syndication formats
+
+\textbf{RSS} \hfill Prior model collation \cite{Minhas2012} \\ \emph{Option} \hfill solves \textbf{Syndication format}
+
+\textbf{ATOM} \hfill Prior model collation \cite{Minhas2012} \\ \emph{Option} \hfill solves \textbf{Syndication format}
+
+\textbf{Widget-based data retrieval} \hfill Prior model collation \cite{Minhas2012} \\ \emph{Option} \hfill solves \textbf{Data retrieval}
+
+\textbf{Web scraping} \hfill Prior model collation \cite{Minhas2012} \\ \emph{Option} \hfill solves \textbf{Data retrieval}
+
+\textbf{Message data format} \hfill Prior model collation \cite{Pietschmann2010} \\ \emph{Decision} \hfill solves \textbf{Technologies}
+
+\textbf{JSON messages} \hfill Prior model collation \cite{Pietschmann2010} \\ \emph{Option} \hfill solves \textbf{Message data format}
+
+\textbf{XML messages} \hfill Prior model collation \cite{Pietschmann2010} \\ \emph{Option} \hfill solves \textbf{Message data format}
+
+\textbf{Service description format} \hfill Prior model collation \cite{Pietschmann2010} \\ \emph{Decision} \hfill solves \textbf{Technologies}
+
+\textbf{JSON description} \hfill Prior model collation \cite{Pietschmann2010} \\ \emph{Option} \hfill solves \textbf{Service description format}
+
+\textbf{XML description} \hfill Prior model collation \cite{Pietschmann2010} \\ \emph{Option} \hfill solves \textbf{Service description format}
+
+\textbf{WSDL description} \hfill Prior model collation \cite{Pietschmann2010} \\ \emph{Option} \hfill solves \textbf{Service description format}
+
+\textbf{WADL description} \hfill Prior model collation \cite{Pietschmann2010} \\ \emph{Option} \hfill solves \textbf{Service description format}
+
+\textbf{Templates} \hfill Prior model collation \cite{Pietschmann2010} \\ \emph{Decision} \hfill solves \textbf{Composition structure}
+
+\textbf{Template ``level''} \hfill Requirements gathering study \\ \emph{Decision} \hfill solves \textbf{Templates}
+
+\textbf{Composition-level template} \hfill Prior model collation \cite{Pietschmann2010} \\ \emph{Option} \hfill solves \textbf{Template level}
+
+\textbf{Tool-level template} \hfill Prior model collation \cite{Pietschmann2010} \\ \emph{Option} \hfill solves \textbf{Template level}
+
+\textbf{Linear template} \hfill Requirements gathering study \\ \emph{Option} \hfill solves \textbf{Templates}
+
+\textbf{No template} \hfill Requirements gathering study \\ \emph{Option} \hfill solves \textbf{Templates}
+
+\textbf{Automation degree} \hfill Prior model collation \cite{Aghaee2012} \\ \emph{Decision} \hfill solves \textbf{Composition structure}
+
+%	\item \textbf{Automation Degree.} This refers to how much of the development process can be be undertaken by the tool on behalf of its users.
+%		\item \textit{Full automation} -- The user is not directly involved in the development process, they instead provide the input to the process, supervise, and validate the output.
+%		\item \textit{Semi-automation} -- These tools partially automate the mashup process by providing assistance and guidance.
+
+\textbf{Full automation} \hfill Prior model collation \cite{Aghaee2012,Fischer2009} \\ \emph{Option} \hfill solves \textbf{Automation degree}
+
+\textbf{Semi-automation} \hfill Prior model collation \cite{Aghaee2012,Fischer2009} \\ \emph{Option} \hfill solves \textbf{Automation degree}
+
+\textbf{No automation} \hfill Prior model collation \cite{Fischer2009} \\ \emph{Option} \hfill solves \textbf{Automation degree}
+
+\textbf{Composition layer} \hfill Lit review \cite{Paterno2011} \\ \emph{Decision} \hfill solves \textbf{Composition structure}
+
+\textbf{Service layer} \hfill Lit review \cite{Paterno2011} \\ \emph{Option} \hfill solves \textbf{Composition layer}
+
+\textbf{Application layer} \hfill Lit review \cite{Paterno2011} \\ \emph{Option} \hfill solves \textbf{Composition layer}
+
+\textbf{Presentation layer} \hfill Lit review \cite{Paterno2011} \\ \emph{Option} \hfill solves \textbf{Composition layer}
+
+\textbf{``Flow'' type supported} \hfill Prior model collation \\ \emph{Decision} \hfill solves \textbf{Composition structure}
+
+Group
+
+\textbf{Data flow supported} \hfill Prior model collation \cite{Grammel2010,Pietschmann2010} \\ \emph{Option} \hfill solves \textbf{Flow type supported}
+
+\textbf{Control flow supported} \hfill Prior model collation \cite{Grammel2010,Pietschmann2010} \\ \emph{Option} \hfill solves \textbf{Flow type supported}
+
+\textbf{Inputs \& outputs} \hfill Tool review \\ \emph{Decision} \hfill solves \textbf{Composition structure}
+
+\textbf{Data types} \hfill Tool review  -- later iteration \\ \emph{Option} \hfill solves \emph{Inputs \& outputs}
+
+\textbf{Multiple atomic inputs, outputs} \hfill Tool review \\ \emph{Option} \hfill solves \emph{Inputs \& outputs}
+
+\textbf{Single composite inputs, outputs} \hfill Tool review \\ \emph{Option} \hfill solves \emph{Inputs \& outputs}
+
+\textbf{Infinite composition} \hfill Requirements gathering study \\ \emph{Option} \hfill solves \textbf{Composition structure}
+
+\subsubsection{Tool Structure}
+
+\textbf{Tool structure} \hfill Prior model collation \\ \emph{Decision} \hfill 
+
+Group
+
+\textbf{System integration} \hfill Requirements gathering study \\ \emph{Option} \hfill solves \textbf{Tool structure}
+
+\textbf{Extension APIs} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Option} \hfill solves \textbf{Tool structure}
+
+\textbf{Application type} \hfill Prior model collation \cite{Minhas2012} \\ \emph{Decision} \hfill solves \textbf{Tool structure}
+
+\textbf{Application} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Application type}
+
+\textbf{Plug-in} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Application type}
+
+\textbf{Platform} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Application type}
+
+\textbf{Web page/webapp} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Application type}
+
+\textbf{Framework} \hfill Prior model collation \cite{Minhas2012} \\ \emph{Option} \hfill solves \textbf{Application type}
+
+\textbf{Application location} \hfill Prior model collation \cite{Bronsted2010a} \\ \emph{Decision} \hfill solves \textbf{Tool structure}
+
+\textbf{Mobile} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Application location}
+
+\textbf{Desktop} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Application location}
+
+\textbf{Web} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Application location}
+
+\textbf{Repositories} \hfill Prior model collation \cite{Pietschmann2010} \\ \emph{Decision} \hfill solves \textbf{Tool structure}
+
+\textbf{Composite repository} \hfill Prior model collation \cite{Pietschmann2010} \\ \emph{Option} \hfill solves \textbf{Repositories}
+
+\textbf{Component repository} \hfill Prior model collation \cite{Pietschmann2010} \\ \emph{Option} \hfill solves \textbf{Repositories}
+
+\textbf{Infrastructure} \hfill Prior model collation \cite{Bronsted2010a} \\ \emph{Decision} \hfill solves \textbf{Tool structure}
+
+\textbf{Ad hoc infrastructure} \hfill Prior model collation \cite{Bronsted2010a} \\ \emph{Option} \hfill solves \textbf{Infrastructure}
+
+\textbf{Fixed infrastructure} \hfill Prior model collation \cite{Bronsted2010a} \\ \emph{Option} \hfill solves \textbf{Infrastructure}
+
+\textbf{Topology} \hfill Prior model collation \cite{Bronsted2010a} \\ \emph{Decision} \hfill solves \textbf{Tool structure}
+
+\textbf{Centralised topology} \hfill Prior model collation \cite{Bronsted2010a} \\ \emph{Option} \hfill solves \textbf{Topology}
+
+\textbf{Decentralised topology} \hfill Prior model collation \cite{Bronsted2010a} \\ \emph{Option} \hfill solves \textbf{Topology}
+
+\textbf{Sharable entities} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Decision} \hfill solves \textbf{Tool structure}
+
+\textbf{Sharable components} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Option} \hfill solves \textbf{Sharable entities}
+
+\textbf{Sharable composites} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Option} \hfill solves \textbf{Sharable entities}
+
+\textbf{Customisation} \hfill Requirements gathering study \\ \emph{Decision} \hfill solves \textbf{Tool structure}
+
+\subsection{Service Sub-model}
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{images/ds/service_submodel}
+	\caption{The service DS sub-model}
+	\label{ds:fig:service}
+\end{figure}
+
+\clearpage
+
+\subsubsection{Service Interactions}
+
+% Put the both attributes as a separate thing to make explaining them easier
+
+\textbf{Service interactions} \hfill Tool review \\ \emph{Decision} \hfill 
+
+\textbf{Rate service} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Option} \hfill solves \textbf{Service interactions}
+
+\textbf{Review service} \hfill Tool review  -- later iteration \\ \emph{Option} \hfill solves \textbf{Service interactions}
+
+\textbf{Tag service} \hfill Prior model collation \cite{Grammel2010} \\ \emph{Option} \hfill solves \textbf{Service interactions}
+
+\textbf{Composite interactions} \hfill Tool review \\ \emph{Decision} \hfill solves {Service interactions}
+
+\textbf{Paramters} \hfill Requirements gathering study \\ \emph{Decision} \hfill solves {Composite interactions}
+
+\textbf{Set paramters at composition time} \hfill Requirements gathering study \\ \emph{Decision} \hfill solves {Parameters}
+
+\textbf{Set paramters at runtime} \hfill Requirements gathering study \\ \emph{Decision} \hfill solves {Parameters}
+
+\textbf{Assign tags to composite} \hfill Tool review  -- later iteration \\ \emph{Option} \hfill solves \textbf{Composite interactions}
+
+\textbf{Upload/publish composite} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Composite interactions}
+
+\textbf{Copy composite} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Composite interactions}
+
+\textbf{Export composite} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Composite interactions}
+
+\textbf{Rename composite} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Composite interactions}
+
+\textbf{Save composite} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Composite interactions}
+
+\textbf{Delete composite} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Composite interactions}
+
+\textbf{Turn on/off composite} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Composite interactions}
+
+\textbf{Acquire composite} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Composite interactions}
+
+\textbf{Sharre composite on SNS} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Composite interactions}
+
+\textbf{Edit composite} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Composite interactions}
+
+\textbf{Execute composite} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Composite interactions}
+
+\textbf{Choose composite icon} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Composite interactions}
+
+\textbf{Component interactions} \hfill Tool review \\ \emph{Decision} \hfill solves {Service interactions}
+
+\textbf{Activate component} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Component interactions}
+
+\textbf{Set/edit component parameters} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Component interactions}
+
+\textbf{Use component in composition} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Component interactions}
+
+\textbf{View example usage for component} \hfill Tool review  -- later iteration \\ \emph{Option} \hfill solves \textbf{Component interactions}
+
+\textbf{Import component} \hfill Tool review  -- later iteration \\ \emph{Option} \hfill solves \textbf{Component interactions}
+
+\subsubsection{Service Attributes}
+
+\textbf{Service attributes} \hfill Tool review \\ \emph{Decision} \hfill 
+
+\textbf{Service functional attributes} \hfill Tool review \\ \emph{Decision} \hfill solves \textbf{Service attributes}
+
+\textbf{Service name} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Service functional attributes}
+
+\textbf{Service tags} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Service functional attributes}
+
+\textbf{Service description} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Service functional attributes}
+
+\textbf{Service category} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Service functional attributes}
+
+\textbf{Service popularity attributes} \hfill Tool review \\ \emph{Decision} \hfill solves \textbf{Service attributes}
+
+\textbf{Service number of ratings} \hfill Tool review  -- later iteration \\ \emph{Option} \hfill solves \textbf{Service popularity attributes}
+
+\textbf{Service number of uses} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Service popularity attributes}
+
+\textbf{Service age} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Service popularity attributes}
+
+\textbf{Service number of shares on SNS} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Service popularity attributes}
+
+\textbf{Service number of downloads} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Service popularity attributes}
+
+\textbf{Service reviews} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Service popularity attributes}
+
+\textbf{Service ratings} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Service popularity attributes}
+
+\textbf{Service number of users} \hfill Tool review  -- later iteration \\ \emph{Option} \hfill solves \textbf{Service popularity attributes}
+
+\textbf{Service other attributes} \hfill Tool review \\ \emph{Decision} \hfill solves \textbf{Service attributes}
+
+\textbf{Service creator} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Service other attributes}
+
+\textbf{Service notes} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Service other attributes}
+
+\textbf{Service location} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Service other attributes}
+
+\textbf{Service version} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Service other attributes}
+
+\textbf{Service copyright} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Service other attributes}
+
+\textbf{Component attributes} \hfill Tool review \\ \emph{Decision} \hfill solves \textbf{Service attributes}
+
+\textbf{Component functional attributes} \hfill Tool review \\ \emph{Decision} \hfill solves \textbf{Component attributes}
+
+\textbf{Component type} \hfill Tool review  -- later iteration \\ \emph{Option} \hfill solves \textbf{Component functional attributes}
+
+\textbf{Component example usage} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Component functional attributes}
+
+\textbf{Component options} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Component functional attributes}
+
+\textbf{Component outputs/results} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Component functional attributes}
+
+\textbf{Component inputs} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Component functional attributes}
+
+\textbf{Component requirements/preconditions} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Component functional attributes}
+
+\textbf{Component icon} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Component functional attributes}
+
+\textbf{Component other attributes} \hfill Tool review \\ \emph{Decision} \hfill solves \textbf{Component attributes}
+
+\textbf{Component related actions} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Component other attributes}
+
+\textbf{Composite attributes} \hfill Tool review \\ \emph{Decision} \hfill solves \textbf{Service attributes}
+
+\textbf{Composite functional attributes} \hfill Tool review \\ \emph{Decision} \hfill solves \textbf{Composite attributes}
+
+\textbf{Component names} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Composite functional attributes}
+
+\textbf{Component icons} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Composite functional attributes}
+
+\textbf{Component descriptions} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Composite functional attributes}
+
+\textbf{Composite other attributes} \hfill Tool review \\ \emph{Decision} \hfill solves \textbf{Composite attributes}
+
+\textbf{Composite properties} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Composite other attributes}
+
+\textbf{Composite icon} \hfill Tool review \\ \emph{Option} \hfill solves \textbf{Composite other attributes}
+
+\textbf{Composite execution status} \hfill Requirements gathering study \\ \emph{Option} \hfill solves \textbf{Composite other attributes}

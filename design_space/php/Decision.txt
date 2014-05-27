@@ -1,0 +1,77 @@
+1,SC Lifecycle Activities,0,0,0
+2,Specification,0,0,2
+3,Request,0,0,2
+4,Discovery,0,0,0
+5,Discovery mechanism,0,0,2
+6,Discoverable entities,0,0,2
+7,Composition,0,1,1
+8,UI composition,0,0,2
+9,Verification/validation,0,0,2
+10,Annotation/deployment,0,0,2
+11,Execution,0,0,2
+12,Interaction technique,0,0,0
+13,Non-language,0,0,2
+14,Language,0,0,2
+15,DSL,0,0,2
+16,Collaboration,0,0,2
+17,Community,0,0,0
+18,Community support,0,0,2
+19,Online access,0,0,1
+20,Composition Representation,0,0,2
+22,Flow representation,0,0,0
+23,Control flow representation,0,0,1
+24,Data flow representation,0,0,1
+25,Component links,0,1,2
+26,Textual links,0,0,2
+27,Graphical links,0,0,2
+30,Abstraction level,0,1,1
+31,Target user,0,0,0
+32,User expertise,0,1,2
+33,User context,0,1,2
+36,Domain specificity,0,1,2
+37,Execution context,0,1,2
+38,Usability,0,0,0
+39,Prompts/Suggestions,0,0,2
+40,Internal help systems,0,0,2
+41,External aides,0,0,2
+42,Documentation,0,0,2
+43,Re-use,0,0,2
+45,Liveness,0,0,1
+46,Technologies,0,0,0
+47,Communication protocol,0,0,2
+48,Data retrieval,0,0,2
+49,Syndication format,0,0,2
+50,Message data format,0,0,2
+51,Service description format,0,0,2
+52,Component types,0,0,2
+53,Programming structures,0,0,2
+54,Templates,0,0,2
+55,Automation,0,1,1
+56,Composition layer,0,0,1
+57,Flow present,0,0,2
+58,Application type,0,1,1
+59,Application location,0,1,2
+60,Repositories,0,0,2
+61,Infrastructure,0,1,1
+62,Topology,0,1,1
+63,Sharing,0,0,2
+64,Tool structure,0,0,0
+65,Composition structure,0,0,0
+66,Suggestions,2,0,2
+67,Browsing,2,0,2
+71,Inputs and outputs,3,0,2
+74,Representation,3,0,0
+75,Component representation,3,0,2
+76,Service interactions,3,0,0
+77,Component interactions,3,0,2
+78,Composite interactions,3,0,2
+79,Service attributes,3,0,0
+80,Composite Popularity attributes,3,0,2
+81,Composite Functional attributes,3,1,2
+82,Composite attributes,3,0,2
+83,Composite Other attributes,3,0,2
+84,Component attributes,3,0,0
+85,Component popularity attributes,3,0,2
+86,Component other attributes,3,0,2
+87,Component functional attributes,3,1,2
+88,Composition stage,5,0,0

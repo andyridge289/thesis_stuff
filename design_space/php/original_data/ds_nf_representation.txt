@@ -1,0 +1,40 @@
+"Non-functional DS"
+	Representation
+	Component
+		WYSIWYG
+		Textual
+		Icon
+		"Flow diagram component"
+	
+	Flow
+		"Control flow"
+			Explicit
+			Implicit
+			
+		"Data flow"
+			Explicit
+			Implicit
+			
+		
+	"Component links"
+		"Graphical links"
+			Wires
+			"Non-wire graphics"
+			"Visual DSL"
+		
+		"Textual links"
+			"Textual DSL"
+			"Full language"
+		
+		
+	"Composition"
+		"Flow diagram"
+		Spreadsheet
+		Form
+		"Page flow"
+	
+	Abstraction
+		"Abstraction level"
+			High
+			Average
+			Low

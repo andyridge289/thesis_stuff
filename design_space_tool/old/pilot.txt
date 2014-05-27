@@ -1,0 +1,143 @@
+Design Tool Export for Participant 1
+
+125 clicks
+No Options chosen
+
+Custom options
+
+Test Decision
+Description
+Test Decision thingy
+Rationale
+Why not indeed?
+Trigger Type Menu
+Description
+Top level menu to select a trigger/action type
+Rationale
+Users need a high level view to be able to choose triggers or actions. Needs to be suitably general and unambiguous. E.g. "SMS" or "Webpage".
+Trigger Type Submenu
+Description
+Select the exact trigger/action from an area selected in the main menu. For example, "receive a message" (under an "SMS" menu) or "at 5pm" (under a "Time" menu).
+Rationale
+As the user has already selected a general area, they need to be able to pick their exact trigger or action.
+Trigger/Action Parameters Menu
+Description
+For a given trigger/action, a choice of parameters to personalise it even further. These can link to other triggers.
+Rationale
+Users should be able to personalise a trigger/action with respect to that trigger/action. For example being able to construct a text message to send, or restrict what is being gathered in a trigger.
+Ways of adding in logic to triggers
+Description
+A method for adding in basic logic to triggers - "and", "or", "if", "else".
+Rationale
+Users can use this basic logic to combine triggers and actions and make them more useful.
+Drag connections between triggers and actions
+Description
+Users should be able to drag a connection from one trigger/action to another. This could perhaps also incorporate the logic with different forms of lines to connect.
+Rationale
+Users should be able to connect triggers and actions in a visible way to give an overview of the composition. This also allows for easy editing.
+Favourites Menu
+Description
+A list of triggers or actions that a user has 'favourited'. Possibly also a list of recently or most used items.
+Rationale
+Users will probably use some actions more than others depending on their daily routine. This allows quick access to them without searching through menus and submenus.
+Ability to share compositions
+Description
+A user can share a composition once it is created so that others can use it.
+Rationale
+Users should be be able to share their compositions with friends. An online collection of these lets users discover compositions that they may never have thought of but are useful to them.
+Save compositions
+Description
+A user can save a composition once completed.
+Rationale
+Users should be able to save compositions so that if they switch it off they can reactivate it later.
+Overall On/Off switch
+Description
+A button to turn the overall composition on and off.
+Rationale
+Users may wish to switch off all compositions (if they are on holiday for example) and this should be easy to do.
+Individual On/Off Control
+Description
+Each composition should have a switch to turn on/off
+Rationale
+Users need to easily be able to switch compositions on and off, in case they have no need for a composition.
+Save customised triggers/actions
+Description
+The ability to save a trigger or action with set parameters.
+Rationale
+A user may commonly use a trigger or action with a specific set of parameters (i.e. text messages from a particular number) and there should be the ability to save these are reuse them with the parameters already set.
+Ability to edit compositions
+Description
+Compositions should be editable after creation.
+Rationale
+Users often make mistakes or their needs change so a composition should be editable and not fixed once created.
+Test composition button
+Description
+A button to test a composition, either with specified data or a sample piece of data.
+Rationale
+Users may not be sure that their composition does what they expect, or want reassurance that it works. A button should be available to test out a composition, either doing the action if the data is specified (i.e. getting a copy of a webpage) or with sample data (i.e. sending a sample text message).
+Delete compositions
+Description
+A button to delete a composition
+Rationale
+Users should be able to delete compositions that do not work or that they do not use to avoid a cluttered interface.
+List of currently running compositions
+Description
+A list of compositions that are currently running
+Rationale
+Users should be able to see which compositions are currently enabled to give an overview of what is occurring.
+Sortable list of compositions
+Description
+The list of compositions (currently running, and all compositions) should be sortable by a range of metrics. In particular, when a composition was last run, and how many times a composition has run.
+Rationale
+Users should be able to see which compositions are running most frequently and which most recently. This also allows them to help diagnose any problems if the composition tool claims a composition has run, whereas the user sees no 'real life' evidence for this.
+Large "Make Composition" button on opening
+Description
+The first page/screen/window of the tool should have a large button to make a new composition.
+Rationale
+Users should be able to quickly get into the area for making a composition to allow for maximum productivity.
+Colour coding/Logos for each Trigger/Action type
+Description
+Each high-level service type should have either a colour coding or large easy to see logo. This should be prominent both in menus and in displaying compositions.
+Rationale
+Users should be able to easy distinguish between compositions or service choices at a glance.
+No Options Unchosen
+
+Custom options
+
+TestDecision
+Description
+Test decision thingy
+Rationale
+Why not.
+JSON Output
+
+
+Options[]
+Un-chosen Options[]
+Custom options[{"id":-1,"name":"Test Decision","rationale":"Why not indeed?","description":"Test Decision thingy","ds":"Custom Option","dsCode":"custom","addedFrom":null,"toolView":null,"optionView":null,"optionViewProportion":0,"decision":null},{"id":-1,"name":"Trigger Type Menu","rationale":"Users need a high level view to be able to choose triggers or actions. Needs to be suitably general and unambiguous. E.g. \"SMS\" or \"Webpage\". ","description":"Top level menu to select a trigger/action type","ds":"Custom Option","dsCode":"custom","addedFrom":null,"toolView":null,"optionView":null,"optionViewProportion":0,"decision":null},{"id":-1,"name":"Trigger Type Submenu","rationale":"As the user has already selected a general area, they need to be able to pick their exact trigger or action.","description":"Select the exact trigger/action from an area selected in the main menu. For example, \"receive a message\" (under an \"SMS\" menu) or \"at 5pm\" (under a \"Time\" menu).","ds":"Custom Option","dsCode":"custom","addedFrom":null,"toolView":null,"optionView":null,"optionViewProportion":0,"decision":null},{"id":-1,"name":"Trigger/Action Parameters Menu","rationale":"Users should be able to personalise a trigger/action with respect to that trigger/action. For example being able to construct a text message to send, or restrict what is being gathered in a trigger.","description":"For a given trigger/action, a choice of parameters to personalise it even further. These can link to other triggers.","ds":"Custom Option","dsCode":"custom","addedFrom":null,"toolView":null,"optionView":null,"optionViewProportion":0,"decision":null},{"id":-1,"name":"Ways of adding in logic to triggers","rationale":"Users can use this basic logic to combine triggers and actions and make them more useful.","description":"A method for adding in basic logic to triggers - \"and\", \"or\", \"if\", \"else\". ","ds":"Custom Option","dsCode":"custom","addedFrom":null,"toolView":null,"optionView":null,"optionViewProportion":0,"decision":null},{"id":-1,"name":"Drag connections between triggers and actions","rationale":"Users should be able to connect triggers and actions in a visible way to give an overview of the composition. This also allows for easy editing.","description":"Users should be able to drag a connection from one trigger/action to another. This could perhaps also incorporate the logic with different forms of lines to connect.","ds":"Custom Option","dsCode":"custom","addedFrom":null,"toolView":null,"optionView":null,"optionViewProportion":0,"decision":null},{"id":-1,"name":"Favourites Menu","rationale":"Users will probably use some actions more than others depending on their daily routine. This allows quick access to them without searching through menus and submenus.","description":"A list of triggers or actions that a user has 'favourited'. Possibly also a list of recently or most used items.","ds":"Custom Option","dsCode":"custom","addedFrom":null,"toolView":null,"optionView":null,"optionViewProportion":0,"decision":null},{"id":-1,"name":"Ability to share compositions","rationale":"Users should be be able to share their compositions with friends. An online collection of these lets users discover compositions that they may never have thought of but are useful to them.","description":"A user can share a composition once it is created so that others can use it.","ds":"Custom Option","dsCode":"custom","addedFrom":null,"toolView":null,"optionView":null,"optionViewProportion":0,"decision":null},{"id":-1,"name":"Save compositions","rationale":"Users should be able to save compositions so that if they switch it off they can reactivate it later.","description":"A user can save a composition once completed.","ds":"Custom Option","dsCode":"custom","addedFrom":null,"toolView":null,"optionView":null,"optionViewProportion":0,"decision":null},{"id":-1,"name":"Overall On/Off switch","rationale":"Users may wish to switch off all compositions (if they are on holiday for example) and this should be easy to do.","description":"A button to turn the overall composition on and off.","ds":"Custom Option","dsCode":"custom","addedFrom":null,"toolView":null,"optionView":null,"optionViewProportion":0,"decision":null},{"id":-1,"name":"Individual On/Off Control","rationale":"Users need to easily be able to switch compositions on and off, in case they have no need for a composition.","description":"Each composition should have a switch to turn on/off","ds":"Custom Option","dsCode":"custom","addedFrom":null,"toolView":null,"optionView":null,"optionViewProportion":0,"decision":null},{"id":-1,"name":"Save customised triggers/actions","rationale":"A user may commonly use a trigger or action with a specific set of parameters (i.e. text messages from a particular number) and there should be the ability to save these are reuse them with the parameters already set.","description":"The ability to save a trigger or action with set parameters.","ds":"Custom Option","dsCode":"custom","addedFrom":null,"toolView":null,"optionView":null,"optionViewProportion":0,"decision":null},{"id":-1,"name":"Ability to edit compositions","rationale":"Users often make mistakes or their needs change so a composition should be editable and not fixed once created.","description":"Compositions should be editable after creation.","ds":"Custom Option","dsCode":"custom","addedFrom":null,"toolView":null,"optionView":null,"optionViewProportion":0,"decision":null},{"id":-1,"name":"Test composition button","rationale":"Users may not be sure that their composition does what they expect, or want reassurance that it works. A button should be available to test out a composition, either doing the action if the data is specified (i.e. getting a copy of a webpage) or with sample data (i.e. sending a sample text message). ","description":"A button to test a composition, either with specified data or a sample piece of data.","ds":"Custom Option","dsCode":"custom","addedFrom":null,"toolView":null,"optionView":null,"optionViewProportion":0,"decision":null},{"id":-1,"name":"Delete compositions","rationale":"Users should be able to delete compositions that do not work or that they do not use to avoid a cluttered interface.","description":"A button to delete a composition","ds":"Custom Option","dsCode":"custom","addedFrom":null,"toolView":null,"optionView":null,"optionViewProportion":0,"decision":null},{"id":-1,"name":"List of currently running compositions","rationale":"Users should be able to see which compositions are currently enabled to give an overview of what is occurring. ","description":"A list of compositions that are currently running","ds":"Custom Option","dsCode":"custom","addedFrom":null,"toolView":null,"optionView":null,"optionViewProportion":0,"decision":null},{"id":-1,"name":"Sortable list of compositions","rationale":"Users should be able to see which compositions are running most frequently and which most recently. This also allows them to help diagnose any problems if the composition tool claims a composition has run, whereas the user sees no 'real life' evidence for this.","description":"The list of compositions (currently running, and all compositions) should be sortable by a range of metrics. In particular, when a composition was last run, and how many times a composition has run.","ds":"Custom Option","dsCode":"custom","addedFrom":null,"toolView":null,"optionView":null,"optionViewProportion":0,"decision":null},{"id":-1,"name":"Large \"Make Composition\" button on opening","rationale":"Users should be able to quickly get into the area for making a composition to allow for maximum productivity.","description":"The first page/screen/window of the tool should have a large button to make a new composition.","ds":"Custom Option","dsCode":"custom","addedFrom":null,"toolView":null,"optionView":null,"optionViewProportion":0,"decision":null},{"id":-1,"name":"Colour coding/Logos for each Trigger/Action type","rationale":"Users should be able to easy distinguish between compositions or service choices at a glance.","description":"Each high-level service type should have either a colour coding or large easy to see logo. This should be prominent both in menus and in displaying compositions.","ds":"Custom Option","dsCode":"custom","addedFrom":null,"toolView":null,"optionView":null,"optionViewProportion":0,"decision":null}]
+Custom Un-chosen options[{"id":-1,"name":"TestDecision","rationale":"Why not.","description":"Test decision thingy","ds":"Custom Option","dsCode":"custom","addedFrom":null,"toolView":null,"optionView":null,"optionViewProportion":0,"decision":null}]
+SQL Output
+
+
+
+INSERT INTO `participant_has_custom` VALUES('', 1,"Test Decision", "Test Decision thingy", "Why not indeed?", 0)
+INSERT INTO `participant_has_custom` VALUES('', 1,"Trigger Type Menu", "Top level menu to select a trigger/action type", "Users need a high level view to be able to choose triggers or actions. Needs to be suitably general and unambiguous. E.g. "SMS" or "Webpage". ", 0)
+INSERT INTO `participant_has_custom` VALUES('', 1,"Trigger Type Submenu", "Select the exact trigger/action from an area selected in the main menu. For example, "receive a message" (under an "SMS" menu) or "at 5pm" (under a "Time" menu).", "As the user has already selected a general area, they need to be able to pick their exact trigger or action.", 0)
+INSERT INTO `participant_has_custom` VALUES('', 1,"Trigger/Action Parameters Menu", "For a given trigger/action, a choice of parameters to personalise it even further. These can link to other triggers.", "Users should be able to personalise a trigger/action with respect to that trigger/action. For example being able to construct a text message to send, or restrict what is being gathered in a trigger.", 0)
+INSERT INTO `participant_has_custom` VALUES('', 1,"Ways of adding in logic to triggers", "A method for adding in basic logic to triggers - "and", "or", "if", "else". ", "Users can use this basic logic to combine triggers and actions and make them more useful.", 0)
+INSERT INTO `participant_has_custom` VALUES('', 1,"Drag connections between triggers and actions", "Users should be able to drag a connection from one trigger/action to another. This could perhaps also incorporate the logic with different forms of lines to connect.", "Users should be able to connect triggers and actions in a visible way to give an overview of the composition. This also allows for easy editing.", 0)
+INSERT INTO `participant_has_custom` VALUES('', 1,"Favourites Menu", "A list of triggers or actions that a user has 'favourited'. Possibly also a list of recently or most used items.", "Users will probably use some actions more than others depending on their daily routine. This allows quick access to them without searching through menus and submenus.", 0)
+INSERT INTO `participant_has_custom` VALUES('', 1,"Ability to share compositions", "A user can share a composition once it is created so that others can use it.", "Users should be be able to share their compositions with friends. An online collection of these lets users discover compositions that they may never have thought of but are useful to them.", 0)
+INSERT INTO `participant_has_custom` VALUES('', 1,"Save compositions", "A user can save a composition once completed.", "Users should be able to save compositions so that if they switch it off they can reactivate it later.", 0)
+INSERT INTO `participant_has_custom` VALUES('', 1,"Overall On/Off switch", "A button to turn the overall composition on and off.", "Users may wish to switch off all compositions (if they are on holiday for example) and this should be easy to do.", 0)
+INSERT INTO `participant_has_custom` VALUES('', 1,"Individual On/Off Control", "Each composition should have a switch to turn on/off", "Users need to easily be able to switch compositions on and off, in case they have no need for a composition.", 0)
+INSERT INTO `participant_has_custom` VALUES('', 1,"Save customised triggers/actions", "The ability to save a trigger or action with set parameters.", "A user may commonly use a trigger or action with a specific set of parameters (i.e. text messages from a particular number) and there should be the ability to save these are reuse them with the parameters already set.", 0)
+INSERT INTO `participant_has_custom` VALUES('', 1,"Ability to edit compositions", "Compositions should be editable after creation.", "Users often make mistakes or their needs change so a composition should be editable and not fixed once created.", 0)
+INSERT INTO `participant_has_custom` VALUES('', 1,"Test composition button", "A button to test a composition, either with specified data or a sample piece of data.", "Users may not be sure that their composition does what they expect, or want reassurance that it works. A button should be available to test out a composition, either doing the action if the data is specified (i.e. getting a copy of a webpage) or with sample data (i.e. sending a sample text message). ", 0)
+INSERT INTO `participant_has_custom` VALUES('', 1,"Delete compositions", "A button to delete a composition", "Users should be able to delete compositions that do not work or that they do not use to avoid a cluttered interface.", 0)
+INSERT INTO `participant_has_custom` VALUES('', 1,"List of currently running compositions", "A list of compositions that are currently running", "Users should be able to see which compositions are currently enabled to give an overview of what is occurring. ", 0)
+INSERT INTO `participant_has_custom` VALUES('', 1,"Sortable list of compositions", "The list of compositions (currently running, and all compositions) should be sortable by a range of metrics. In particular, when a composition was last run, and how many times a composition has run.", "Users should be able to see which compositions are running most frequently and which most recently. This also allows them to help diagnose any problems if the composition tool claims a composition has run, whereas the user sees no 'real life' evidence for this.", 0)
+INSERT INTO `participant_has_custom` VALUES('', 1,"Large "Make Composition" button on opening", "The first page/screen/window of the tool should have a large button to make a new composition.", "Users should be able to quickly get into the area for making a composition to allow for maximum productivity.", 0)
+INSERT INTO `participant_has_custom` VALUES('', 1,"Colour coding/Logos for each Trigger/Action type", "Each high-level service type should have either a colour coding or large easy to see logo. This should be prominent both in menus and in displaying compositions.", "Users should be able to easy distinguish between compositions or service choices at a glance.", 0)
+
+INSERT INTO `participant_has_custom` VALUES('', 1,"TestDecision", "Test decision thingy", "Why not.", 1)

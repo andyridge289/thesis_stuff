@@ -1,0 +1,1272 @@
+
+R1.	Users should be able to discover and acquire components.
+Users should be able to acquire to acquire new components (either directly or indirectly) through the tool.
+Rationale: 
+Category: Functional - Discovery
+Criticality:
+Risk:
+Trigger: 
+Preconditions:
+Postconditions:
+Failure effects: 
+Associated requirements: 
+Source: [0, R9, Acquiring components]
+Prior identification: [5], [29]
+COTS: AutomateIt, Atooma, IFTTT, Zapier, Yahoo! Pipes, On{X}
+R2.	Users should be able to search for services.
+The tool should allow users to search for services within the tool.
+Rationale: 
+Category: Functional - Discovery
+Criticality:
+Risk:
+Trigger: 
+Preconditions:
+Postconditions:
+Failure effects: 
+Associated requirements: 
+Source: Consequence of R2.1, R2.2
+COTS: Quartz Composer, Automator
+R2.1.	Users should be able to search for components.
+The tool should allow users to search for services within the tool.
+Rationale: 
+Category: Functional - Discovery
+Criticality:
+Risk:
+Trigger: 
+Preconditions:
+Postconditions:
+Failure effects: 
+Associated requirements: 
+Source: [Search by function]
+COTS: Quartz Composer, Automator
+R2.1.1.	2.1.1 Search for components by function performed.
+Users need to be able to search through components as part of the discovery process.
+Rationale: 
+Category: Functional - Discovery 
+Criticality:
+Risk:
+Trigger: 
+Preconditions:
+Postconditions:
+Failure effects: 
+Associated requirements: 
+Source: [Search by name]
+COTS: Quartz Composer, Automator
+R2.1.2.	2.1.2 Search for components by the service provider.
+Users should be able to search for components by the application in which the component is provided. 
+Rationale: 
+Category: Functional - Discovery
+Criticality:
+Risk:
+Trigger: 
+Preconditions:
+Postconditions:
+Failure effects: 
+Associated requirements: 
+Source: [Search by service provider]
+R2.2.	2.2 Users should be able to search for composites shared by others
+Users should be able to search through composites that have been created and shared by other users. 
+Rationale: 
+Category: Functional - Discovery 
+Criticality:
+Risk:
+Trigger: 
+Preconditions:
+Postconditions:
+Failure effects: 
+Associated requirements:  
+Source: [Search for shared composites]
+COTS: IFTTT, AutomateIt, Yahoo! Pipes, On{X}
+Composition
+The composition stage is the point in the service composition lifecycle at which the user combines the components to create a composite.
+R3.	3 The tool must allow users to compose services.
+Users must be able to create composite services from component services using the tool - the primary function of an EUSC tool. 
+Rationale: 
+Category: Functional - Composition
+Risk:
+Trigger: 
+Preconditions:
+Postconditions:
+Failure effects: 
+Associated requirements: 
+Source: [Composition]
+COTS: Atooma, Tasker, IFTTT, Zapier, Yahoo! Pipes, Quartz Composer, Automator, On{X}
+R3.1.	3.1 Users should be able to edit the order of the components in composition.
+If the components in the composition are positioned in a particular way, the user should be able to modify this initial order. 
+Rationale: 
+Category: Functional - Composition 
+Criticality:
+Risk:
+Trigger: 
+Preconditions:
+Postconditions:
+Failure effects: 
+Associated requirements: 
+Source: [Editing composition, Customisation]
+COTS: Tasker, Yahoo! Pipes, Quartz Composer, Automator
+R3.1.1.	3.1.1 The process of composition should be drag-n-drop editable.
+The user should be able to re-order and re-position components in the composition by dragging-and-dropping the components. 
+Rationale: 
+Category: NonFunctional - Interaction
+Criticality:
+Risk:
+Trigger: 
+Preconditions:
+Postconditions:
+Failure effects: 
+Associated requirements: 
+COTS: Yahoo! Pipes, Quartz Composer
+Source: [Drag-and-drop editing]
+Subsequent
+R4.	4 Composition must not involve coding.
+The composition process should not involve the user having to write any code 
+Rationale: 
+Category: Functional - Composition 
+Criticality:
+Risk:
+Trigger: 
+Preconditions:
+Postconditions:
+Failure effects: 
+Associated requirements: 
+Source: [Composition - no coding]
+Prior identification: [3], [8], [16], [29], [30]
+COTS: Atooma, Tasker, IFTTT, AutomateIt, Zapier, Yahoo! Pipes, Quartz Composer, Automator
+R5.	5 The tool should facilitate complex compositions to give the user more power.
+The tool should allow the user to create complex compositions so that they can create a wider ranger of more powerful composites. 
+Rationale: 
+Category: Functional - Composition 
+Criticality:
+Risk:
+Trigger: 
+Preconditions:
+Postconditions:
+Failure effects: 
+Associated requirements: 
+Source: [Complexity is power]
+R6.	6 Potential compositions could be identified automatically.
+The tool should be able to monitor the activities of the user and identify tasks that they perform regularly that could be adapted to form a composition. 
+Rationale: 
+Category: Functional - Specification 
+Criticality:
+Risk:
+Trigger: 
+Preconditions:
+Postconditions:
+Failure effects: 
+Associated requirements: 
+Source: [Automatic composition identification]
+R7.	7 The tool should be able to generate a composite from a text description.
+Assuming it’s possible for the tool to generate a description based on the components that are in the composite, this process should be reversible 
+Rationale: 
+Category: Functional - Specification 
+Criticality:
+Risk:
+Trigger: 
+Preconditions:
+Postconditions:
+Failure effects: 
+Associated requirements: 
+[Composition to Description -> Description to composition]
+Dependent [R66.2.3]
+Subsequent
+Verification and Validation
+Verification and validation is the stage of the service composition lifecycle that is towards the end of the composition phase where the user verifies what they have made in the composition.
+R8.	8 The tool should allow users to test composites.
+The tool should allow users to test their composites-in-progress whilst they are creating them. 
+Rationale: 
+Category: Functional - Verification
+Criticality:
+Risk:
+Trigger: 
+Preconditions:
+Postconditions:
+Failure effects: 
+Associated requirements: 
+Source: [Testing]
+COTS: [Yahoo! Pipes, Quartz Composer, Automator, Tasker, Yahoo! Pipes, On{X}
+R8.1.	8.1 Testing of triggers should be simulated.
+Compositions that are created with triggers (see R51.2) to initialise them would only normally be executed when that trigger is fired. Even though this can be done manually in some cases, for testing purposes, users should be able to simulate that this trigger has occurred. 
+Rationale: 
+Category: Functional - Verification
+Criticality:
+Risk:
+Trigger: 
+Preconditions:
+Postconditions:
+Failure effects: 
+Associated requirements: 
+Source: [Simulate testing of triggers]
+R8.2.	8.2 Components should have a test mode.
+A “test mode” should be provided with components that interact with external entities. Some components might have an action that operates on an external entity, but while being tested, the user might not want the component to have any interaction with that external entity. For instance, sending a SMS.
+Rationale: 
+Category: Functional - Verification
+Criticality:
+Risk:
+Trigger: 
+Preconditions:
+Postconditions:
+Failure effects: 
+Associated requirements: 
+Source: [Test mode for components]
+R8.3.	8.3 Dummy data should be provided for testing.
+Some services can acquire data from an external data source; when being tested, these services should provide “dummy” data. 
+Rationale: 
+Category: Functional - Verification
+Criticality:
+Risk:
+Trigger: 
+Preconditions:
+Postconditions:
+Failure effects: 
+Associated requirements: 
+Source: [Dummy data for testing]
+R8.4.	8.4 Composition should be debuggable.
+The tool should allow the user to debug the composition while they are creating it. 
+Rationale: 
+Category: Functional - Verification
+Criticality:
+Risk:
+Trigger: 
+Preconditions:
+Postconditions:
+Failure effects: 
+Associated requirements: 
+Source: [Debugging]
+COTS: Yahoo! Pipes
+R8.5.	8.5 Components should indicate their execution process while they are being tested.
+Whilst a component is being tested, it should report the task that is being performed to the composition tool so that the user can better determine where errors occur. 
+Rationale: 
+Category: Functional - Verification
+Criticality:
+Risk:
+Trigger: 
+Preconditions:
+Postconditions:
+Failure effects: 
+Associated requirements: 
+Source: [Execution progress within component]
+COTS: Automator
+Subsequent
+R8.6.	8.6 Testing should only be needed when the composition is sufficiently complicated.
+Testing is only needed in a composition tool where the composites being created are sufficiently complex. 
+Rationale: 
+Category: Functional - Verification
+Criticality:
+Risk:
+Trigger: 
+Preconditions:
+Postconditions:
+Failure effects: 
+Associated requirements: 
+Source: [Testing complexity] 
+COTS: Yahoo! Pipes vs. IFTTT
+NonFunctional Requirements
+The requirements in this section are related to NonFunctional aspects of the tool (those that do not relate to the architecture of the tool) such as representation and interaction.
+Community
+Community requirements relate to those aspects of the tool that allow the user to communicate and coordinate with other users of the tool, either to share work or get assistance while using the tool.
+R9.	9 The tool should integrate with users’ social networks. 
+Users should be able to log in to the tool through one or more social networks and connect with the friends that they have on these networks. 
+Rationale: 
+Category: Functional - Annotation & deployment
+Criticality:
+Risk: 
+Source: [View friends’ composites, Sharing/publishing of composites on Social Networks] 
+COTS: Atooma
+R10.	 10 The tool should be linked to an associated forum.
+The tool should provide a forum to allow users to discuss problems that they are having with the tool with other users and experts. 
+Rationale: 
+Category: NonFunctional - Operability - Helpfulness
+Criticality:
+Risk: 
+Source: [Forum]
+COTS: On{X}, Zapier, Yahoo! Pipes
+Subsequent
+R11.	 11 The tool should be linked to an associated blog.
+The tool should provide a blog to keep users up-to-date with the tool and any new features to be implemented.	
+Rationale: 
+Category: NonFunctional - Operability - Helpfulness
+Criticality:
+Risk: 
+Source: [Blog]
+COTS: On{X}, IFTTT, Zapier
+Subsequent
+Assistance
+Assistance requirements are those that relate to the amount of assistance that the tool (or associated external resources) provides to the users of the tool.
+R12.	 12 Assistance should be provided during composition.
+The tool should provide the user with assistance while they are performing composition, for instance automation or interactive help tools. 
+Rationale: 
+Category: NonFunctional - Operability - Helpfulness 
+Criticality:
+Risk: 
+Source: [Assistance provided]
+COTS: IFTTT, Atooma, AutomateIt, Zapier, Yahoo! Pipes
+Subsequent
+R13.	 13 The tool should have a tutorial/instruction page.
+The tool should provide a tutorial section or instruction page so that users who have never used the tool before can learn how to use it. 
+Rationale: 
+Category: NonFunctional - Operability - Helpfulness
+Criticality:
+Risk: 
+Source: [Tutorial/instruction page]
+COTS: IFTTT, Atooma, Tasker, AutomateIt, Yahoo! Pipes, Quartz Composer, Automator, On{X}
+R14.	 14 The composition process should be semi-automated.
+The process of composition should be semi-automatic to assist the user during composition. 
+Rationale: 
+Category: Functional - Operability - Composition
+Criticality:
+Risk: 
+Source: [R21.1, R21.2] 
+Prior identification: [2], [3]
+COTS: Atooma, AutomateIt, IFTTT, Zapier, Yahoo! Pipes, Quartz Composer
+R14.1.	 14.1 Components that don’t match should be shown.
+The tool should present components to the user where the data type of the input doesn’t match with the output of the component in the previous position so that they can use them in the composite regardless. 
+Rationale: 
+Category: NonFunctional - Operability - Helpfulness
+Criticality:
+Risk: 
+Source: [Show/hide components that don’t match, Using components that don’t match]
+COTS: Yahoo! Pipes, Quartz Composer
+R14.2.	14.2 Components that won’t work at all should be hidden.
+The tool should hide components that don’t work in the selected position. For example, triggers only work in the first position of the composition. 
+Rationale: 
+Category: NonFunctional - Operability - Helpfulness
+Criticality:
+Risk: 
+Source: [Show/hide components that don’t work]
+COTS: Atooma, IFTTT, Zapier
+R14.3.	14.3 Composition should work with components whose data types do not match.
+Composition of components that have data types that do not match should be allowed since in some cases the execution of a subsequent service does not rely on the data being passed to it by a preceding service. 
+Rationale: 
+Category: Functional - Composition
+Criticality:
+Risk: 
+Source: [Using components that don’t match]
+Prior identification: [9]
+COTS: Automator, On{X}
+R15.	 15 Terminology should be simple, user-friendly and consistent.
+The terminology used in the simple needs to be simple in order to minimise user confusion. 
+Rationale: 
+Category: NonFunctional - Operability - Technical accessibility
+Criticality:
+Risk: 
+Source: [Terminology, Terminology confusion, Terminology consistency, Input/output vs. parameter, Parameters are like settings]
+Prior identification: [3]
+COTS: IFTTT
+R16.	 16 Two tool views or versions: high-tech and low-tech.
+Users with varying levels of technical ability are unlikely to be supported in the right way by the same tool or view of tool. Then different users could be provided with different properties and levels of technical information. 
+Rationale: 
+Category: NonFunctional  - Operability - Technical accessibility 
+Criticality:
+Risk: 
+Source: [Two versions: high tech and low tech, Tasker variables, variable comparison in Tasker]
+Prior identification: [10], [13]
+Clash: [R54]
+R17.	 17 Warnings should be used to illustrate potential problems in composition.
+The tool should display warnings to the user when potential problems are identified in the composition. For example, when services are connected together and the data types do not match. 
+Rationale: 
+Category: NonFunctional  - Operability - Helpfulness
+Criticality:
+Risk: 
+Source: [Warnings]
+Prior identification: [9]
+Subsequent
+COTS: Atooma, AutomateIt
+Visual
+Visual requirements relate to the general nature of the tool and the visuals that are used within it.
+R18.	 18 Colour should be used within the composition process.
+Colour should be used to distinguish between different aspects of the composition, for instance types of input or output. 
+Rationale: 
+Category: NonFunctional - -Operability- Appropriateness recognisability
+Criticality:
+Risk: 
+Source: [Use of colour]
+COTS: Atooma, AutomateIt
+R19.	 19 The views of the tool should be customisable.
+Users should be able to customise views to change the display of, for example, component lists. It could be used to show/hide compatible components (see R21.1), or change how components are grouped (see R59.4). 
+Rationale: 
+Category: NonFunctional - Maintainability - Changeability
+ Criticality:
+Risk: 
+Source: [Customisation of tool views]
+R20.	 20 The composition process should be very visual.
+The representation of the composition process should be visual to encourage users to interact with it. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk: 
+Source: [Visual]
+Prior identification: [8]
+COTS: Atooma, IFTTT, Yahoo! Pipes, Quartz Composer
+Representation
+Representation requirement relate to the representation of aspects of the composition process, such as the components and composites, as well as various different aspects of the composition section of the lifecycle.
+R21.	 21 The representation of components and composites should be different.
+The tool should assist users in distinguishing between components and composites by ensuring that their representation is different. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk: 
+Source: [Different view for composites and components] 
+COTS: Atooma, Tasker, AutomateIt, IFTTT, Zapier, Yahoo! Pipes
+Dependent: [R32, R29]
+Components
+Component representation requirements relate to the representation of components within the composition lifecycle.
+R22.	 22 The tool should represent components to users.
+Components must be represented to users of the SC tool as separate entities so that users can discover them, and coordinate them in composition. 
+Rationale: 
+Category: NonFunctional - UI
+Criticality:
+Risk: 
+Source: [Components]
+COTS: Atooma, AutomateIt, Automator, IFTTT, Quartz Composer, Tasker, Yahoo! Pipes
+R23.	 23 Component lists should be split into pages.
+When components are being presented to the user in various parts of the application, they need to be split up in order for the user to be able to process the list being presented to them. 
+Rationale: 
+Category: NonFunctional - UI
+Criticality:
+Risk:
+Source: [Composition pages]
+R24.	 24 Components should present their attributes to users.
+Components should present a set of their attributes to users in order for them to determine whether they need to use the component or not. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Service Attributes]
+Prior identification: [9]
+COTS: Atooma, Tasker, IFTTT, Zapier, Yahoo! Pipes, Quartz Composer, AutomateIt, Automator, On{X}
+Composites
+Composite representation requirements relate to the representation of composites within the composition lifecycle.
+R25.	 25 The tool should represent composites to users.
+Composites must be represented to users of the SC tool as separate entities so that users can discover them, and coordinate them in composition. 
+Rationale: 
+Category: NonFunctional - UI
+Criticality:
+Risk:
+Source: [Composites]
+COTS: Atooma, AutomateIt, Automator, IFTTT, On{X}, Quartz Composer, Tasker, Yahoo! Pipes
+R26.	Composites should be represented by the icons/representations of the components that have been coordinated together to create the composite.
+Composites should use the icons of the components they are made up of in order to describe their function to the user. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Multiple icons to show components/function]
+COTS: Atooma, AutomateIt, IFTTT, On{X}
+R27.	The tool should distinguish between composites the user has created and ones that they have acquired.
+Users should be able to instantly tell which of the composites available to them are ones they created vs. ones that have been shared by other users and the current user has then acquired. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [My composites vs. others]
+Dependent: R57.2
+COTS: On{X}
+R28.	The tool should indicate whether composites are running/enabled.
+The tool should indicate to users whether the tool is currently executing a composite. In the case of composites that contain triggers, they should also indicate if they are enabled or disabled. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability 
+Criticality:
+Risk:
+Source: [Running or enabled]
+COTS: Atooma, Tasker, AutomateIt, Zapier, On{X}
+R29.	Users should be able to manually choose icons for the composites that they have created.
+Users should be able to manually select the icon to represent composites that they have created. 
+Rationale: 
+Category: NonFunctional - Maintainability - Changeability 
+Criticality:
+Risk:
+Source: [Manually choose icons]
+Subsequent
+Composition
+Composition representation requirements are requirements that relate to the representation of the composition process in the lifecycle without specifically referring to the components or composites in the composition.
+R30.	Connections between components should be represented explicitly to the user.
+The connections that are created between services in the composition process should be explicitly represented to the user. 
+Rationale:
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Explicit connections between components]
+COTS: AutomateIt, Atooma, IFTTT, Zapier, Yahoo! Pipes, Quartz Composer, Automator
+Conflict: [R37.1]
+R30.1.	Successful connections should be represented.
+The tool should indicate to the user if a successful connection is made between two components in the composition as opposed to an unsuccessful connection. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Indicator of successful connection between components]
+COTS: Quartz Composer, Yahoo! Pipes
+R30.2.	Connections should be implicit.
+The connections that are created between services in the composition process should not be represented explicitly to the user, and should instead be implicit when connections between components are present. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Implicit connections between components]
+COTS: Tasker
+Conflict: [R36]
+COTS: Atooma, On{X}
+R31.	The composition process should be split into pages.
+As with the lists of components throughout the tool, the composition process should be broken down into pages to make it easier to comprehend by the user. 
+Rationale: 
+Category: NonFunctional - UI
+Criticality:
+Risk:
+Source: [Composition in pages]
+COTS: IFTTT
+R32.	Composition must be simple 
+The process of composition should be simple. 
+Rationale: 
+Category: NonFunctional - Operability - Ease of use
+Criticality:
+Risk:
+Source: [Simplicity, Boredom]
+Prior identification: [10]
+COTS: Atooma, IFTTT, Zapier
+R33.	Composition must be easy to learn.
+The process of composition should be easily learned by users. 
+Rationale: 
+Category: NonFunctional  - Operability - Learnability 
+Criticality:
+Risk:
+Source: [learnability]
+Prior identification: [10]
+COTS: Atooma, IFTTT, Zapier
+R34.	The tool could use scenarios to convey composition to users.
+Since service composition is something with which users aren’t normally familiar, presenting introductory scenarios could motivate the use of the tool. 
+Rationale: 
+Category: NonFunctional  - Operability - Learnability 
+Criticality:
+Risk:
+Source: [Scenarios]
+Inputs and Outputs
+Input and output requirements are those that relate to the inputs to components and outputs from components. These rely on the composition tool allowing the passing of data between components in a composition.
+R35.	Inputs and outputs of components should be presented to users.
+The tool should present the inputs and outputs of components to users, to aid the process of connecting components together (if data passing is supported). They can also be used to help users determine the function of the component. 
+Rationale: 
+Category: NonFunctional  - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Input/output, Input/output as function]
+COTS: IFTTT, Yahoo! Pipes, Quartz Composer, Automator, On{X}
+R35.1.	Inputs and outputs should convey the type of data required.
+Inputs and outputs of components should present their data-type to assist the user with performing data-type matching and to reduce ambiguity in composition. 
+Rationale: 
+Category: NonFunctional  - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Data types, matching data types]
+COTS: Quartz Composer, IFTTT, Yahoo! Pipes, Automator, On{X}
+R35.2.	The tool should distinguish between mandatory and optional inputs.
+Components may have inputs that are required for the service to operate successfully, whereas some inputs might be optional. The tool should indicate this difference to the user. 
+Rationale: 
+Category: NonFunctional  - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Mandatory vs. optional inputs]
+COTS: IFTTT, Quartz Composer, Automator
+R35.3.	Matching data types should be indicated.
+The tool should indicate when there is a match of the data-types of two or more inputs or outputs. 
+Rationale: 
+Category: NonFunctional  - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Assistance with input/output]
+Prior identification: [2]
+COTS: Yahoo! Pipes, Quartz Composer
+R35.4.	Inputs and outputs might only need to be presented if there is a problem in the coordination.
+Inputs and outputs should only be presented to users if there is an issue with ambiguity or data matching. 
+Rationale: 
+Category: NonFunctional  - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Doesn’t care if i/o match, Ambiguity in input/outputs]
+Conflict: [R33]
+R35.5.	The tool should distinguish between input-only components and output-only components.
+The tool should present services that output data to the user differently from services that do not. 
+Rationale: 
+Category: NonFunctional  - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Input-only components vs. output-to-user components]
+Subsequent
+R35.6.	Assistance should be provided with inputs and outputs.
+The tool should assist the user with inputs and outputs, with mechanisms such as data-type matching. 
+Rationale: 
+Category: NonFunctional  - Operability - Helpfulness
+Criticality:
+Risk:
+Source: [Assistance with input/output]
+Prior identification: [29]
+COTS: Yahoo! Pipes, Quartz Composer
+Flow
+Flow requirements are related to the flow of either control or data through the components in the composition, and how this is represented to the user.
+R36.	Flow should be represented in composition.
+The tool should represent flow between components to the user. 
+Rationale: 
+Category: NonFunctional  - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [R42.1 - R42.2], [Flow diagram]
+COTS: IFTTT, Tasker, Atooma, AutomateIt, Automator, Zapier, Yahoo! Pipes, Quartz Composer
+R36.1.	The flow of control between components should be represented in composition.
+Users should be able to identify the order in which components are executed in the composition (i.e. they should be able to determine the control flow of the composition). 
+Rationale: 
+Category: NonFunctional  - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Control flow]
+Prior identification: [2]
+Conflict: [R42.1, R42.2]
+COTS: Atooma, Tasker, AutomateIt, IFTTT, Zapier, Automator
+R36.2.	The flow of data between components should be represented in composition, if it is present.
+Users should be able to identify what data is being passed between components in the composition (i.e. they should be able to determine the data flow of the composition). 
+Rationale: 
+Category: NonFunctional  - Operability - Appropriateness recognisability
+Criticality: 
+Risk:
+Source: [Data flow]
+Prior identification: [2]
+COTS: Yahoo! Pipes, Quartz Composer
+Conflict: [R42.1, R42.2]
+R36.3.	Flow representation should be unambiguous.
+The representation of flow should be unambiguous. 
+Rationale: 
+Category: NonFunctional  - Operability - Appropriateness recognisability 
+Criticality:
+Risk:
+Source: [Ambiguity of flow]
+COTS: Atooma, Tasker, AutomateIt, IFTTT, Zapier
+Abstraction
+Abstraction requirements are requirements that relate to abstracting the composition process and entities within it to a level where the user can better relate to it.
+R37.	The tool should use metaphor to abstract the composition process.
+The tool should present the composition with the aid of a metaphor to abstract the composition process to something with which the user is more familiar. Potential metaphors include: Cooking - recipes in On{X} and IFTTT - jigsaw - chain - logic - physics. 
+Rationale: 
+Category: NonFunctional  - Operability - Learnability
+Criticality:
+Risk:
+Source: [Metaphor, Jigsaw, Chain, Logic, Physics]
+Prior identification: [8], 
+COTS: Atooma, On{X}, IFTTT, Yahoo! Pipes
+R37.1.	The metaphor should be one that users agree with.
+The metaphor employed by the tool should be one that users agree with and can relate to. 
+Rationale: 
+Category: NonFunctional  - Operability - Learnability
+Criticality:
+Risk:
+Source: [Disagrees with metaphor, Would prefer different metaphor] 
+R37.2.	The metaphor should be unambiguous.
+The metaphor employed by the tool should be unambiguous. 
+Rationale: 
+Category: NonFunctional  - Operability - Learnability
+Criticality:
+Risk:
+Source: [Ambiguity of metaphor]
+COTS: IFTTT, Atooma
+R38.	SC tools should take inspiration from non-SC tools.
+SC tools should take inspiration from other applications with which users will be more familiar to introduce them to the concepts with which they may be unfamiliar. 
+Rationale: 
+Category: NonFunctional  - Operability - Learnability
+Criticality:
+Risk:
+Source: [Take inspiration from non-SC tools]
+Subsequent
+R38.1.	SC should be related to concepts from apps.
+Users are becoming more comfortable with apps and app stores, which are similar concepts that composition can be related to. In particular, discovering components can be likened to discovering apps in an app store, and listing components is like listing apps on a mobile phone. 
+Rationale: 
+Category: NonFunctional  - Operability - Learnability
+Criticality:
+Risk:
+Source: [Choosing components is the app store, Listing composites is like listing apps]
+Subsequent
+R39.	Components should be simple.
+Components should be presented as black-box-like entities, thus abstracting the technical details of the inner workings of the components. 
+Rationale: 
+Category: NonFunctional  - Maintainability - Modularity
+Criticality:
+Risk:
+Source: [Components as black boxes, Complexity in composition]
+COTS: Atooma, Automator, AutomateIt, IFTTT, Zapier, Yahoo! Pipes, Quartz Composer
+R40.	The tool should present services with which the user is familiar.
+The services that are displayed to the user should be from Internet services or similar with which the user is familiar. 
+Rationale: 
+Category: NonFunctional - Operability - Learnability
+Criticality:
+Risk:
+Source: [Familiar Services]
+Subsequent
+Recommendations and Examples
+Recommendation and example requirements relate to the tool recommending components or composites to the user.
+R41.	Recommendations/Examples of potential compositions should be presented to users.
+Users should be presented with examples of potential components and/or compositions to give them inspiration, for clarity/instruction, and to ensure that they don’t “re-invent the wheel”. 
+Rationale: 
+Category: NonFunctional - Operability - Helpfulness
+Criticality:
+Risk:
+Source: [Examples, Examples - don’t re-invent the wheel, Examples for inspiration, Examples for clarity/instruction, Recommendations from the Internet]
+COTS: Atooma, IFTTT, Zapier, Quartz Composer, Automator, On{X}
+R42.	Users should be able to get recommendations from friends.
+Users should be able to see composites and components that their friends have recommended. 
+Rationale: 
+Category: NonFunctional - Operability - Helpfulness 
+Criticality:
+Risk:
+Source: [Recommendations from friends]
+Dependent: [R16]
+COTS: On{X}
+Subsequent
+R43.	Examples should be presented first.
+Users should be presented with examples as the first thing they see in the composition application since they can perform many functions to aid the user. 
+Rationale: 
+Category: NonFunctional - Operability - Helpfulness
+Criticality:
+Risk:
+Source: [Examples first]
+COTS: IFTTT, Quartz Composer
+R44.	Components whose inputs match outputs in the composition should be presented to users.
+Users should be presented with services whose inputs and outputs match with services currently in the composition to give them inspiration. 
+Rationale: 
+Category: NonFunctional - Operability - Helpfulness
+Criticality:
+Risk:
+Source: [Matching services - inspiration]
+Prior identification: [2]
+COTS: Atooma, IFTTT, Zapier, Quartz Composer
+Structural Requirements
+Structural requirements are requirements that have an effect on the structure or architecture of the tool.
+Component Types
+Component type requirements are those that constrain what types of components can be composed with one another using the tool.
+R45.	The tool should support different types of component.
+The tool should support different types of component that users might want, and ensure that these different types are conveyed to the user. 
+Rationale: 
+Category: Structural - Composition structure
+Criticality:
+Risk:
+Source: [R51.2, R41.4]
+COTS: Atooma, IFTTT, AutomateIt, Zapier, Yahoo! Pipes, On{X}
+R45.1.	The tool should allow users to compose pervasive services.
+The tool should allow users to compose pervasive services that are present in the user’s environment. For example in the home (e.g. [11]), or in the office. 
+Rationale: 
+Category: Structural - Composition structure
+Criticality:
+Risk:
+Source: [Composing pervasive services]
+Prior identification: [11]
+COTS: IFTTT
+R45.2.	The tool should support triggers.
+The tool should allow users to use triggers in the composition. Triggers are services that are activated automatically based on some external event such as receiving an SMS. 
+Rationale: 
+Category: Structural - Composition structure
+Criticality:
+Risk:
+Source: [Triggers, Triggers vs. other components]
+Prior identification: [29]
+COTS: Atooma, IFTTT, On{X}
+Composition Structure
+Composition structure requirements are those that relate to the structure of the composition itself, rather than of the tool as a whole.
+R46.	Composition should be “infinite”.
+The tool should allow users to take composites that have been created using the tool and use them as components to be composed in a new composite. 
+Rationale: 
+Category: Structural - Composition structure
+Criticality:
+Risk:
+Source: [Infinite composition]
+R47.	The tool should provide a mechanism for restricting composition.
+Users of the tool could be overwhelmed by the possibilities of composition and restricting this process should make this process less overwhelming. 
+Rationale: 
+Category: NonFunctional - Maintainability - Changeability
+Criticality:
+Risk:
+Source: [Restrictiveness in composition, Freedom of composition]
+Conflict: [R54]
+COTS: Atooma, Tasker, IFTTT, Zapier, Automator, AutomateIt
+R47.1.	Templates should be provided.
+The tool should provide templates to users that they can slot components into to simplify the composition process. 
+Rationale: 
+Category: NonFunctional - Operability - Helpfulness 
+Criticality:
+Risk:
+Source: [Templates]
+Prior identification: [2]
+Conflict: [R54]
+COTS: Atooma, IFTTT, Automator, Tasker, Zapier, AutomateIt
+R47.1.1.	Linear templates should be provided.
+For simplicity, one of the templates provided by the tool should be linear, meaning no branching or looping is supported. 
+Rationale: 
+Category: NonFunctional - Operability - Helpfulness 
+Criticality:
+Risk:
+Source: [Linearity of composition]
+COTS: Atooma, IFTTT, Automator, Tasker, Zapier, AutomateIt
+R48.	There should be an option for composition to be unrestricted.
+The tool should give the user complete control over the composition without any restrictions so that they have more control over the output of the process. 
+Rationale: 
+Category: NonFunctional - Operability - Helpfulness 
+Criticality:
+Risk:
+Source: [Free-form composition]
+COTS: Yahoo! Pipes, Quartz Composer
+Conflict: [R52]
+Tool Structure
+Tool structure requirements are those that refer to the structure or architecture of the tool as a whole.
+R49.	Two tool views/versions: mobile and desktop.
+Different (physically) sized composition platforms allow for different potential compositions, as well as allowing for compositions in different contexts. 
+Rationale: 
+Category: Structural - Tool structure
+Criticality:
+Risk:
+Source: [Two versions: mobile and desktop, Context of composition]
+Prior identification: [3]
+COTS: On{X}
+Subsequent
+R50.	Composites should be integrated with the OS.
+Composites should be accessible directly from the platform on which they are created, without having to go through the application from which they were composed. 
+Rationale: 
+Category: Structural - Tool structure
+Criticality:
+Risk:
+Source: [OS integration, File dialog]
+COTS: Tasker
+R50.1.	Users should be able to access composites via desktop/home screen shortcuts or widgets.
+Users should be able to create shortcuts or place widgets on the home-screen of their device through which they can invoke composites. 
+Rationale: 
+Category: Structural - Tool structure
+Criticality:
+Risk:
+Source: [Shortcuts to composites, Control composites via widgets]
+Specific
+Entity Requirements
+Entity requirements are requirements relating to the entities in EUSC tools: components and composites.
+Entity Interactions
+Entity interaction requirements are those relating to the interactions that the used can have with components and composites.
+R51.	The tool should allow users to delete composites.
+The tool should allow users to delete composites that they have acquired or created. 
+Rationale: 
+Category: Functional - Management - Monitoring & Adaptation
+Criticality:
+Risk:
+Source: [deleting entities]
+COTS: Atooma, Tasker, AutomateIt, IFTTT, Zapier, Yahoo! Pipes, Automator, On{X}
+R51.1.	The tool should allow users to execute composites.
+The tool must be able to execute composites that they have acquired or created. 
+Rationale: 
+Category: Functional - Management - Monitoring & Adaptation
+Criticality:
+Risk:
+Source: [Testing]
+COTS: Atooma, Tasker, AutomateIt, IFTTT, Zapier, Yahoo! Pipes, Quartz Composer, Automator, On{X}
+R51.2.	The tool should allow users to share services.
+The tool should allow users to share services that are created using the tool with other users of the tool. 
+Rationale: 
+Category: Functional - Management - Monitoring & Adaptation
+Criticality:
+Risk:
+Source: [Sharing/publishing of composites]
+COTS: Atooma, IFTTT, Yahoo! Pipes, AutomateIt, On{X}
+R51.2.1.	The tool should allow users to share composites on social networks.
+Users should be able to share what they create on social networks so their friends can interact with them. 
+Rationale: 
+Category: Functional - Management - Monitoring & Adaptation 
+Criticality:
+Risk:
+Source: [Sharing/publishing of composites on Social Networks]
+COTS: IFTTT
+Dependent: [R16]
+Subsequent
+R51.3.	The tool should allow users to rate services.
+Users should be able to rate services to convey their opinion on the quality of the service to other users of the tool. 
+Rationale: 
+Category: Functional - Management - Monitoring & Adaptation
+Criticality:
+Risk:
+Source: [User ratings]
+COTS: AutomateIt, IFTTT, Yahoo! Pipes, On{X}
+R52.	The tool should allow users to interact with composites created by other users.
+Users should be able to interact with the services that other users create and share. 
+Rationale: 
+Category: Functional - Management - Monitoring & Adaptation
+Criticality:
+Risk:
+COTS: IFTTT, Yahoo! Pipes, Atooma, AutomateIt, Zapier, Yahoo! Pipes
+Source: [Sharing]
+R52.1.	Users should be able to interact with composites created by their friends.
+Users should be able to view the composites that their friends have created, and interact with them in the same way they can interact with others. 
+Rationale: 
+Category: Functional - Management - Monitoring & Adaptation 
+Criticality:
+Risk:
+Source: [View friends’ composites]
+Dependent: [R16]
+Service Parameters
+Service parameter requirements are those that relate to the parameters that services can have, and when the user should set them. Parameters cover information required by services such as usernames and passwords.
+R53.	Services should be customisable by editing their parameters.
+Users should be able to customise services by editing their parameters.
+Source: [Parameters, Component customisation], [R59.1 - R59.4]
+COTS: Yahoo! Pipes, Quartz Composer, Tasker, IFTTT, Atooma, Automator, AutomateIt, Zapier, On{X}
+R53.1.	Parameters should be editable during and after composition time, and up to and including at runtime.
+Users should be able to edit the parameters of a composite after the initial composition process. 
+Rationale: 
+Category: Functional - Management - Monitoring & Adaptation 
+Criticality:
+Risk:
+Source: [Set parameters after composition, Set parameters at runtime, Set parameters at composition time]
+COTS: Yahoo! Pipes, Quartz Composer, Tasker, IFTTT, Atooma, Automator, AutomateIt, On{X}
+R53.2.	Parameters should be set to default values at composition time and be editable later.
+Users should be able to set default values for parameters at composition time, which can then be edited later. 
+Rationale: 
+Category: Functional - Management - Monitoring & Adaptation
+Criticality:
+Risk:
+Source: [Set default parameters at composition-time, Parameters - don’t ask again]
+COTS: Tasker, IFTTT, Atooma, AutomateIt, Zapier, Quartz Composer, Automator, On{X}
+R53.3.	Setting of parameters should use the composite description.
+Setting the parameters of the composite should involve changing the description of the composite. 
+Rationale: 
+Category: Functional - Management - Monitoring & Adaptation 
+Criticality:
+Risk:
+Source: [Parameter setting in On{X}]
+COTS: On{X}
+R53.4.	Components should only need to be activated once.
+If the user needs to activate the component, i.e. entering usernames and passwords, this should only need to be done once no matter how many composites into which the component is composed. 
+Rationale: 
+Category: Functional - Management - Monitoring & Adaptation 
+Criticality:
+Risk:
+Source: [Component activation] 
+COTS: Atooma, Tasker, AutomateIt, IFTTT, Zapier, Yahoo! Pipes, Quartz Composer, Automator
+Service Grouping / Ranking
+Service grouping and ranking requirements are those that relate to how the tool groups or orders the services.
+R54.	Services should be sorted into groups, or ranked.
+Lists of services in the tool should be separated out into groups, or ranked based on some property of the service. 
+Rationale: 
+Category: Functional - Discovery
+Criticality:
+Risk:
+Source: [R11.1-R11.6], [Grouping]
+Prior identification: [11]
+Conflict: [R64]
+COTS: Tasker, Atooma, IFTTT, Zapier, Yahoo! Pipes, Automator, On{X}
+R54.1.	Services should be grouped by their function.
+Services should be grouped based on the function that they perform. For example, all of the components involving interactions with social media could be in a social category. 
+Rationale: 
+Category: Functional - Discovery 
+Criticality:
+Risk:
+Source: [Grouping by function]
+COTS: Tasker, Automator, Yahoo! Pipes, On{X}
+R54.2.	Components should be grouped by their location.
+Components should be put into groups based on where they can be found. For example, components on the device might be in one group, and components from the web in another. 
+Rationale: 
+Category: Functional - Discovery
+Criticality:
+Risk:
+Source: [Grouping by component location]
+R54.3.	Components should be grouped by the app that provides them.
+Within their location, components should be grouped by the application that provides them. 
+Rationale: 
+Category: Functional - Discovery 
+Criticality:
+Risk:
+Source: [Grouping by the containing application]
+Dependency: Composer component distribution paradigm
+COTS: Automator
+R54.4.	Components should be grouped by their cost.
+Components should be grouped by their cost, or the cost of the application that provides the component. 
+Rationale: 
+Category: Functional - Discovery
+Criticality:
+Risk:
+Source: [Grouping by cost]
+R54.5.	Components grouped by their rating.
+Components should be grouped by their rating - top rated services should be shown in a separate section. 
+Rationale: 
+Category: Functional - Discovery
+Criticality:
+Risk:
+Source: [Top Rated]
+R54.6.	Components should be grouped by the service provider.
+Components should be grouped by the provider of the service, or the developer of the service. 
+Rationale: 
+Category: Functional - Discovery 
+Criticality:
+Risk:
+Source: [Grouping by service provider]
+COTS: Atooma, IFTTT, Zapier
+R54.7.	Components should be grouped by previously used.
+Components should be grouped to show those that have been used previously by the user. 
+Rationale: 
+Category: Functional - Discovery
+Criticality:
+Risk:
+Source: [Previously used components, Recently used]
+R55.	Grouping should be customisable.
+The method that the tool uses to group services should be customisable by the user.
+Rationale: 
+Category: NonFunctional - Maintainability - Changeability
+Criticality:
+Risk:
+Source: [Customisation of grouping]
+R56.	Services should be manually grouped.
+Users should be able to sort services into their own groups rather than grouping by a property of the service. 
+Rationale: 
+Category: NonFunctional - Maintainability - Changeability
+Criticality:
+Risk:
+Source: [Manual grouping]
+R57.	Services should be grouped into groups and sub-groups.
+Grouping should allow for services to be put into groups and then sub-groups. 
+Rationale: 
+Category: Functional - Discovery
+Criticality:
+Risk:
+Source: [Groups and sub-groups]	
+R58.	The tool shouldn’t allow users to group services.
+Services shouldn’t be grouped. 
+Rationale: 
+Category: Functional - Discovery
+Criticality:
+Risk:
+Source: [No grouping]
+Conflict: [R60]
+COTS: Quartz Composer
+R59.	Services should be “tagged” with keywords to represent their function.
+Instead of being grouped, services should be assigned tags describing their functionality. 
+Rationale: 
+Category: Functional - Discovery
+Criticality:
+Risk:
+Source: [Tagging]
+Conflict: [R64]
+COTS: Atooma
+Entity attributes
+Entity attributes requirements are the requirements that describe the attributes that components and composites present to the user of the tool.
+R60.	The tool should present attributes of services that can help them determine its function.
+The tool should present attributes of services so that users can determine whether (a) they want to use the components in composition, or (b) whether they want to acquire a composite that another user has made. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [R66.*]
+R60.1.	The tool should present the names of services.
+Services in the tool should present their name to the user. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Name]
+COTS: Atooma, AutomateIt, IFTTT, Yahoo! Pipes, Quartz Composer, Automator, Tasker
+R60.2.	The tool should present descriptions of services.
+Services in the tool should provide a description of what they do. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Description, Short description]
+COTS: IFTTT, Quartz Composer, Automator
+R60.2.1.	The tool should present short descriptions of services.
+As well as providing a full description, the tool should allow services to provide a short one-line description. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Description, Short description]
+R60.2.2.	Descriptions of composites should be simple.
+The descriptions of composites should convey the function of the composite in a plain, simple and easy-to-understand way. 
+Rationale: 
+Category: NonFunctional - Operability - Ease of use
+Criticality:
+Risk:
+Source: [Simple composite description] 
+R60.2.3.	Descriptions of composites should be generated automatically.
+The tool should be able to generate descriptions for composites based on the descriptions of the components that make them up and the logical operations that combine them. 
+Rationale: 
+Category: Functional - Annotation & Deployment
+Criticality:
+Risk:
+Source: [Automatically generate descriptions for composites]
+R60.3.	The tool should present an icon for the service.
+Services in the tool should present an icon as a graphical representation. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Icon]
+COTS: Atooma, IFTTT, AutomateIt, Automator
+R60.4.	The tool should present screenshots of services.
+Services in the tool should show screenshots of the component being used, either of the component running or the component as part of a composition. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Screenshot of component in composition, Screenshot of running service]
+R60.5.	The tool should indicate if components require a data connection.
+Services in the tool should indicate if they require a data connection in order to execute successfully. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Data connection]
+R60.6.	The tool should indicate the location of the component’s data source.
+Services in the tool should indicate where the data that they use comes from. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Component data source]
+R61.	The tool should present attributes of a service that allow the user to determine its popularity (with other users).
+Users should be able to determine how popular a service is with other users of the tool. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Popularity, R67.*]
+COTS: IFTTT, AutomateIt, Yahoo! Pipes, On{X}
+R61.1.	The tool should present usage statistics for services.
+Services in the tool should present usage statistics so that users can see how many times the service has been used, composed, downloaded, etc. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Usage statistics, R67.1.*]
+COTS: Atooma, IFTTT, AutomateIt, Yahoo! Pipes, On{X}
+R61.1.1.	The tool should present the number of times a service has been used.
+Services in the tool should indicate the number of times they have been used by all users of the tool. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source [Number of uses]
+COTS: IFTTT
+R61.1.2.	The tool should present the number of times a service has been composed.
+Services in the tool should indicate the number of times they have been used in a composition by all users of the tool. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Number of times composed]
+R61.1.3.	The tool should present the number of times a service has been installed. 
+Services in the tool should indicate the number of times the service has been installed by all users of the tool. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Number of times installed]
+COTS: Atooma, Yahoo! Pipes
+R61.1.4.	The tool should present the number of times a service has been downloaded.
+Services in the tool should indicate the number of times the service has been downloaded by all users of the tool. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Number of downloads]
+COTS: Atooma, AutomateIt, On{X}
+R61.1.5.	The tool should present the number of times a service has been downloaded vs. the number of times it has been used.
+Services in the tool should indicate the ratio of the number of uses of the tool vs. the number of downloads. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Number of downloads vs. number of uses]
+R61.2.	The tool should present the users who’ve used the component.
+Services in the tool should indicate the user’s who have used them, either (a) in a composite if it’s a component or (b) if they’ve acquired it if it’s a composite. Note that this could be the user’s friends if connected to a Social Network. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Who’s used it]
+Dependent: [R16]
+R61.3.	The tool should present ratings of that service given by other users of the tool.
+Services in the tool should present the ratings they have been given by users of the tool to show explicit popularity measure given by other users. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Ratings]
+COTS: Atooma, AutomateIt, Yahoo! Pipes, On{X}
+R61.4.	The tool should present reviews of that service given by other users of the tool.
+Services in the tool should present the reviews they have been given by users of the tool to show explicit popularity and opinions given by other users. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Reviews]
+COTS: AutomateIt
+R61.4.1.	The tool should present the number of people who found particular reviews helpful.
+Reviews of services in the tool should indicate the number of users who found that review helpful to show user opinions on particular reviews. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Helpful review]
+R62.	The tool should present the cost of the component.
+If use of components incurs some monetary cost, then they should indicate this. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Cost]
+R62.1.	The tool should indicate whether the component is free or not.
+Instead of explicitly presenting the cost of the component, the tool should initially just indicate whether the service will cost them money or not. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Cost (free)]
+R63.	The tool should present the developer/service provider of the service.
+Services in the tool should indicate who the developer or provider of the service is. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [R69.*]
+COTS: IFTTT, Atooma, AutomateIt, Automator, IFTTT
+R63.1.	The tool should present the name of the developer/service provider.
+Services in the tool should show the developer/service provider by their name. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Developer name]
+COTS: Atooma, AutomateIt, Automator, IFTTT
+R63.2.	The tool should present an icon representing the developer/service provider.
+Services in the tool should show the developer/service provider by their icon. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Developer icon]
+COTS: Atooma, Automator, IFTTT
+R63.3.	The tool should present the reputation of the developer/service provider.
+Services in the tool should show the reputation of the developer/services provider. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [Developer reputation] 
+R63.4.	The tool should present Quality of Service (QoS) attributes for services.
+Services in the tool should present quality of service attributes such as uptime, security, etc. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [QoS]
+COTS:
+R64.	The tool should provide more information for services to which the user doesn’t have access.
+Users require more information about components that they need to acquire compared with ones that they have already acquired and used. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [More information if not owned]
+COTS: IFTTT, On{X}
+R64.1.	The tool should provide more information for composites that the user did not create.
+Users require more information for services that they have not created. 
+Rationale: 
+Category: NonFunctional - Operability - Appropriateness recognisability
+Criticality:
+Risk:
+Source: [you need more information if you don’t have it]
+COTS: AutomateIt, IFTTT, On{X}
+

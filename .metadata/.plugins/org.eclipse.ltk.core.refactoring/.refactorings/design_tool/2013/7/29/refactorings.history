@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;design_tool/main2.js&apos; to &apos;lib.js&apos;" description="Rename resource &apos;main2.js&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="main2.js" name="lib.js" stamp="1374227454554" updateReferences="true"/>
+</session>

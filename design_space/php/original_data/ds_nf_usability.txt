@@ -1,0 +1,25 @@
+"Non-functional DS"
+	Usability
+		Prompts
+			"Incompatibility prompts"
+			Suggestions
+			
+		"Internal help systems"
+			"Help"
+			"User goal/requirement mapping"
+			VCS
+		
+		"External aides"
+			Tutorials
+			"Discussion forums"
+			Documentation
+				Screencasts
+				"API documentation" 
+				
+			
+		"Re-use"
+			Examples
+			"Discovery aides"
+				Tagging
+				Rating
+				"Social networks"

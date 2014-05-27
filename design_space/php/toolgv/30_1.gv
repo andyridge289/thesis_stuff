@@ -1,0 +1,41 @@
+digraph output {node [color="047b35",fillcolor="#8df2b6",style=filled fontsize="20"];
+"Functional DS"node [color="#FFFFFF",fillcolor="#FFFFFF",style=filled, fontcolor="#000000" fontsize="22"]; 
+ "Dapper" 
+
+
+
+node[shape=box,color="#004a63",fillcolor=lightblue2,style=filled fontsize="15"];
+"SC Lifecycle Activities","Specification","Request","Discovery","Discovery mechanism","Discoverable entities","Composition stage","UI composition method","Verification/validation","Annotation/deployment","Execution","Browsing","Suggestions"
+
+node [color="#222222", style="rounded,filled", shape=rect, fontcolor="#000000", fillcolor="#CCCCCC"];
+"Data composition","Other recommendations"
+
+node [color="#AAAAAA", style="rounded,filled", shape=rect, fontcolor="#AAAAAA", fillcolor="#EEEEEE"];
+"Text-based search","Browse + filter/search","Browsing + Categorisation","Components","Composites","Process composition","Automatic UI generation","Webpage composition","Widget composition","Visual UI composition","Textual UI composition","Testing","Debugging","Code generation","Interpretation","Compilation","Export","No specification","In-app execution","Create new app","Dummy test data","Browse list","Context-specific suggestions","Text entry","Selecting & customising UI","UI composition"
+
+
+
+"Functional DS"->"SC Lifecycle Activities" [arrowhead=none]
+"SC Lifecycle Activities"->"Specification" [arrowhead=none]
+"SC Lifecycle Activities"->"Request" [arrowhead=none]
+"SC Lifecycle Activities"->"Discovery" [arrowhead=none]
+"Discovery"->"Discovery mechanism" [arrowhead=none]
+"Discovery"->"Discoverable entities" [arrowhead=none]
+"SC Lifecycle Activities"->"Composition stage" [arrowhead=none]
+"Composition stage"->"UI composition method" [arrowhead=none]
+"SC Lifecycle Activities"->"Verification/validation" [arrowhead=none]
+"SC Lifecycle Activities"->"Annotation/deployment" [arrowhead=none]
+"SC Lifecycle Activities"->"Execution" [arrowhead=none]
+"Discovery mechanism"->"Browsing" [arrowhead=none]
+"Discovery mechanism"->"Suggestions" [arrowhead=none]
+"Request"->"Text-based search" [arrowhead=none]
+"Browsing"->"Browse + filter/search"->"Browsing + Categorisation"->"Browse list" [arrowhead=none]
+"Discoverable entities"->"Components"->"Composites" [arrowhead=none]
+"Composition stage"->"Process composition"->"Data composition"->"UI composition" [arrowhead=none]
+"UI composition method"->"Automatic UI generation"->"Webpage composition"->"Widget composition"->"Visual UI composition"->"Textual UI composition"->"Selecting & customising UI" [arrowhead=none]
+"Verification/validation"->"Testing"->"Debugging"->"Dummy test data" [arrowhead=none]
+"Annotation/deployment"->"Code generation"->"Interpretation"->"Compilation"->"Export" [arrowhead=none]
+"Specification"->"No specification" [arrowhead=none]
+"Execution"->"In-app execution"->"Create new app" [arrowhead=none]
+"Suggestions"->"Context-specific suggestions"->"Other recommendations" [arrowhead=none]
+"Discovery mechanism"->"Text entry" [arrowhead=none]}

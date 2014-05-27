@@ -1,0 +1,108 @@
+<html>
+	<head>
+		<script type="text/javascript" src="php/markov.json"></script>
+		<script type="text/javascript">
+			function go()
+			{
+				var optionList = $("option_list");
+				for(var i = 0; i < k.length; i++)
+				{
+					var li = document.createElement("li");
+					li.className = "optionElement";
+					li.innerHTML = k[i].name;
+					li.key = k[i].value;
+					li.onclick = optionClick;
+					optionList.appendChild(li);
+				}
+			}
+			
+			function optionClick(e)
+			{
+				var li = e.target;
+				var row = m[li.key];
+				$("title").innerHTML = li.innerHTML;
+				
+				var pList = $("p_list");
+				while (pList.firstChild) 
+				{
+     				pList.removeChild(pList.firstChild);
+    			}
+    			
+    			row.sort(compare);
+    			for(var i = 0; i < row.length; i++)
+    			{
+    				var li = document.createElement("li");
+    				var r = row[i];
+    				li.innerHTML = "<p><b style='padding-right:5px'>" + r.name + "</b>" + r.value + "</p>";
+    				pList.appendChild(li);
+    			}
+			}
+			
+			function compare(a,b) 
+			{
+  				if (a.value < b.value)
+					return 1;
+  				
+  				if (a.value > b.value)
+    				return -1;
+  		
+  				return 0;
+			}
+
+
+			
+			function $(id)
+			{
+				return document.getElementById(id);
+			}
+		</script>
+		<style type="text/css">
+			body
+			{
+				margin: 0;
+				padding: 0;
+			}
+		
+			#left_bar
+			{
+				margin: 0;
+				padding: 0;
+				float:left;
+				background: blue;
+				width: 200px;
+			}
+			
+			#option_list
+			{
+				margin: 0;
+				padding: 0;
+			}
+			
+			#content
+			{
+				padding-left: 200px;
+			}
+			
+			.optionElement
+			{
+				margin-left: 5px;
+				list-style: none;
+				color: white;
+			}
+			
+			#title
+			{
+				font-size: 2em;
+			}
+		</style>
+	</head>
+	<body onload="go()">
+		<div id="left_bar">
+			<ul id="option_list"></ul>
+		</div>
+		<div id="content">
+			<div id="title"></div>
+			<ul id="p_list"></ul>
+		</div>
+	</body>
+</html>

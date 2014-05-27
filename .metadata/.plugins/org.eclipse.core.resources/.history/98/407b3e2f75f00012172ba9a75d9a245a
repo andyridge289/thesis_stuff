@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+		<meta charset="utf-8">
+		
+		<title>Design Tool!</title>
+		
+		<meta name="description" content="">
+		<meta name="author" content="">
+		
+		<link rel="stylesheet" href="css/bootstrap.css" />
+		<link rel="stylesheet" href="css/bootstrap-responsive.css" />
+		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
+	</head>
+	<body onload="init()">
+	<body>
+		
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+					
+					<a class="brand" href="#">Design Tool</a>
+					
+					<ul id="nav" class="nav">
+						<!--<li><a id="nav_constraints" href="#constraints" onclick="setMode('constraints', this)">Set constraints</a></li>-->
+						<!--<li><a id="nav_options" href="#options" onclick="setMode('options', this)">Choose options</a></li>-->
+						<!--<li><a id="nav_tool" href="#tool" onclick="setMode('tool',this)">View tool</a></li>-->
+						<li><a id="nav_export" href="#export_modal" data-toggle="modal">Export Design</a></li>
+						<li><a id="nav_clear" href="#clear_save" onclick="clearData();">Clear Data</a></li>
+						<!--<li>Participant: <input style="margin-top:5px;" value="1"/></li>-->
+					</ul>
+				
+				</div>
+			</div>
+		</div>
+		
+		<div id="content" class="container-fluid">
+		
+			<div class="row-fluid">
+		
+				<div class="span3">
+					<h4>Options</h4>
+					<h5>Other Decision</h5>
+					
+					<fieldset>
+						<input id="custom_option" type="text" placeholder="Add other decision">
+						<button onclick="addCustom()" class="btn">Add</button>
+					</fieldset>
+					
+					<!--<h5>Initial Constraints</h5>
+					<div id="constraints" class="well sidebar-nav">
+						<p>Functional</p>
+						<div id="fxn_constraints" ></div>
+						<p>Non-Functional</p>
+						<div id="nfxn_constraints"></div>
+						<p>Structural</p>
+						<div id="struct_constraints"></div>
+						<p>Service</p>
+						<div id="serv_constraints"></div>
+					</div>-->
+					<h5>Other options</h5>
+					<div id="options" class="well sidebar-nav">
+						<p>Functional</p>
+						<div id="fxn_options" ></div>
+						<p>Non-Functional</p>
+						<div id="nfxn_options"></div>
+						<p>Structural</p>
+						<div id="struct_options"></div>
+						<p>Service</p>
+						<div id="serv_options"></div>
+					</div>
+				</div>
+				
+				<div id="canvas_container" class="span9">
+					
+					<div style="position:relative;">
+						
+						<span id="sub_nav" class="btn-group">
+				  			<button id="subnav_fxn" class="btn" onClick="setDS(FUNCTIONAL, this)">Functional</button>
+				  			<button id="subnav_nfxn" class="btn" onClick="setDS(NONFUNCTIONAL, this)">Non-Functional</button>
+				  			<button id="subnav_struct" class="btn" onClick="setDS(STRUCTURAL, this)">Structural</button>
+				  			<button id="subnav_serv" class="btn" onClick="setDS(SERVICE, this)">Service</button>
+						</span>
+						
+						<div class="form-search" style="display:inline;position:absolute;right:0px;" >
+						  <input id="search" type="text" class="input-medium search-query" onkeypress="searchPress(event)">
+						  <button class="btn" onclick="find()">Search</button>
+						</div>
+						
+					</div>
+					
+					<div id="status_bar" class="alert" style="display:none;">
+						<span id="status_text"></span>
+						<button type="button" class="close" onclick="clearStatus()">&times;</button>
+					</div>
+
+					<div id="canvas" class="well" style="padding:0px;overflow:hidden;">
+						<div id="functional_canvas" class="ds_canvas"></div>
+						<div id="nonfunctional_canvas" class="ds_canvas"></div>
+						<div id="structural_canvas" class="ds_canvas"></div>
+						<div id="service_canvas" class="ds_canvas"></div>	
+					</div>
+					
+					<div id="overlay" class="modal hide fade" tabindex="-1" 
+						 role="dialog" aria-labelledby="overlay_title" aria-hidden="true">
+						 
+					 	<div class="modal-header" style="position:relative;">
+					 		<button type="button" class="close" data-dismiss="modal"  aria-hidden="true">x</button>
+					 		
+							<h4 id="overlay_title">Title</h4>
+							<div id="overlay_type" class="label label-info">Default</div>
+						</div>
+						
+						<div class="modal-body">
+							<h5 class="overlay_sub">Description:</h5>
+							<div id="overlay_description">Description</div>
+							<h5 class="overlay_sub">Related Options</h5>
+							<div id="overlay_related"></div>
+							<h5 class="overlay_sub">Tools:</h5>
+							<div id="overlay_tools"></div>
+							
+						</div>
+						
+						<div id="button_container" class="modal-footer">
+							<div class="btn btn-inverse" data-dismiss="modal" aria-hidden="true">Close</div>
+							<div id="btn_preview" class="btn">Preview</div>
+							<div id="btn_choose" class="btn btn-primary">Choose</div>
+						</div>
+					</div>
+				</div>
+				
+				<div id="rationale_modal" class="modal hide fade" tabindex="-1"
+					 role="dialog" aria_labelledby="rationale_title" aria-hidden="true">
+				
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+						<h4 id="rationale_title">Rationale</h4>
+						<p>Enter the rationale for choosing <i id="rationale_name"></i></p>
+						
+					</div>
+					
+					<div class="modal-body">
+						<textarea id="rationale_text" rows="10" columns="160"></textarea>
+						<p>Note that your rationale will be augmented with any potential links to other decisions you've made</p>
+					</div>
+					
+					<div class="modal-footer">
+						<div class="btn btn-inverse" data-dismiss="modal" aria-hidden="true">Close</div>
+						<div id="btn_ok" class="btn btn-primary" onclick="setRationale()">Okay</div>
+					</div>
+					
+				</div>
+				
+				<div id="export_modal" class="modal hide fade" tabindex="-1"
+					role = "dialog" aria_labelledby="export_title" aria-hidden="true">
+					
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+						
+						<h4 id="export_title">Title</h4>
+						
+						<div class="modal-body">
+							<label class="checkbox">Export text descriptions<input type="checkbox" /></label>
+							<label class="checkbox">Export graphviz file<input type="checkbox" /></label>
+						</div>
+						
+						<div class="modal-footer">
+							<div id="btn_close" class="btn btn-inverse"
+								data-dismiss="modal" aria-hidden="true">Close</div>
+							<div id="btn_export" class="btn btn-primary" onclick="exportDS()">Go</div>
+						</div>
+					</div>
+					
+				</div>
+				
+				<div id="tag_modal" class="modal hide fade" tabindex="-1"
+					role="dialog" aria_labelledby="tag_modal_title" aria-hidden="true">
+					
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+						<h4 id="tag_modal_title">Title</h4>
+						
+						<div class="modal-body">
+							<h5>Description</h5>
+							<p id="tag_description_text"></p>
+
+							<h5>Rationale</h5>
+							<p id="tag_rationale_text"></p>
+							
+							<h5>Prior decisions</h5>
+							<p id="tag_prior_decisions_text"></p>
+						</div>
+						
+						<div class="modal-footer">
+							<div id="btn_close" class="btn btn-inverse" data-dismiss="modal" aria-hidden="true">Close</div>
+						</div>
+						
+					</div>
+					
+				</div>
+			
+			</div> <!-- end row fluid -->
+			
+		</div> <!-- end content -->
+		
+		<script type="text/javascript" src="php/out_json.php?c=1"></script>
+		<script type="text/javascript" src="php/out_json.php?c=2"></script>
+		<script type="text/javascript" src="php/out_json.php?c=3"></script>
+		<script type="text/javascript" src="php/out_json.php?c=4"></script>
+		
+		<script src="jquery-2.0.0.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		
+		<script src="jit.js"></script>
+		<script src="lib.js"></script>		
+		<script src="main.js"></script>
+		<script src="designoption.js"></script>
+		
+		
+	</body>
+</html>

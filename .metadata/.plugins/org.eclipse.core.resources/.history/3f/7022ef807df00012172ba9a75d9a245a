@@ -1,0 +1,845 @@
+var labelType, useGradients, nativeTextSupport, animate;
+var baseURL = "http://localhost/htdocs/thesis_stuff/design_tool/php/";
+var jaccardURL = baseURL + "jaccard.php?id=";
+var toolURL = baseURL + "get_tools.php?id=";
+var optionURL = baseURL + "get_options.php";
+var optionIdURL = baseURL + "get_option_id.php?o=";
+var linkedOptionURL = baseURL + "get_linked_options.php?o=";
+var getForToolURL = baseURL + "get_for_tool.php?id="
+var exportTextURL = baseURL + "generate_text_export.php?";
+
+var optionSpanText = "<span oncontextmenu='tagInfo(event); return false;' ondblclick='tagRightClick(event);'>";
+// onclick='tagClick(event)'
+
+var funST, nonST, strST, serST;
+var currentST;
+
+var labelType = "HTML";
+var useGradients = false;
+var naviteTextSupport = false;
+var animate = false;
+
+var constraints = new Array();
+var options = new Array();
+var rationale = new Array();
+var colours = new Array();
+var search = new Array();
+
+var chosenConstraints = new Array();
+var chosenOptions = new Array();
+
+var allOptions = new Array();
+
+var instructions = "";
+
+// TODO Make it take into account whether the options are ON or OFF when it does the jacard lookup
+
+var HEURISTICS = false;
+
+var mode;
+
+var CONSTRAINTS = 0;
+var OPTIONS = 1;
+var TOOLS = 2;
+
+var PREVIEW_TOOL = 3;
+var PREVIEW_OPTION = 4;
+
+var participantNumber; 
+
+var currentDS;
+
+var FUNCTIONAL = "fxn";
+var NONFUNCTIONAL = "nfxn";
+var STRUCTURAL = "struct";
+var SERVICE = "serv";
+
+var SAVE = false;
+
+var currentOption = null;
+
+var functionalST, nonFunctionalST, structuralST, serviceST;
+
+
+
+function init()
+{	
+	$('#search').attr('disabled', 'disabled');
+	lookupOptions();
+	
+	$jit.ST.Plot.NodeTypes.implement(
+	{
+		"stroke-rect": 
+		{
+			"render": function(node, canvas)
+			{
+				var width = node.getData("width"),
+					height = node.getData("height"),
+					pos = this.getAlignedPos(node.pos.getc(true), width, height),
+					posX = pos.x + width/2,
+					posY = pos.y + height/2;
+				this.nodeHelper.rectangle.render("fill", { x: posX, y: posY }, width, height, canvas);
+				this.nodeHelper.rectangle.render("stroke", { x: posX, y: posY}, width, height, canvas);
+			}
+		}
+	});
+	
+	SAVE = canStore();
+	
+	// Pre-load all of the DS trees
+	funST = getST("functional_canvas");
+	funST.loadJSON(ds1);
+	
+	nonST = getST("nonfunctional_canvas");
+	nonST.loadJSON(ds2);
+	
+	strST = getST("structural_canvas");
+	strST.loadJSON(ds3);
+	
+	serST = getST("service_canvas");
+	serST.loadJSON(ds4);
+	
+	setMode('options', false);
+	$("#nav_constraints").click();
+	$("#subnav_fxn").click();
+	
+	if(SAVE)
+	{	
+		if(localStorage.options)
+		{
+			options = JSON.parse(localStorage.options);
+			
+			// TODO Put them in the options list on the right
+			for(var i = 0; i < options.length; i++)
+			{
+				var option = options[i];
+				
+				var optionSpan = $(optionSpanText + option.name + "</span>");
+		
+				var optionLinkString = "";
+				
+				if(option.addedFrom != null)
+				{
+					for(var i = 0; i < option.addedFrom.length; i++)
+					{
+						if(i > 0)
+							optionLinkString += ",";
+							
+						optionLinkString += option.addedFrom[i].name;
+					}
+				}
+		
+				optionSpan.attr({
+					"class": "label label-important choice_label unselectable",
+					"active": "true", 
+					"tagId": option.id,
+					"tagDs": option.ds,
+					"tagRationale": option.rationale,
+					"tagLinks": optionLinkString
+				});
+				
+				$("#" + option.ds + "_options").append(optionSpan);
+			}
+		}
+	}
+	
+	if(!HEURISTICS)
+	{
+		// Make all the tool things invisible
+		$("overlay_related_header").css({ "display": "none" });
+		$("overlay_related").css({ "display": "none" });
+		$("overlay_tools_header").css({ "display": "none" });
+		$("overlay_tools").css({ "display": "none" });
+		
+		// Make the button for viewing the heuristics invisible
+		$("btn_preview").css({ "display": "none" }); 
+	}
+}
+
+function clearData()
+{
+	localStorage.options = "";
+	localStorage.constraints = "";
+	location.reload();
+}
+
+function setMode(newMode, thing)
+{
+	if(thing !== false)
+	{
+		$("#nav").children().attr("class", "");
+		thing.parentNode.className = "active";
+	}
+	
+	if(newMode == "constraints")
+	{
+		mode = CONSTRAINTS;
+	}
+	else if(newMode == "options")
+	{
+		mode = OPTIONS;
+		allLookup();
+	}
+}
+
+function setDS(ds, thing)
+{
+	if(thing !== -1)
+	{
+		$("#sub_nav").children().attr("class", "btn");
+		thing.className = "btn active";
+	}
+	
+	currentDS = ds;
+	
+	// Hide all of the canvases
+	$(".ds_canvas").css({ "display": "none" });
+	
+	var json = ds1;
+	if(ds == FUNCTIONAL)
+	{
+		$("#functional_canvas").css({ "display": "block" });
+		json = ds1;
+		currentST = funST;
+	}
+	else if(ds == NONFUNCTIONAL)
+	{
+		$("#nonfunctional_canvas").css({ "display": "block" });
+		json = ds2;
+		currentST = nonST;
+	}
+	else if(ds == STRUCTURAL)
+	{
+		$("#structural_canvas").css({ "display": "block" });
+		json = ds3;
+		currentST = strST;
+	}
+	else
+	{
+		$("#service_canvas").css({ "display": "block" });
+		json = ds4;
+		currentST = serST;
+	}
+	
+		
+	currentST.loadJSON(json);
+	currentST.compute();
+	currentST.onClick(currentST.root);
+	
+	redraw();
+}
+
+function lookupOptions()
+{
+	$.ajax({ 
+		url: optionURL 
+	}).done(function(data)
+	{
+		if(data == "-1")
+		{
+			// Do nothing
+		}	
+		else
+		{
+			eval(data);
+			allOptions = o;
+			
+			$( "#search" ).autocomplete({
+      			source: allOptions	
+		    });
+		    
+		    $('#search').removeAttr('disabled');
+		}
+	});
+}
+
+
+
+function addCustom()
+{
+	var customOption = $("#custom_option"); 
+	
+	addToOptions(customOption.val());
+	
+	customOption.val("");
+}
+
+function searchPress(event)
+{
+	if(event.keyCode == 13)
+		find();
+}
+
+function allLookup()
+{
+	var ids = chosenOptions.concat(chosenConstraints);
+	ids = ids.join(",");
+	ids = ids.replace(/option/g, "");
+	
+	var jc = jaccardURL + ids;
+	
+	$.ajax({
+		url: jc
+	}).done(function(data)
+	{
+		if(data == "-1")
+		{
+			// Do nothing		
+		}
+		else
+		{
+			eval(data);
+			colours = new Array();
+			
+			for(var i = 0; i < ret.length; i++)
+			{
+				var elem = ret[i];
+				
+				colours["option" + elem[0]] = elem[1];
+			}
+			
+			redraw();
+		}
+	});
+}
+
+function redraw()
+{	
+	currentST.graph.eachNode(function(n)
+	{	
+		// Set the colour of the thing here and then get it back if it's an option. Otherwise default to the thing
+		if(n.data.type == "category")
+		{
+			n.setCanvasStyle("fillStyle", "#8df2b6"); 
+			n.setCanvasStyle("strokeStyle", "#047b35");
+			n.setCanvasStyle("lineWidth", "2");
+		}
+		else if(n.data.type == "decision")
+		{
+			n.setCanvasStyle("fillStyle", "#b2dfee"); 
+			n.setCanvasStyle("strokeStyle", "#004a63");
+			n.setCanvasStyle("lineWidth", "2");
+		}
+		else if(idInArray(n.id, constraints))
+		{
+			n.setCanvasStyle("fillStyle", "#FFF");
+			n.setCanvasStyle("strokeStyle", "#000");
+			n.setCanvasStyle("lineWidth", "2");
+			n.setLabelData("style", "bold");
+		}
+		else if(idInArray(n.id, options))
+		{
+			n.setCanvasStyle("fillStyle", "#FFF");
+			n.setCanvasStyle("strokeStyle", "#F00");
+			n.setCanvasStyle("lineWidth", "2");
+			n.setLabelData("style", "bold");
+		}
+		else if(idInArray(n.id, search))
+		{
+			n.setCanvasStyle("fillStyle", "#F00");
+			n.setCanvasStyle("strokeStyle", "#000");
+			n.setCanvasStyle("lineWidth", 4);
+			n.setLabelData("style", "bold");
+		}
+		else
+		{	
+			if(n.id in colours)
+			{
+				if(colours[n.id] == "#7D0541")
+				{
+					n.setCanvasStyle("strokeStyle", colours[n.id]);
+					n.setCanvasStyle("fillStyle", "#C38EC7");
+					n.setCanvasStyle("lineWidth", "4");
+				}
+				else
+				{
+					n.setCanvasStyle("fillStyle", colours[n.id]);
+					n.setCanvasStyle("lineWidth", 0);
+				}
+			}
+			else
+			{
+				// Use a default colour?
+				n.setCanvasStyle("fillStyle", "#DDD");
+				n.setCanvasStyle("lineWidth", "1");
+				n.setCanvasStyle("strokeStyle", "#444");
+			}
+		}
+	});
+	
+	currentST.compute();
+	currentST.refresh();
+}
+
+function tagClick(e)
+{
+	var tag = $(e.target);
+	
+	if(tag.attr("active") == "false")
+	{		
+		if(tag.parent().parent().attr("id") == "constraints")
+		{
+			tag.attr({ "class": "label label-inverse choice_label unselectable" });
+			chosenConstraints.push(tag.attr("tagId"));
+		}
+		else
+		{
+			tag.attr({ "class": "label label-important choice_label unselectable" });
+			chosenOptions.push(tag.attr("tagId"));
+		}
+		
+		tag.attr("active", "true");
+	}
+	else
+	{	
+		if(tag.parent().parent().attr("id") == "constraints")
+		{
+			// Remove it from the chosen constraints list
+			chosenConstraints.splice(chosenConstraints.indexOf(tag.attr("tagId")), 1);
+		}
+		else
+		{
+			// Remove it from the chosen options list
+			chosenOptions.splice(chosenOptions.indexOf(tag.attr("tagId")), 1);
+		}
+		
+		tag.attr({ "class": "label choice_label unselectable" });
+		tag.attr({ "active": "false" });
+	}
+}
+
+function tagRightClick(e)
+{
+	var tag = $(e.target);
+	var parent = tag.parent();
+	
+	// Remove it from the relevant list
+	if(parent.attr("id") == "constraints")
+	{
+		constraints.splice(constraints.indexOf(tag.attr("tagId")), 1);
+	}
+	else
+	{
+		// It's an option
+		options.splice(options.indexOf(tag.attr("tagId")), 1);
+	}
+	
+	tag.remove();
+	
+	redraw();
+}
+
+function tagInfo(e)
+{
+	var tag = $(e.target);
+	
+	$("#tag_modal_title").html(tag.html());
+	
+	var ds = tag.attr("tagDs");
+	var dsName = "Service";
+	
+	if(ds === "fxn")
+		dsName = "Functional";
+	else if(ds === "nfxn")
+		dsName = "Non-functional";
+	else if(ds === "struct")
+		dsName = "Structural";
+	
+	$("#tag_designspace").html(dsName);
+	// $("#tag_description_text").html(tag.attr(""));
+	$("#tag_rationale_text").html(tag.attr("tagRationale"));
+	
+	// var priorDecisions = optionLinkString.split(",");
+	var priorContainer = $("#tag_prior_decisions_text").html(tag.attr("optionLinkString"));
+	
+	$("#tag_modal").modal();
+
+	return false;
+}
+
+function nodeClick(node)
+{
+	if(node.data.type == "option")
+	{
+		if(mode == CONSTRAINTS)
+		{
+	 		addToConstraints(node);
+	 	}
+	 	else if(mode == OPTIONS)
+	 	{
+	 		addToOptions(node, true);
+	 		allLookup();
+	 	}
+	 			
+	 	setDS(currentDS, -1);
+	}
+	else
+	{
+		if(node.collapsed)
+		{
+			currentST.op.expand(node, {
+				type: "animate",
+				duration: 100,
+				hideLabels: true,
+				transition: $jit.Trans.Quart.easeOut
+			});
+		}
+		else
+		{
+			currentST.op.contract(node, {
+				type: "animate",
+				duration: 100,
+				hideLabels: true,
+				transition: $jit.Trans.Quart.easeOut
+			});
+		}
+	}
+}
+
+function nodeRightClick(node)
+{
+	nodeClickOptions(node);
+}
+
+function nodeClickOptions(node)
+{
+	$("#overlay").modal();	
+	setOverlay(node);
+}
+
+function setOverlay(node)
+{
+	lookupTools(node);
+	getLinkedOptions(node);
+	
+	$("#overlay_title").html(node.name);
+	
+	if(node.data.description == "")
+	{
+		$("#overlay_description").html("<i style='color:#888;'>No description yet.</i>");	
+	}
+	else
+	{	
+		$("#overlay_description").html(node.data.description);
+	}
+		
+	$("#overlay_type").html(node.data.type);
+	
+	var choose = $("#btn_choose");
+	
+	var preview = $("#btn_preview");
+	
+	if(node.data.type == "option")
+	{
+		choose.click(function(){
+			addToOptions(node, true);	
+		});
+		choose.css({ "display": "inline" });
+		
+		if(HEURISTICS)
+		{
+			preview.click(function(){
+				lookup(node);
+				$("#overlay").modal("hide");
+			});
+			preview.css({ "display": "inline" });
+		}
+	}
+	else
+	{
+		choose.css({ "display": "none" });
+		preview.css({ "display": "none" });
+	}
+}
+
+// function addToConstraints(node)
+// {
+	// if(!idInArray(node.id, constraints) && !idInArray(node.id, options))
+	// {
+		// addLinkedOptions(node.id);
+// 		
+		// constraints.push(node.id);
+// 		
+		// if(SAVE)
+			// localStorage.constraints = constraints.join(",");
+// 		
+		// var constraintSpan = $("<span onclick='tagClick(event)' oncontextmenu='tagRightClick(event); return false;'>" + 
+			// node.name + "</span>");
+// 		
+		// constraintSpan.attr({ 
+			// "class": "label choice_label",
+			// "active": "false", 
+			// "tagId": node.id 
+		// });
+// 		
+		// $("#" + node.data.dsCode + "_constraints").append(constraintSpan);
+		// $("#overlay").modal("hide");
+	// }
+	// else
+	// {
+// 		
+	// }
+// }
+
+function getLinkedOptions(option)
+{
+	var linkedURL = linkedOptionURL + option.id.substring(6);
+	
+	$.ajax({
+		url: linkedURL
+	}).done(function(data)
+	{
+		if(data == "-1")
+		{
+			// Do nothing
+		}
+		else
+		{
+			eval(data);
+			
+			var container = $("#overlay_related");
+			container.children().remove();
+
+			if(links.length == 0)
+			{
+				var optionSpan = $("<i>No linked options</i>");
+				container.append(optionSpan);
+				return;
+			}
+			
+			for(var i = 0; i < links.length; i++)
+			{
+				var optionSpan = $("<span id='option" + links[i][0] + "' class='label choice_label label-important'>" + links[i][1] + "</span>");
+				optionSpan.click(function()
+				{
+					setOverlay(findById(this.id));
+				});
+				container.append(optionSpan);
+			}
+		}
+	});
+}
+
+function addLinkedOptions(option)
+{
+	var linkedURL = linkedOptionURL + option.id.substring(6);
+	
+	$.ajax({
+		url: linkedURL
+	}).done(function(data)
+	{
+		eval(data);
+		
+		for(var i = 0; i < links.length; i++)
+		{
+			// If it's in the list of constraints or options then don't add it
+			var id = "option" + links[i][0];
+			
+			if(idInArray(id, options) == -1 && idInArray(id, constraints) == -1)
+			{
+				addToOptions(findById(id), false, option);
+			}
+			
+			redraw();
+		}
+	});
+}
+
+function addToOptions(node, addLinked, linkedFrom)
+{
+	if( (!idInArray(node.id, options) && !idInArray(node.id, constraints)	) 
+		|| node.id === -1)
+	{
+		var option = new DesignOption(node.id, node.name, node.data.dsCode);
+		
+		if(linkedFrom !== null)
+			option.adddedFrom = linkedFrom;
+		
+		options.push(option);
+		
+		if(SAVE)
+		{
+			localStorage.options = JSON.stringify(options);
+		}
+		
+		if(addLinked && HEURISTICS)
+			addLinkedOptions(option);
+		
+		var optionSpan = $(optionSpanText + node.name + "</span>");
+		
+		var optionLinkString = "";
+				
+		if(option.addedFrom != null)
+		{
+			for(var i = 0; i < option.addedFrom.length; i++)
+			{
+				if(i > 0)
+					optionLinkString += ",";
+					
+				optionLinkString += option.addedFrom[i].name;
+			}
+		}
+
+		optionSpan.attr({
+			"class": "label label-important choice_label unselectable",
+			"active": "true", 
+			"tagId": option.id,
+			"tagDs": option.ds,
+			"tagRationale": option.rationale,
+			"tagLinks": optionLinkString
+		});
+		
+		
+		$("#" + node.data.dsCode + "_options").append(optionSpan);
+		
+		$("#overlay").modal("hide");
+		
+		if(addLinked)
+			showRationale(option);
+	}
+	else
+	{
+	}
+}
+
+function showRationale(option)
+{
+	currentOption = option;
+	
+	$("#rationale_name").html(option.name);
+	$("#rationale_text").html("");
+	
+	$("#rationale_modal").modal();
+}
+
+function setRationale()
+{
+	currentOption.rationale = ($("#rationale_text").val());
+	$("#rationale_modal").modal("hide");
+}
+
+function lookup(node)
+{
+	var id = node.id.substring(node.data.type.length);
+	var jc = jaccardURL + id;
+	
+	$.ajax({
+		url: jc
+	}).done(function(data)
+	{
+		if(data == "-1")
+		{
+			// Do nothing		
+		}
+		else
+		{
+			eval(data);
+			
+			for(var i = 0; i < ret.length; i++)
+			{
+				var elem = ret[i];
+				
+				if(elem == undefined)
+					continue;
+				
+				colours["option" + elem[0]] = elem[1];
+			}
+			
+			redraw();
+			
+			setStatus(PREVIEW_TOOL, node.name);
+			$("#overlay").modal("hide");
+		}
+	});
+}
+
+function lookupForTool(event)
+{
+	var jc = getForToolURL + event.data.toolId
+
+	$.ajax({
+		url: jc
+	}).done(function(data)
+	{
+		if(data == "-1")
+		{
+			// Do nothing		
+		}
+		else
+		{
+			eval(data);
+			
+			for(var i = 0; i < ret.length; i++)
+			{
+				var elem = ret[i];
+				
+				if(elem == undefined)
+					continue;
+				
+				colours["option" + elem[0]] = elem[1];
+			}
+			
+			redraw();
+			
+			setStatus(PREVIEW_TOOL, event.data.toolName);
+			$("#overlay").modal("hide");
+		}
+	});
+}
+
+function setStatus(type, name)
+{
+	if(type == PREVIEW_TOOL)
+		$("#status_text").html("Showing design decisions for <b>" + name + "</b>");
+	else if(type == PREVIEW_OPTION)
+		$("#status_text").html("Showing related design options to <b>" + name + "</b>");
+		
+	$("#status_bar").css({ "display": "block" });
+}
+
+function clearStatus()
+{
+	$("#status_bar").css({ "display": "none" });
+	
+	colours = [];
+	redraw();
+}
+
+function lookupTools(node)
+{
+	var id = node.id.substring(node.data.type.length);
+	var tool = toolURL + id;
+	
+	$.ajax({
+		url: tool
+	}) .done(function(data)
+	{
+		if(data == "-1")
+		{
+			// Do nothing
+		}
+		else
+		{
+			eval(data);
+			
+			var container = $("#overlay_tools");
+			container.children().remove();
+			
+			for(var i = 0; i < t.length; i++)
+			{
+				var toolSpan = $("<span id='tool" + t[i][0] + "' name='" + t[i][1] + "' class='label choice_label label_purple'>" + t[i][1] + "</span>");
+
+				toolSpan.click({ toolId: t[i][0], toolName: t[i][1] }, lookupForTool);
+				container.append(toolSpan);
+			}
+			
+			for(var i = 0; i < tNot.length; i++)
+			{
+				var toolSpan = $("<span id='tool" + tNot[i][0] + "' name='" + tNot[i][1] + "' class='label choice_label'>" + tNot[i][1] + "</span>");
+				toolSpan.click({ toolId: tNot[i][0], toolName: tNot[i][1]}, lookupForTool);
+				
+				container.append(toolSpan);
+			}
+		}
+	});
+}

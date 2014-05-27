@@ -1,0 +1,15 @@
+function DesignOption(id, name)
+{
+	this.id = id;
+	this.name = name;
+	this.rationale = "";
+	this.linkedDecisions = [];
+	
+	this.toJSON = function()
+	{
+		return "{id:" +	JSON.stringify(this.id) + 
+			", name: \"" + JSON.stringify(this.name) + 
+			"\", rationale: \"" + JSON.stringify(this.rationale) + 
+		"}";
+	};
+}

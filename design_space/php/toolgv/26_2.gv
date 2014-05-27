@@ -1,0 +1,77 @@
+digraph output {node [color="047b35",fillcolor="#8df2b6",style=filled fontsize="20"];
+"Non-functional DS"node [color="#FFFFFF",fillcolor="#FFFFFF",style=filled, fontcolor="#000000" fontsize="22"]; 
+ "FAST" 
+
+
+
+node[shape=box,color="#004a63",fillcolor=lightblue2,style=filled fontsize="15"];
+"Interaction technique","Representation","Target user","Domain specificity","Execution context","Usability","Non-language","Language","DSL","Collaboration","Community","Community support","Online access","Component representation","Composition Representation","Flow representation","Control flow representation","Data flow representation","Component links","Graphical links","Textual links","Composition","Technical expertise","User expertise","Abstraction level","User context","Prompts/Suggestions","Internal help systems","External aides","Documentation","Re-use","Learning curve","Programming expertise","Domain expertise"
+
+node [color="#222222", style="rounded,filled", shape=rect, fontcolor="#000000", fillcolor="#CCCCCC"];
+"Wires","Enterprise/Organisation","Incompatibility prompts","User goal/requirement mapping","Medium learning curve","High learning curve"
+
+node [color="#AAAAAA", style="rounded,filled", shape=rect, fontcolor="#AAAAAA", fillcolor="#EEEEEE"];
+"Spreadsheet","Dialog/form","WYSIWYG","PbD","Drag & drop","Full language","Visual DSL","Textual DSL","PbEM","Blackboard","Forum","Wiki","Public","Private","WYSIWYG representation","Textual","Icon","Explicit control flow","Implicit control flow","Explicit data flow","Implicit data flow","Non-wire graphics","Visual DSL representation","Textual DSL representation","Full language representation","Flow diagram","Spreadsheet representation","Form","Page flow","High","Average","Low","Domain expert","Domain newbie","Technical expert","Non-technical","Consumer/Individual","Plain list","SNS support","Generic","Context-specific","Domain-specific","Specialised","Mobile context","Desktop context","Web context","Suggestions","Help","VCS","Tutorials","Discussion forums","Screencasts","API/component documentation","Examples","No link","External help/FAQ","Blog","No abstraction","Text editor","Form element","Tool documentation","Flow diagram component","Low learning curve","Non-programmer","Programmer"
+
+
+
+"Non-functional DS"->"Interaction technique" [arrowhead=none]
+"Non-functional DS"->"Representation" [arrowhead=none]
+"Non-functional DS"->"Target user" [arrowhead=none]
+"Non-functional DS"->"Domain specificity" [arrowhead=none]
+"Non-functional DS"->"Execution context" [arrowhead=none]
+"Non-functional DS"->"Usability" [arrowhead=none]
+"Interaction technique"->"Non-language" [arrowhead=none]
+"Interaction technique"->"Language" [arrowhead=none]
+"Language"->"DSL" [arrowhead=none]
+"Interaction technique"->"Collaboration" [arrowhead=none]
+"Collaboration"->"Community" [arrowhead=none]
+"Community"->"Community support" [arrowhead=none]
+"Community"->"Online access" [arrowhead=none]
+"Composition Representation"->"Component representation" [arrowhead=none]
+"Composition Representation"->"Flow representation" [arrowhead=none]
+"Flow representation"->"Control flow representation" [arrowhead=none]
+"Flow representation"->"Data flow representation" [arrowhead=none]
+"Composition Representation"->"Component links" [arrowhead=none]
+"Component links"->"Graphical links" [arrowhead=none]
+"Component links"->"Textual links" [arrowhead=none]
+"Composition Representation"->"Composition" [arrowhead=none]
+"User expertise"->"Technical expertise" [arrowhead=none]
+"Composition Representation"->"Abstraction level" [arrowhead=none]
+"Target user"->"User expertise" [arrowhead=none]
+"Target user"->"User context" [arrowhead=none]
+"Usability"->"Prompts/Suggestions" [arrowhead=none]
+"Usability"->"Internal help systems" [arrowhead=none]
+"Usability"->"External aides" [arrowhead=none]
+"External aides"->"Documentation" [arrowhead=none]
+"Usability"->"Re-use" [arrowhead=none]
+"Target user"->"Learning curve" [arrowhead=none]
+"User expertise"->"Programming expertise" [arrowhead=none]
+"Representation"->"Composition Representation" [arrowhead=none]
+"User expertise"->"Domain expertise" [arrowhead=none]
+"Non-language"->"Spreadsheet"->"Dialog/form"->"WYSIWYG"->"PbD"->"Drag & drop" [arrowhead=none]
+"Language"->"Full language" [arrowhead=none]
+"DSL"->"Visual DSL"->"Textual DSL" [arrowhead=none]
+"Collaboration"->"PbEM"->"Blackboard" [arrowhead=none]
+"Community support"->"Forum"->"Wiki"->"SNS support"->"Blog" [arrowhead=none]
+"Online access"->"Public"->"Private" [arrowhead=none]
+"Component representation"->"WYSIWYG representation"->"Textual"->"Icon"->"Form element"->"Flow diagram component" [arrowhead=none]
+"Control flow representation"->"Explicit control flow"->"Implicit control flow" [arrowhead=none]
+"Data flow representation"->"Explicit data flow"->"Implicit data flow" [arrowhead=none]
+"Graphical links"->"Wires"->"Non-wire graphics"->"Visual DSL representation" [arrowhead=none]
+"Textual links"->"Textual DSL representation"->"Full language representation" [arrowhead=none]
+"Composition"->"Flow diagram"->"Spreadsheet representation"->"Form"->"Page flow"->"Plain list"->"Text editor" [arrowhead=none]
+"Abstraction level"->"High"->"Average"->"Low"->"No abstraction" [arrowhead=none]
+"Domain expertise"->"Domain expert"->"Domain newbie" [arrowhead=none]
+"Technical expertise"->"Technical expert"->"Non-technical" [arrowhead=none]
+"User context"->"Consumer/Individual"->"Enterprise/Organisation" [arrowhead=none]
+"Domain specificity"->"Generic"->"Context-specific"->"Domain-specific"->"Specialised" [arrowhead=none]
+"Execution context"->"Mobile context"->"Desktop context"->"Web context" [arrowhead=none]
+"Prompts/Suggestions"->"Incompatibility prompts"->"Suggestions" [arrowhead=none]
+"Internal help systems"->"Help"->"User goal/requirement mapping"->"VCS" [arrowhead=none]
+"External aides"->"Tutorials"->"Discussion forums"->"External help/FAQ" [arrowhead=none]
+"Documentation"->"Screencasts"->"API/component documentation"->"Tool documentation" [arrowhead=none]
+"Re-use"->"Examples" [arrowhead=none]
+"Component links"->"No link" [arrowhead=none]
+"Learning curve"->"Low learning curve"->"Medium learning curve"->"High learning curve" [arrowhead=none]
+"Programming expertise"->"Non-programmer"->"Programmer" [arrowhead=none]}

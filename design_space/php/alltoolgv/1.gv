@@ -1,0 +1,50 @@
+digraph output {node [color="047b35",fillcolor="#8df2b6",style=filled, shape=house];
+"Functional DS"
+
+node[shape=box,color="#004a63",fillcolor=lightblue2,style=filled];
+"SC Lifecycle Activities","Specification","Request","Discovery","Discovery mechanism","Discoverable entities","Composition","UI composition","Verification/validation","Annotation/deployment","Execution","Browsing","Suggestions"
+
+node [color="#444444", style="rounded,filled", shape=rect, fontcolor="000000", fillcolor="#DDDDDD"];
+
+
+
+
+"Functional DS"->"SC Lifecycle Activities" [arrowhead=none]
+"SC Lifecycle Activities"->"Specification" [arrowhead=none]
+"SC Lifecycle Activities"->"Request" [arrowhead=none]
+"SC Lifecycle Activities"->"Discovery" [arrowhead=none]
+"Discovery"->"Discovery mechanism" [arrowhead=none]
+"Discovery"->"Discoverable entities" [arrowhead=none]
+"SC Lifecycle Activities"->"Composition" [arrowhead=none]
+"Composition"->"UI composition" [arrowhead=none]
+"SC Lifecycle Activities"->"Verification/validation" [arrowhead=none]
+"SC Lifecycle Activities"->"Annotation/deployment" [arrowhead=none]
+"SC Lifecycle Activities"->"Execution" [arrowhead=none]
+"Discovery mechanism"->"Browsing" [arrowhead=none]
+"Discovery mechanism"->"Suggestions" [arrowhead=none]node [color="#898989", style="rounded,filled", shape=rect, fontcolor="#4e4e4e", fillcolor="#e1e1e1"]
+"Request"->"Text-based search   0.230769230769" [arrowhead=none] [arrowhead=none]node [color="#7e7e7e", style="rounded,filled", shape=rect, fontcolor="#464646", fillcolor="#d7d7d7"]
+"Browsing"->"Browse + filter/search   0.307692307692" [arrowhead=none]node [color="#3b3b3b", style="rounded,filled", shape=rect, fontcolor="#171717", fillcolor="#9c9c9c"]
+"Browse + filter/search   0.307692307692"->"Browsing + Categorisation   0.769230769231" [arrowhead=none]node [color="#3b3b3b", style="rounded,filled", shape=rect, fontcolor="#171717", fillcolor="#9c9c9c"]
+"Browsing + Categorisation   0.769230769231"->"Browse list   0.769230769231" [arrowhead=none] [arrowhead=none]node [color="#191919", style="rounded,filled", shape=rect, fontcolor="#000", fillcolor="#7f7f7f"]
+"Discoverable entities"->"Components   1" [arrowhead=none]node [color="#676767", style="rounded,filled", shape=rect, fontcolor="#363636", fillcolor="#c4c4c4"]
+"Components   1"->"Composites   0.461538461538" [arrowhead=none] [arrowhead=none]node [color="#2f2f2f", style="rounded,filled", shape=rect, fontcolor="#fff", fillcolor="#939393"]
+"Composition"->"Process composition   0.846153846154" [arrowhead=none]node [color="#515151", style="rounded,filled", shape=rect, fontcolor="#272727", fillcolor="#b0b0b0"]
+"Process composition   0.846153846154"->"Data composition   0.615384615385" [arrowhead=none] [arrowhead=none]node [color="#aaaaaa", style="rounded,filled", shape=rect, fontcolor="#666666", fillcolor="#ffffff"]
+"UI composition"->"Automatic UI generation   0" [arrowhead=none]node [color="#9f9f9f", style="rounded,filled", shape=rect, fontcolor="#5e5e5e", fillcolor="#f5f5f5"]
+"Automatic UI generation   0"->"Webpage composition   0.0769230769231" [arrowhead=none]node [color="#9f9f9f", style="rounded,filled", shape=rect, fontcolor="#5e5e5e", fillcolor="#f5f5f5"]
+"Webpage composition   0.0769230769231"->"Widget composition   0.0769230769231" [arrowhead=none]node [color="#949494", style="rounded,filled", shape=rect, fontcolor="#565656", fillcolor="#ebebeb"]
+"Widget composition   0.0769230769231"->"Visual UI composition   0.153846153846" [arrowhead=none]node [color="#aaaaaa", style="rounded,filled", shape=rect, fontcolor="#666666", fillcolor="#ffffff"]
+"Visual UI composition   0.153846153846"->"Textual UI composition   0" [arrowhead=none] [arrowhead=none]node [color="#5c5c5c", style="rounded,filled", shape=rect, fontcolor="#2f2f2f", fillcolor="#bababa"]
+"Verification/validation"->"Testing   0.538461538462" [arrowhead=none]node [color="#7e7e7e", style="rounded,filled", shape=rect, fontcolor="#464646", fillcolor="#d7d7d7"]
+"Testing   0.538461538462"->"Debugging   0.307692307692" [arrowhead=none]node [color="#9f9f9f", style="rounded,filled", shape=rect, fontcolor="#5e5e5e", fillcolor="#f5f5f5"]
+"Debugging   0.307692307692"->"Dummy test data   0.0769230769231" [arrowhead=none] [arrowhead=none]node [color="#949494", style="rounded,filled", shape=rect, fontcolor="#565656", fillcolor="#ebebeb"]
+"Annotation/deployment"->"Code generation   0.153846153846" [arrowhead=none]node [color="#2f2f2f", style="rounded,filled", shape=rect, fontcolor="#fff", fillcolor="#939393"]
+"Code generation   0.153846153846"->"Interpretation   0.846153846154" [arrowhead=none]node [color="#aaaaaa", style="rounded,filled", shape=rect, fontcolor="#666666", fillcolor="#ffffff"]
+"Interpretation   0.846153846154"->"Compilation   0" [arrowhead=none]node [color="#949494", style="rounded,filled", shape=rect, fontcolor="#565656", fillcolor="#ebebeb"]
+"Compilation   0"->"Export   0.153846153846" [arrowhead=none] [arrowhead=none]node [color="#3b3b3b", style="rounded,filled", shape=rect, fontcolor="#171717", fillcolor="#9c9c9c"]
+"Specification"->"No specification   0.769230769231" [arrowhead=none] [arrowhead=none]node [color="#2f2f2f", style="rounded,filled", shape=rect, fontcolor="#fff", fillcolor="#939393"]
+"Execution"->"In-app execution   0.846153846154" [arrowhead=none]node [color="#9f9f9f", style="rounded,filled", shape=rect, fontcolor="#5e5e5e", fillcolor="#f5f5f5"]
+"In-app execution   0.846153846154"->"Create new app   0.0769230769231" [arrowhead=none] [arrowhead=none]node [color="#9f9f9f", style="rounded,filled", shape=rect, fontcolor="#5e5e5e", fillcolor="#f5f5f5"]
+"Suggestions"->"Context-specific suggestions   0.0769230769231" [arrowhead=none]node [color="#7e7e7e", style="rounded,filled", shape=rect, fontcolor="#464646", fillcolor="#d7d7d7"]
+"Context-specific suggestions   0.0769230769231"->"Other recommendations   0.307692307692" [arrowhead=none] [arrowhead=none]node [color="#949494", style="rounded,filled", shape=rect, fontcolor="#565656", fillcolor="#ebebeb"]
+"Discovery mechanism"->"Text entry   0.153846153846" [arrowhead=none] [arrowhead=none]}

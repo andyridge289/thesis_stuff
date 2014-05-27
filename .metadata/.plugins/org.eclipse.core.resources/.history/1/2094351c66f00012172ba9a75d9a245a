@@ -1,0 +1,8 @@
+function DesignOption(id, name, rational, addedFrom)
+{
+	this.id = id;
+	this.name = name;
+	this.rationale = "";
+	this.ds = ds;
+	this.addedFrom = null;
+}

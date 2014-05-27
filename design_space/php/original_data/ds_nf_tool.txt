@@ -1,0 +1,33 @@
+"Non-functional DS"
+	"Target user"
+		"User expertise"
+			Layman
+			"Domain expert"
+			"Technical expert"
+			"Advanced user"
+		
+		"User context"
+			Consumer
+			Enterprise
+			
+		"Programming expertise"
+			Expert
+			Technical
+			Average
+			"Non-technical"
+		
+		"User type"
+			Individual
+			Organisation
+			
+		
+	"Domain specificity"
+		Generic
+		"Context-specific"
+		"Domain-specific"
+		Specialised
+	
+	"Execution context"	
+		Mobile
+		Desktop
+		Web
