@@ -6,7 +6,7 @@ require_once "database.php";
 
 ///// CONDITIONS
 
-$q = "SELECT * FROM `participant_has_condition`";
+$q = "SELECT * FROM `participant_has_condition` WHERE participant_id != 34";
 $ret = $db->q($q);
 if(!$ret){
 	echo "Fail $q<br/>";
