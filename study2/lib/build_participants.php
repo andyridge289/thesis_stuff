@@ -74,6 +74,7 @@ while($r = mysqli_fetch_array($ret))
 
 	$r2 = mysqli_fetch_array($ret2);
 	$thing = new Thing($r2["id"], $r2["name"], "thing");
+	$thing->description = $r2["description"];
 
 	for($i = 0; $i < count($participants); $i++)
 	{
@@ -87,7 +88,7 @@ while($r = mysqli_fetch_array($ret))
 
 /////////////  CUSTOM_IS_THINGS
 
-$q = "SELECT ct.thing_id, t.name, pc.participant_id
+$q = "SELECT ct.thing_id, t.name, pc.participant_id, ct.custom_id
 		FROM `custom_is_thing` AS ct
 		LEFT JOIN `thing` AS t ON ct.thing_id = t.id
 		LEFT JOIN `participant_has_custom` AS pc ON ct.custom_id = pc.id
@@ -102,15 +103,11 @@ if(!$ret)
 while($r = mysqli_fetch_array($ret))
 {
 	$thing = new Thing($r["thing_id"], $r["name"], "thing");
+	$thing->other = $r["custom_id"];
 	for($i = 0; $i < count($participants); $i++)
 	{
 		if($r["participant_id"] == $participants[$i]->id)
 		{
-			// if($r["participant_id"] == 1)
-			// {
-			// 	echo "ONE ";
-			// }
-
 			if(!thingInArray($thing, $participants[$i]->customsAreThings))
 				array_push($participants[$i]->customsAreThings, $thing);
 		}
