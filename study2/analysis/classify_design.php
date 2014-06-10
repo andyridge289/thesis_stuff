@@ -20,17 +20,17 @@ while($r = mysqli_fetch_array($ret)) {
 echo "<script type='text/javascript'>var names = " . json_encode($names) . ";\nvar classifiers = " . json_encode($things) . ";</script>";
 
 // Check for the ones that've already been classified
-$q = "SELECT * FROM `classified_custom`";
+$q = "SELECT * FROM `classified_thing`";
 $ret = $db->q($q);
 if(!$ret){ echo "Fail $q"; return; }
 $done_customs = array();
 $ret = $db->q($q);
 while($r = mysqli_fetch_array($ret)) {
-	array_push($done_customs, $r["custom_id"]);
+	array_push($done_customs, $r["thing_id"]);
 }
  
 // CUSTOMS
-$q = "SELECT * FROM `participant_has_custom` WHERE ignore_custom = 0 AND split = 1";
+$q = "SELECT * FROM `thing`";
 $ret = $db->q($q);
 if(!$ret)
 {
@@ -43,8 +43,8 @@ while($r = mysqli_fetch_array($ret)) {
 	if(in_array($r["id"], $done_customs))
 		continue;
 
-	$p = new Pair($r["id"], $r["name"], $r["description"], $r["rationale"]);
-	$p->participant = $r["participant_id"];
+	$p = new Pair($r["id"], $r["name"], $r["description"], "");
+	$p->participant = 1;
 	array_push($customs, $p);
 }
 echo "<script type='text/javascript'>var customs = " . json_encode($customs) . ";</script>";
@@ -119,13 +119,27 @@ class Pair
 		}
 
 		function loadIndex(newIndex) {
-			currentIndex = newIndex;
-			var current = customs[currentIndex];
 
-			$("#thing_name").html(current.name);
-			$("#participant").html(current.participant);
-			$("#thing_description").html(current.description);
-			$("#thing_rationale").html(current.rationale);
+			if(customs.length > 0) {
+
+				currentIndex = newIndex;
+				var current = customs[currentIndex];
+
+				$("#thing_name").html(current.name);
+				$("#participant").html(current.participant);
+				$("#thing_description").html(current.description);
+				$("#thing_rationale").html(current.rationale);
+				$("#total").html(customs.length);
+
+			} else {
+
+				$("#thing_name").html("Done");
+				$("#participant").html("");
+				$("#thing_description").html("");
+				$("#thing_rationale").html("");
+				$("#total").html(0);				
+
+			}
 		}
 
 		function clickButton(event) {
@@ -136,7 +150,7 @@ class Pair
 				type: "post",
 				data: 
 				{
-					custom: customs[currentIndex].id,
+					thing: customs[currentIndex].id,
 					classifier: id
 				}
 			}).done(function(msg){
@@ -160,12 +174,14 @@ class Pair
 
 	<div id="content">
 		<div id="thing" style="margin-bottom:50px;">
-			<h4 style="width:100%;text-align:center;margin-top:50px;" id="thing_name"></h4>
-			<h4 style="width:100%;text-align:center;margin-top:10px;" id="participant"></h4>
+			<p id="total" style="position:absolute;top:0px;right:0px;width:20px;height:20px;">num</p>
+			<button id="-1" onclick="clickButton(event)">Skip</button>
+			<h4 style="width:100%;text-align:center;margin-top:20px;" id="thing_name"></h4>
+			<h4 style="display:none;width:100%;text-align:center;margin-top:10px;" id="participant"></h4>
 			<div id="thing_description" style="width:100%;text-align:center;"></div>
 			<div id="thing_rationale" style="width:100%;text-align:center;"></div>
 		</div>
-		<div id="controls">
+		<div id="controls" style="position:absolute;top:300px;width:100%;">
 		</div>
 	</div>
 
