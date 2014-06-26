@@ -20,7 +20,7 @@ while($r = mysqli_fetch_array($ret))
 	array_push($participants, new Participant($r["participant_id"], $r["condition_id"]));
 }
 
-/////////////// CUSTOMS
+/////////////// CUSTOMS that are not split
 
 $q = "SELECT * FROM `participant_has_custom` WHERE split = 1";
 $ret = $db->q($q);
