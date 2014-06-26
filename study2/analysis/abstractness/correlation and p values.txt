@@ -1,0 +1,23 @@
+> cor.test(data$Condition, data$Level, method="pearson")
+
+	Pearson's product-moment correlation
+
+data:  data$Condition and data$Level
+t = 6.3045, df = 46, p-value = 1.011e-07
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.4918471 0.8085553
+sample estimates:
+      cor 
+0.6808346 
+
+> cor.test(data$Condition, data$Level, method="spearman")
+
+	Spearman's rank correlation rho
+
+data:  data$Condition and data$Level
+S = 5819.735, p-value = 8.296e-08
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.6841221 
