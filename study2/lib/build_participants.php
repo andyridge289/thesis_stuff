@@ -35,6 +35,7 @@ while($r = mysqli_fetch_array($ret))
 	// print_r($r);
 	$thing = new Thing($r["id"], $r["name"], "custom"); 
 	$thing->description = $r["description"];
+	$thing->rationale = $r["rationale"];
 
 	for($i = 0; $i < count($participants); $i++)
 	{
@@ -75,6 +76,7 @@ while($r = mysqli_fetch_array($ret))
 	$r2 = mysqli_fetch_array($ret2);
 	$thing = new Thing($r2["id"], $r2["name"], "thing");
 	$thing->description = $r2["description"];
+	$thing->rationale = $r["rationale"];
 
 	for($i = 0; $i < count($participants); $i++)
 	{
@@ -142,7 +144,7 @@ while($r = mysqli_fetch_array($ret))
 
 //////////// SPLIT SPLIT SPLIT
 
-$q = "SELECT sc.id, sc.name, pc.participant_id, pc.id AS old_id
+$q = "SELECT sc.id, sc.name, sc.description, sc.rationale, pc.participant_id, pc.id AS old_id
 		FROM `participant_has_custom` AS pc
 		LEFT JOIN `split_custom` AS sc on pc.id = sc.old_id
 		WHERE pc.split = 3";
@@ -158,6 +160,8 @@ while($r = mysqli_fetch_array($ret))
 	// Add the split thing
 	$thing = new Thing($r["id"], $r["name"], "split");
 	$thing->other = $r["old_id"];
+	$thing->description = $r["description"];
+	$thing->rationale = $r["rationale"];
 	for($i = 0; $i < count($participants); $i++)
 	{
 		if($r["participant_id"] == $participants[$i]->id)

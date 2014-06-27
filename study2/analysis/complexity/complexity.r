@@ -27,14 +27,16 @@ colours5 <- c("thistle", "springgreen1", "springgreen4", "steelblue1", "steelblu
 # ggplot(data, aes(x=Condition, y=Level, color=Representation)) + scale_color_hue(l=50) + geom_point(shape=1) + geom_smooth(method=lm, se=FALSE) + scale_x_continuous(breaks=c(seq(1,3,by=1)))
 
 shapiro.test(data5$total)
-qqnorm(data5$total, main="Normality for complexity", ylab="Number of design elements")
+qqnorm(data5$total, ylab="Number of design elements")
 qqline(data5$total, col=2, probs=c(0.1,0.9))
 
-p <- ggplot(data5, aes(x=condition, y=total))
-p <- ggplot(data3, aes(x=condition, y=total, color=reopresentation)) 
-p <- ggplot(data124, aes(x=condition, y=total))
-p <- ggplot(data135, aes(x=condition, y=total))
-p + stat_summary(fun.data="mean_cl_boot") + geom_smooth(method=lm, se=FALSE)
+ggplot(data5, aes(x=factor(condition), y=level)) + stat_summary(fun.data="mean_cl_boot", geom="crossbar", width=0.3, fill=colours5) + scale_x_discrete(name="Condition",breaks=c(seq(1,5,by=1))) + scale_y_continuous(name="Level of specificity")
+
+#p <- ggplot(data5, aes(x=condition, y=total))
+#p <- ggplot(data3, aes(x=condition, y=total, color=reopresentation)) 
+#p <- ggplot(data124, aes(x=condition, y=total))
+#p <- ggplot(data135, aes(x=condition, y=total))
+#p + stat_summary(fun.data="mean_cl_boot") + geom_smooth(method=lm, se=FALSE)
 
 fred <- function(x,i) mean(x[i,3])
 b <- boot(data124[data124$condition==1,], fred, R=1000,)

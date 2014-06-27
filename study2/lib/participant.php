@@ -37,6 +37,7 @@ class Thing
 	public $name;
 	public $type;
 	public $description;
+	public $rationale;
 	public $other;
 
 	function Thing($id, $name, $type)
