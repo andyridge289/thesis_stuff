@@ -171,6 +171,35 @@ while($r = mysqli_fetch_array($ret))
 	}
 }
 
+/////////// Causal links
+
+$q = "SELECT * FROM `design_causality`";
+$ret = $db->q($q);
+if(!$ret) {
+	echo "Fail $q";
+	return;
+}
+
+while($r = mysqli_fetch_array($ret)) {
+
+	$participant = null;
+	for($i = 0; $i < count($participants); $i++) {
+		if($r["participant_id"] == $participants[$i]->id)
+		{
+			$participant = $participants[$i];
+			break;
+		}
+	}
+
+	if($participant == null)
+		continue;
+
+	$c = new Causal();
+	$c->cause = getCausal($participant, $r["cause_id"], $r["cause_type"]);
+	$c->effect = getCausal($participant, $r["effect_id"], $r["effect_type"]);
+	array_push($participant->causal, $c);
+}
+
 /////////// THINGS from SPLIT
 
 // $q = "SELECT t.id, t.name, pc.participant_id
@@ -216,6 +245,67 @@ function thingInArray($thing, $array)
 	}
 
 	return false;
+}
+
+// function getParticipantCausal($id, $type) {
+// 	global $db;
+// 	if($type == "thing") {
+// 		$q = "SELECT * FROM `thing` WHERE id = $id";
+// 		$ret = $db->q($q);
+// 		if(!$ret) {
+// 			echo "Fail $q";
+// 			return null;
+// 		}
+// 		$r = mysqli_fetch_array($ret);
+// 		return $r["name"];
+// 	} else if($type == "split") {
+// 		$q = "SELECT pc.participant_id FROM `split_custom` AS sc 
+// 				LEFT JOIN `participant_has_custom` AS pc ON sc.old_id = pc.id
+// 				WHERE sc.id = $id";
+// 		$ret = $db->q($q);
+// 		if(!$ret) {
+// 			echo "Fail $q";
+// 			return null;
+// 		}
+// 		$r = mysqli_fetch_array($ret);
+// 		return $r["participant_id"];
+// 	} else if($type == "custom") {
+// 		$q = "SELECT * FROM `participant_has_custom` WHERE id = $id";
+// 		$ret = $db->q($q);
+// 		if(!$ret) {
+// 			echo "Fail $q";
+// 			return null;
+// 		}
+// 		$r = mysqli_fetch_array($ret);
+// 		return $r["participant_id"];
+// 	} else {
+// 		return "todo";
+// 	}
+// }
+
+function getCausal($participant, $id, $type) {
+	if($type == "thing") {
+		// Look for the cause ID in the thing array
+		foreach($participant->things AS $thing) {
+			if($id == $thing->id) {
+				return $thing;
+			}
+		}
+	} else if($type == "split") {
+		foreach($participant->split AS $thing) {
+			if($id == $thing->id) {
+				return $thing;
+			}
+		}
+	} else if($type == "custom") {
+		foreach($participant->customs AS $thing) {
+			if($id == $thing->id) {
+				return $thing;
+			}
+		}
+	} 
+
+	return "no";
 }
 
 ?>

@@ -12,6 +12,8 @@ class Participant
 	public $things;
 	public $new;
 
+	public $causal;
+
 	function Participant($id, $condition)
 	{
 		$this->id = $id;
@@ -23,11 +25,22 @@ class Participant
 		
 		$this->things = array();
 		$this->new = array();
+
+		$this->causal = array();
 	}
 
 	function pString()
 	{
 		
+	}
+}
+
+class Causal 
+{
+	public $cause;
+	public $effect;
+
+	function Causal() {
 	}
 }
 

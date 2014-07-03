@@ -66,15 +66,16 @@ echo "<script type='text/javascript'>var ps = " . json_encode($ps) . ";
 			return;
 		} 
 
-		$.ajax({
-			url: "causality_getnext.php",
-		}).done(function(msg){
+		// $.ajax({
+		// 	url: "causality_getnext.php",
+		// }).done(function(msg){
 
-			eval(msg);
+		// 	eval(msg);
 
-			populate(nextPid, 0, 1);
+		// Just start from the beginning
+		populate(0, 0, 1);
 
-		}).fail(function ( jqXHR, textStatus, errorThrown ){ alert("Fail " + textStatus + ", " + errorThrown)});
+		// }).fail(function ( jqXHR, textStatus, errorThrown ){ alert("Fail " + textStatus + ", " + errorThrown)});
 	}
 
 	function nope() { 
@@ -91,7 +92,7 @@ echo "<script type='text/javascript'>var ps = " . json_encode($ps) . ";
 	function populate(nextPid, left, right) {
 
 		pid = nextPid;
-		$("#pid").html(pid + "[" + ps[pid].all.length + "]");
+		$("#pid").html(ps[pid].id + "[" + ps[pid].all.length + "]");
 
 		var leftName = $("#left_name");
 		var leftDescription = $("#left_description");
@@ -164,7 +165,7 @@ echo "<script type='text/javascript'>var ps = " . json_encode($ps) . ";
 			url: "causality_set.php",
 			type: "get",
 			data: {
-				p: pid,
+				p: ps[pid].id,
 				cause_id: cause.id,
 				cause_type: cause.type,
 				effect_id: effect.id,
