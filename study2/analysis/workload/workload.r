@@ -13,7 +13,7 @@ colours5 <- c("thistle", "springgreen1", "springgreen4", "steelblue1", "steelblu
 
 #ggplot(data, aes(x=Condition, y=Level, color=Representation) + scale_color_hue(l=50) + geom_point(shape=1) + geom_smooth(method=lm, se=FALSE) + scale_x_continuous(breaks=c(seq(1,3,by=1)))
 
-ggplot(data5, aes(x=factor(condition), y=workloadWeighted_frustration)) + stat_summary(fun.data="mean_cl_boot", geom="crossbar", width=0.3, fill=colours5) + scale_x_discrete(name="Condition",breaks=c(seq(1,5,by=1))) + scale_y_continuous(name="Weighted performance")
+ggplot(data5, aes(x=factor(condition), y=workloadWeighted_frustration)) + stat_summary(fun.data="mean_cl_boot", geom="crossbar", width=0.3, fill=colours5) + scale_x_discrete(name="Condition",breaks=c(seq(1,5,by=1))) + scale_y_continuous(name="Weighted frustration")
 
 #fred <- function(x,i) mean(x[i,3])
 
